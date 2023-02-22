@@ -8,14 +8,23 @@ import { userDetailsRequestObj } from '../types'
 
 
 class LoginStore {
-  apiStatus = apiConstants.initial
-  errorMessage:string|null =  null
+  apiStatus!:string
+  errorMessage!:string|null
 
   constructor() {
     makeAutoObservable(this)
+    this.init()
   }
 
-  onClickLogin = async (userDetails:userDetailsRequestObj, onSubmitSuccess: () => void, onSubmitFailure: (errMsg: string) => void) => {
+  init(){
+    this.apiStatus = apiConstants.initial
+    this.errorMessage = null
+  }
+
+  onClickLogin = async (
+     userDetails:userDetailsRequestObj, 
+     onSubmitSuccess: () => void) => 
+     {
     this.apiStatus = apiConstants.fetching
     const url = 'https://apis.ccbp.in/login'
     const options = {
@@ -29,7 +38,6 @@ class LoginStore {
       this.onLoginApiSuccess(data.jwt_token)
       onSubmitSuccess()
     } else {
-      onSubmitFailure(data.error_msg)
       this.onLoginApiFailure(data.error_msg)
     }
   }

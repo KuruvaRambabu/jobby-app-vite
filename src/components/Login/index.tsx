@@ -13,32 +13,27 @@ import './index.css'
 interface localStateTypes {
   username:string
   password:string
-  errorMessage:string
   setUsername:(event:React.ChangeEvent<HTMLInputElement>)=>void
   setPassword :(event:React.ChangeEvent<HTMLInputElement>)=>void
-  setErrorMsg :(errorMsg:string)=>void
 }
 
 const Login = observer(() => {
   const localState = useLocalObservable<localStateTypes>(() => ({
     username: '',
     password: '',
-    errorMessage: '',
+    
     setUsername(event:React.ChangeEvent<HTMLInputElement>) {
       this.username = event.target.value
     },
     setPassword(event:React.ChangeEvent<HTMLInputElement>) {
       this.password = event.target.value
-    },
-    setErrorMsg(errorMsg: string) {
-      this.errorMessage = errorMsg
-    },
+    }
   }))
 
 
   const store = useContext(StoresContext)
   const {loginStore} = store
-  const {onClickLogin, apiStatus} = loginStore
+  const {onClickLogin, apiStatus,errorMessage} = loginStore
 
   const navigate = useNavigate()
 
@@ -78,15 +73,12 @@ const Login = observer(() => {
     navigate('/', {replace: true})
   }
 
-  const onSubmitFailure = (errorMsg: any) => {
-    localState.setErrorMsg(errorMsg)
-  }
 
   const onSubmitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const {username, password} = localState
     const userDetails = {username, password}
-    onClickLogin(userDetails, onSubmitSuccess, onSubmitFailure)
+    onClickLogin(userDetails, onSubmitSuccess)
   }
 
   const jwtToken = Cookies.get('jwt_token')
@@ -106,7 +98,7 @@ const Login = observer(() => {
         <form className="form-container" onSubmit={onSubmitForm}>
           {renderUsernameInput()}
           {renderPasswordInput()}
-          <p className="error-message">{localState.errorMessage}</p>
+          {apiStatus === apiConstants.failure && <p className="error-message">{errorMessage}</p>}
           {apiStatus === apiConstants.fetching ? (
             <div className="loader-container login-button" data-testid="loader">
               <Oval

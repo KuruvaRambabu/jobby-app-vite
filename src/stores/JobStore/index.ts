@@ -16,7 +16,7 @@ class JobsStore {
   jobsApiStatus!:string
   jobsApiErrorMessage!:string|null
   profileApiStatus!:string
-  profileApiErrorMessage!:string | null | undefined
+  profileApiErrorMessage!:string | null
   profileData!:profileDetailsTypes | {}
   jobDetailsApiStatus!:string
   jobDetailsApiErrorMessage!:string|null

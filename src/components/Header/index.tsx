@@ -1,9 +1,11 @@
 import {useContext} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-import {RiHome4Fill, RiLogoutBoxRLine} from 'react-icons/ri'
-import {BsBriefcase} from 'react-icons/bs'
+
 
 import StoresContext from '../../context/StoreContext'
+import HomeIcon from '../../Icons/HomeIcon'
+import JobsIcon from '../../Icons/JobsIcon'
+import LogoutIcon from '../../Icons/LogoutIcon'
 
 import './index.css'
 
@@ -38,7 +40,7 @@ const Header = () => {
             Home
           </Link>
           <Link to="/" className="home-btn-mobile header-button" type="button">
-            <RiHome4Fill className="logout-icon" />
+            <HomeIcon />
           </Link>
         </li>
         <li>
@@ -50,7 +52,7 @@ const Header = () => {
             className="home-btn-mobile header-button"
             type="button"
           >
-            <BsBriefcase className="logout-icon" />
+            <JobsIcon />
           </Link>
         </li>
       </div>
@@ -63,7 +65,7 @@ const Header = () => {
           className="logout-btn-mobile"
           type="button"
         >
-          <RiLogoutBoxRLine className="logout-icon" />
+          <LogoutIcon />
         </button>
       </li>
     </ul>

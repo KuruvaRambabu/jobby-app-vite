@@ -27,9 +27,9 @@ class JobsStore {
 
   jobDetailsApiErrorMessage!:string|null
 
-  jobDetailsData!:JobDetailsModel | {}
+  jobDetailsData!:JobDetailsModel 
 
-  similarJobsData!:JobDataModel |{}
+  similarJobsData!:Array<JobDataModel>
 
   constructor() {
     makeAutoObservable(this)
@@ -45,15 +45,15 @@ class JobsStore {
     this.profileData = {}
     this.jobDetailsApiStatus = apiConstants.initial
     this.jobDetailsApiErrorMessage = null
-    this.jobDetailsData = {}
+    this.jobDetailsData
     this.similarJobsData = []
   
   }
 
   getJobsDataApi = async (
-    employementFilters: any[],
-    salaryRangeFilter: any,
-    searchInput: any,
+    employementFilters?: any,
+    salaryRangeFilter?: string,
+    searchInput?: string,
   ) => {
     this.jobsApiStatus = apiConstants.fetching
 

@@ -1,6 +1,8 @@
 import {useState, useContext} from 'react'
 import {useNavigate, Navigate} from 'react-router-dom'
-import Loader from 'react-loader-spinner'
+
+import { Oval } from  'react-loader-spinner'
+
 import Cookies from 'js-cookie'
 import {observer, useLocalObservable} from 'mobx-react'
 
@@ -111,8 +113,15 @@ const Login = observer(() => {
           <p className="error-message">{localState.errorMessage}</p>
           {apiStatus === apiConstants.fetching ? (
             <div className="loader-container login-button" data-testid="loader">
-              {/* <Loader type="Oval" color="#ffffff" height="30" width="50" /> */}
-              Loading.......
+              <Oval
+                  height={30}
+                  width={30}
+                  color="#ffffff"
+                  visible={true}
+                  ariaLabel='oval-loading'
+                  strokeWidth={2}
+                  strokeWidthSecondary={2}
+                />
             </div>
           ) : (
             <button className="login-button" type="submit">

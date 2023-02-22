@@ -1,13 +1,15 @@
+import { JobDataResponseObj } from "../../types"
+
 class JobDataModel {
     companyUrl:string
     employmentType:string
-    id:number
+    id:string
     jobDescription:string
     location:string
     packagePerAnnum:string
-    rating:number
+    rating:string
     title:string
-    constructor(job:any) {
+    constructor(job:JobDataResponseObj) {
       this.companyUrl = job.company_logo_url
       this.employmentType = job.employment_type
       this.id = job.id

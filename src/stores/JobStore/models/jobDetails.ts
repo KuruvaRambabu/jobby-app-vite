@@ -1,20 +1,23 @@
-import { lifeAtCompanyObj, skillObj } from '../../types'
+import { JobDetailsDataResponseObj, SkillObj } from '../../types'
 import SkillsDataModel from './skillsDataModel'
 
 class JobDetailsModel {
   companyLogoUrl:string
   companyWebsiteUrl:string
   employmentType:string
-  id:number
+  id:string
   jobDescription:string
-  lifeAtCompany:lifeAtCompanyObj
+  lifeAtCompany:{
+    description:string
+    imageUrl:string
+  }
   location:string
   packagePerAnnum:string
   rating:string
-  skills:Array<skillObj>
+  skills:Array<SkillsDataModel>
   title:string
 
-  constructor(jobDetails:any) {
+  constructor(jobDetails:JobDetailsDataResponseObj) {
     this.companyLogoUrl = jobDetails.company_logo_url
     this.companyWebsiteUrl = jobDetails.company_website_url
     this.employmentType = jobDetails.employment_type
@@ -27,7 +30,7 @@ class JobDetailsModel {
     this.location = jobDetails.location
     this.packagePerAnnum = jobDetails.package_per_annum
     this.rating = jobDetails.rating
-    this.skills = jobDetails.skills.map((skill:skillObj) => new SkillsDataModel(skill))
+    this.skills = jobDetails.skills.map((skill:SkillObj) => new SkillsDataModel(skill))
     this.title = jobDetails.title
   }
 }

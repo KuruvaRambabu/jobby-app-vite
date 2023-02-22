@@ -19,7 +19,7 @@ class JobsStore {
   profileData!:profileDetailsTypes | {}
   jobDetailsApiStatus!:string
   jobDetailsApiErrorMessage!:string|null
-  jobDetailsData!:JobDetailsModel 
+  jobDetailsData!:JobDetailsModel |{}
   similarJobsData!:Array<JobDataModel>
 
   constructor() {
@@ -36,7 +36,7 @@ class JobsStore {
     this.profileData = {}
     this.jobDetailsApiStatus = apiConstants.initial
     this.jobDetailsApiErrorMessage = null
-    this.jobDetailsData
+    this.jobDetailsData = {}
     this.similarJobsData = []
   
   }

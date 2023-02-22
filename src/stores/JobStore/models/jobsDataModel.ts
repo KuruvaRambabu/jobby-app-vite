@@ -9,6 +9,7 @@ class JobDataModel {
     packagePerAnnum:string
     rating:string
     title:string
+    
     constructor(job:JobDataResponseObj) {
       this.companyUrl = job.company_logo_url
       this.employmentType = job.employment_type

@@ -1,6 +1,12 @@
+import SkillsDataModel from '../../stores/JobStore/models/skillsDataModel'
 import './index.css'
 
-const Skills = props => {
+
+interface SkillsPropTypes{
+  skill:SkillsDataModel
+}
+
+const Skills = (props:SkillsPropTypes) => {
   const {skill} = props
   const {imageUrl, name} = skill
   return (

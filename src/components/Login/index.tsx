@@ -12,15 +12,25 @@ import apiConstants from '../../constants/apiConstants'
 
 import './index.css'
 
+
+interface localStateTypes {
+  username:string
+  password:string
+  errorMessage:string
+  setUsername:(event:React.ChangeEvent<HTMLInputElement>)=>void
+  setPassword :(event:React.ChangeEvent<HTMLInputElement>)=>void
+  setErrorMsg :(errorMsg:string)=>void
+}
+
 const Login = observer(() => {
-  const localState = useLocalObservable(() => ({
+  const localState = useLocalObservable<localStateTypes>(() => ({
     username: '',
     password: '',
     errorMessage: '',
-    setUsername(event: {target: {value: string}}) {
+    setUsername(event:React.ChangeEvent<HTMLInputElement>) {
       this.username = event.target.value
     },
-    setPassword(event: {target: {value: string}}) {
+    setPassword(event:React.ChangeEvent<HTMLInputElement>) {
       this.password = event.target.value
     },
     setErrorMsg(errorMsg: string) {
@@ -28,19 +38,12 @@ const Login = observer(() => {
     },
   }))
 
-  //   const [username, setUsername] = useState('')
-  //   const [password, setPassword] = useState('')
-  //   const [errorMessage, setErrorMsg] = useState('')
 
   const store = useContext(StoresContext)
   const {loginStore} = store
   const {onClickLogin, apiStatus} = loginStore
 
   const navigate = useNavigate()
-
-  //   const onChangeUsername = event => {
-  //     setUsername(event.target.value)
-  //   }
 
   const renderUsernameInput = () => (
     <>
@@ -57,10 +60,6 @@ const Login = observer(() => {
       />
     </>
   )
-
-  //   const onChangePassword = event => {
-  //     setPassword(event.target.value)
-  //   }
 
   const renderPasswordInput = () => (
     <>
@@ -86,7 +85,7 @@ const Login = observer(() => {
     localState.setErrorMsg(errorMsg)
   }
 
-  const onSubmitForm = async (event: {preventDefault: () => void}) => {
+  const onSubmitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const {username, password} = localState
     const userDetails = {username, password}

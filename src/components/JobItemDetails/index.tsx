@@ -17,6 +17,7 @@ import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
 import SkillsDataModel from '../../stores/JobStore/models/skillsDataModel'
 
 import './index.css'
+import { Oval } from 'react-loader-spinner'
 
 const JobDetails = observer(() => {
   const store = useContext(StoresContext)
@@ -39,7 +40,15 @@ const JobDetails = observer(() => {
 
   const renderJobLoadingView = () => (
     <div className="loader-container jobs-loader" data-testid="loader">
-     Loading....
+      <Oval
+            height={30}
+            width={30}
+            color="#ffffff"
+            visible={true}
+            ariaLabel='oval-loading'
+            strokeWidth={2}
+            strokeWidthSecondary={2}
+          />
     </div>
   )
 

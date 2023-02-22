@@ -1,9 +1,9 @@
 import StartIcon from '../../Icons/StartIcon'
 import LocationIcon from '../../Icons/LocationIcon'
 import JobsIcon from '../../Icons/JobsIcon'
+import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
 
 import './index.css'
-import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
 
 
 interface JobPropTypes{

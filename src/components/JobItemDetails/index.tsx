@@ -3,11 +3,6 @@ import {useParams} from 'react-router-dom'
 import {observer} from 'mobx-react'
 
 import StoresContext from '../../context/StoreContext'
-
-import Skills from '../Skills'
-import SimilarJobs from '../SimilarJobs'
-import Header from '../Header'
-
 import StartIcon from '../../Icons/StartIcon'
 import LocationIcon from '../../Icons/LocationIcon'
 import JobsIcon from '../../Icons/JobsIcon'
@@ -16,7 +11,12 @@ import apiConstants from '../../constants/apiConstants'
 import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
 import SkillsDataModel from '../../stores/JobStore/models/skillsDataModel'
 
+import Skills from '../Skills'
+import SimilarJobs from '../SimilarJobs'
+import Header from '../Header'
+
 import './index.css'
+
 import { Oval } from 'react-loader-spinner'
 
 const JobDetails = observer(() => {

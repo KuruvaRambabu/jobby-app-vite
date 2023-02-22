@@ -1,6 +1,5 @@
 import './index.css'
 
-
 interface TypesOfEmployment{
   employmentTypeId:string
   label:string

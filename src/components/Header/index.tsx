@@ -1,7 +1,6 @@
 import {useContext} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 
-
 import StoresContext from '../../context/StoreContext'
 import HomeIcon from '../../Icons/HomeIcon'
 import JobsIcon from '../../Icons/JobsIcon'

@@ -1,13 +1,14 @@
 import {makeAutoObservable} from 'mobx'
-
 import Cookies from 'js-cookie'
+
 import apiConstants from "../../constants/apiConstants"
+
+import {  profileDetailsResponseObj, profileDetailsTypes } from '../types'
 
 import JobDataModel from './models/jobsDataModel'
 import ProfileDetailsModel from './models/profileDetailsModel'
 import JobDetailsModel from './models/jobDetails'
 
-import {  profileDetailsResponseObj, profileDetailsTypes } from '../types'
 
 
 class JobsStore {

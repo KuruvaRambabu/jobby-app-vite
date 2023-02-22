@@ -2,21 +2,19 @@ import {useEffect, useState, useContext} from 'react'
 import { ThreeDots } from 'react-loader-spinner'
 import {observer} from 'mobx-react'
 
+import apiConstants from '../../constants/apiConstants'
+import employmentTypesList from '../../constants/employmentTypeConstants'
+import salaryRangesList from '../../constants/salaryRangeConstants'
+import StoresContext from '../../context/StoreContext'
+import JobsSearchIcon from '../../Icons/SearchIcon'
+
 import Profile from '../Profile'
 import DisplayEmploymentTypeFilters from '../DisplayFilters'
 import SalaryRangeFilter from '../SalaryRange'
 import JobCard from '../JobCard'
-
-import apiConstants from '../../constants/apiConstants'
-
-import employmentTypesList from '../../constants/employmentTypeConstants'
-import salaryRangesList from '../../constants/salaryRangeConstants'
-import StoresContext from '../../context/StoreContext'
-
 import Header from '../Header'
 
 import './index.css'
-import JobsSearchIcon from '../../Icons/SearchIcon'
 
 const Jobs = observer(() => {
   const [employementFilters, upDateEmployementFilter] = useState<Array<string>>([])

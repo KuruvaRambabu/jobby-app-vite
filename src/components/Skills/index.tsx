@@ -1,4 +1,5 @@
 import SkillsDataModel from '../../stores/JobStore/models/skillsDataModel'
+
 import './index.css'
 
 

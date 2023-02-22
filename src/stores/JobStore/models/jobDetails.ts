@@ -1,4 +1,5 @@
 import { JobDetailsDataResponseObj, SkillObj } from '../../types'
+
 import SkillsDataModel from './skillsDataModel'
 
 class JobDetailsModel {

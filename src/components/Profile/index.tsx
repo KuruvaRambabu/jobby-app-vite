@@ -10,7 +10,6 @@ import './index.css'
 
 const Profile = observer(() => {
   const store = useContext(StoresContext)
-
   const {jobStore} = store
   const {profileApiStatus, profileData, getProfileData} = jobStore
 
@@ -31,6 +30,7 @@ const Profile = observer(() => {
           />
     </div>
   )
+
 
   const renderSuccessView = () => {
     const {profileImageUrl, shortBio, name}:any = profileData

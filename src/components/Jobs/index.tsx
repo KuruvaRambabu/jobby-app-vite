@@ -103,7 +103,7 @@ const Jobs = observer(() => {
     }
   }
 
-  const onSelectEmploymentType = (event: { target: { id: string } }) => {
+  const onSelectEmploymentType = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedEmploymentType:string = event.target.id
 
     const filtersCopy:Array<string> = [...employementFilters]
@@ -116,12 +116,12 @@ const Jobs = observer(() => {
     upDateEmployementFilter([...filtersCopy])
   }
 
-  const onChangeSalaryRange = async (event: { target: { id: string} }) => {
+  const onChangeSalaryRange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     updateSalaryrangeFilter(event.target.id)
   }
 
 
-  const onChangeSearchInput = (event: { target: { value: string} }) => {
+  const onChangeSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchInput(event.target.value)
   }
 

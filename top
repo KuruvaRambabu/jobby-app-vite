@@ -1,0 +1,81 @@
+[33mcommit 86dca22ea07cfd994d4474be25e432af17cf3273[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: Kuruva Rambabu <r151763@rguktrkv.ac.in>
+Date:   Wed Feb 22 12:41:35 2023 +0530
+
+    add jobs route and Job details route to typescript
+
+:100644 100644 27b624e d913138 M	src/App.tsx
+:000000 100644 0000000 b884c3c A	src/Icons/HomeIcon/index.tsx
+:000000 100644 0000000 270da67 A	src/Icons/JobsIcon/index.tsx
+:000000 100644 0000000 1806129 A	src/Icons/LocationIcon/index.tsx
+:000000 100644 0000000 5048f23 A	src/Icons/LogoutIcon/index.tsx
+:000000 100644 0000000 48a1e36 A	src/Icons/SearchIcon/index.tsx
+:000000 100644 0000000 f5ca4f1 A	src/Icons/StartIcon/index.tsx
+:000000 100644 0000000 c18b04a A	src/components/DisplayFilters/index.css
+:000000 100644 0000000 3118297 A	src/components/DisplayFilters/index.tsx
+:100644 100644 0512320 cefe596 M	src/components/Header/index.tsx
+:000000 100644 0000000 3e58c6b A	src/components/JobCard/index.css
+:000000 100644 0000000 253be86 A	src/components/JobCard/index.tsx
+:000000 100644 0000000 6e0e779 A	src/components/JobItemDetails/index.css
+:000000 100644 0000000 009133b A	src/components/JobItemDetails/index.tsx
+:000000 100644 0000000 6f8eb5c A	src/components/Jobs/index.css
+:000000 100644 0000000 7f6a1f0 A	src/components/Jobs/index.tsx
+:100644 100644 e739d8a 99b62d3 M	src/components/Login/index.css
+:100644 100644 4115c53 d7e94f3 M	src/components/Login/index.tsx
+:000000 100644 0000000 4d7e93d A	src/components/NotFound/index.css
+:000000 100644 0000000 fab4393 A	src/components/NotFound/index.tsx
+:000000 100644 0000000 a7143ea A	src/components/Profile/index.css
+:000000 100644 0000000 a343ab3 A	src/components/Profile/index.tsx
+:000000 100644 0000000 fe2d2ec A	src/components/SalaryRange/index.css
+:000000 100644 0000000 489029e A	src/components/SalaryRange/index.tsx
+:000000 100644 0000000 c32bc17 A	src/components/SimilarJobs/index.css
+:000000 100644 0000000 591c691 A	src/components/SimilarJobs/index.tsx
+:000000 100644 0000000 4c76b92 A	src/components/Skills/index.css
+:000000 100644 0000000 e9679b3 A	src/components/Skills/index.tsx
+:100644 100644 2a9eb7c d29f9b8 M	src/stores/JobStore/index.ts
+:100644 100644 58c5c20 09cfc08 M	src/stores/JobStore/models/jobDetails.ts
+:100644 100644 a6d75a0 3624ea7 M	src/stores/JobStore/models/jobsDataModel.ts
+:100644 100644 1944be1 cbfaba2 M	src/stores/JobStore/models/profileDetailsModel.ts
+:100644 100644 c63337e 2f252c7 M	src/stores/JobStore/models/skillsDataModel.ts
+:100644 100644 1771b32 04925b3 M	src/stores/types.ts
+
+[33mcommit d4b4274ed50db610a206bb66d407830e8fd6083b[m
+Author: Kuruva Rambabu <r151763@rguktrkv.ac.in>
+Date:   Tue Feb 21 18:35:52 2023 +0530
+
+    add login route in typescript
+
+:000000 100644 0000000 a547bf3 A	.gitignore
+:000000 100644 0000000 e0d1c84 A	index.html
+:000000 100644 0000000 85978e8 A	package-lock.json
+:000000 100644 0000000 618e545 A	package.json
+:000000 100644 0000000 e7b8dfb A	public/vite.svg
+:000000 100644 0000000 879a360 A	src/App.css
+:000000 100644 0000000 27b624e A	src/App.tsx
+:000000 100644 0000000 6c87de9 A	src/assets/react.svg
+:000000 100644 0000000 c7ac817 A	src/components/Header/index.css
+:000000 100644 0000000 0512320 A	src/components/Header/index.tsx
+:000000 100644 0000000 a93d70e A	src/components/Home/index.css
+:000000 100644 0000000 ba20c46 A	src/components/Home/index.tsx
+:000000 100644 0000000 e739d8a A	src/components/Login/index.css
+:000000 100644 0000000 4115c53 A	src/components/Login/index.tsx
+:000000 100644 0000000 e69de29 A	src/components/ProtectedRoute/index.css
+:000000 100644 0000000 4c9403f A	src/components/ProtectedRoute/index.tsx
+:000000 100644 0000000 fa1f787 A	src/constants/apiConstants.ts
+:000000 100644 0000000 fa21f1a A	src/constants/employmentTypeConstants.ts
+:000000 100644 0000000 b0c0cd4 A	src/constants/salaryRangeConstants.ts
+:000000 100644 0000000 12b5174 A	src/context/StoreContext.tsx
+:000000 100644 0000000 e69de29 A	src/index.css
+:000000 100644 0000000 b9c59ba A	src/main.tsx
+:000000 100644 0000000 2a9eb7c A	src/stores/JobStore/index.ts
+:000000 100644 0000000 58c5c20 A	src/stores/JobStore/models/jobDetails.ts
+:000000 100644 0000000 a6d75a0 A	src/stores/JobStore/models/jobsDataModel.ts
+:000000 100644 0000000 1944be1 A	src/stores/JobStore/models/profileDetailsModel.ts
+:000000 100644 0000000 c63337e A	src/stores/JobStore/models/skillsDataModel.ts
+:000000 100644 0000000 c0af220 A	src/stores/LoginStore/index.ts
+:000000 100644 0000000 f7ac8f9 A	src/stores/index.ts
+:000000 100644 0000000 1771b32 A	src/stores/types.ts
+:000000 100644 0000000 11f02fe A	src/vite-env.d.ts
+:000000 100644 0000000 3d0a51a A	tsconfig.json
+:000000 100644 0000000 9d31e2a A	tsconfig.node.json
+:000000 100644 0000000 5a33944 A	vite.config.ts

@@ -1,11 +1,18 @@
 import {Link} from 'react-router-dom'
 
-import './index.css'
 import JobsIcon from '../../Icons/JobsIcon'
 import StartIcon from '../../Icons/StartIcon'
 import LocationIcon from '../../Icons/LocationIcon'
+import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
 
-const JobCard = (props: { jobData: any }) => {
+import './index.css'
+
+interface JobCardPropTypes{
+  jobData:JobDataModel
+}
+
+
+const JobCard = (props:JobCardPropTypes) => {
   const {jobData} = props
   const {
     companyUrl,

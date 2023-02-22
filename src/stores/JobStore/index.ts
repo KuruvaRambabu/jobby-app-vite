@@ -12,23 +12,14 @@ import {  profileDetailsResponseObj, profileDetailsTypes } from '../types'
 
 class JobsStore {
   jobList!:Array<JobDataModel>
-
   jobsApiStatus!:string
-
   jobsApiErrorMessage!:string|null
-
   profileApiStatus!:string
-
   profileApiErrorMessage!:string | null | undefined
-
   profileData!:profileDetailsTypes | {}
-
   jobDetailsApiStatus!:string
-
   jobDetailsApiErrorMessage!:string|null
-
   jobDetailsData!:JobDetailsModel 
-
   similarJobsData!:Array<JobDataModel>
 
   constructor() {

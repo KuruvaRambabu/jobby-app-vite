@@ -3,6 +3,7 @@ import {useNavigate, Navigate} from 'react-router-dom'
 import { Oval } from  'react-loader-spinner'
 import Cookies from 'js-cookie'
 import {observer, useLocalObservable} from 'mobx-react'
+import { useMutation } from 'react-query'
 
 import StoresContext from '../../context/StoreContext'
 import apiConstants from '../../constants/apiConstants'
@@ -34,6 +35,7 @@ const Login = observer(() => {
   const store = useContext(StoresContext)
   const {loginStore} = store
   const {onClickLogin, apiStatus,errorMessage} = loginStore
+  const loginMutateFn = useMutation(onClickLogin)
 
   const navigate = useNavigate()
 
@@ -78,7 +80,7 @@ const Login = observer(() => {
     event.preventDefault()
     const {username, password} = localState
     const userDetails = {username, password}
-    onClickLogin(userDetails, onSubmitSuccess)
+    loginMutateFn.mutate(userDetails, onSubmitSuccess)
   }
 
   const jwtToken = Cookies.get('jwt_token')

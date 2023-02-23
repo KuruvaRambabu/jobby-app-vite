@@ -1,5 +1,6 @@
 import {Routes, Route} from 'react-router-dom'
 import {observer} from 'mobx-react'
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 import StoresContext from './context/StoreContext'
 import Login from './components/Login'
@@ -13,9 +14,12 @@ import Jobs from './components/Jobs'
 import './App.css'
 
 const {loginStore, jobStore} = stores
+const queryClient = new QueryClient();
+
 
 const App = observer(() => (
-<StoresContext.Provider value={{loginStore, jobStore}}>
+  <QueryClientProvider client={queryClient}>
+    <StoresContext.Provider value={{loginStore, jobStore}}>
     <Routes>
       <Route path='*' element={<NotFound />} />
       <Route path="/login" element={<Login />} />
@@ -24,9 +28,10 @@ const App = observer(() => (
       <Route
         path="/jobs/:id"
         element={<ProtectedRoute component={JobDetails} />}
-      />
+        />
     </Routes>
-  </StoresContext.Provider>
+   </StoresContext.Provider>
+  </QueryClientProvider>
 ))
 
 export default App

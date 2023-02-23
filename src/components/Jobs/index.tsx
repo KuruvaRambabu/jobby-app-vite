@@ -1,6 +1,7 @@
 import {useEffect, useState, useContext} from 'react'
 import { ThreeDots } from 'react-loader-spinner'
 import {observer} from 'mobx-react'
+import { useQuery } from 'react-query'
 
 import apiConstants from '../../constants/apiConstants'
 import employmentTypesList from '../../constants/employmentTypeConstants'
@@ -25,9 +26,11 @@ const Jobs = observer(() => {
   const {jobStore} = store
   const {getJobsDataApi} = jobStore
 
-  useEffect(() => {
-    getJobsDataApi(employementFilters, salaryRangeFilter, searchInput)
-  }, [employementFilters, salaryRangeFilter, searchInput])
+  useQuery(
+    ["JobsData",employementFilters, salaryRangeFilter, searchInput],
+    () => getJobsDataApi(employementFilters, salaryRangeFilter, searchInput), 
+  );
+
 
   const renderJobsLoadingView = () => (
     <div className="loader-container jobs-loader" data-testid="loader">

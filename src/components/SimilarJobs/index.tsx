@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 import StartIcon from '../../Icons/StartIcon'
 import LocationIcon from '../../Icons/LocationIcon'
 import JobsIcon from '../../Icons/JobsIcon'
@@ -20,8 +22,10 @@ const SimilarJobs = (props:JobPropTypes) => {
     location,
     rating,
     title,
+    id
   } = job
   return (
+    <Link to={`/jobs/${id}`} className="job-details-similar-job-card">
     <li className="similar-job-card">
       <div className="similar-job-logo job-logo-container">
         <img
@@ -54,6 +58,7 @@ const SimilarJobs = (props:JobPropTypes) => {
         </div>
       </div>
     </li>
+    </Link>
   )
 }
 

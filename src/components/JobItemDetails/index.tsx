@@ -1,6 +1,7 @@
 import {useEffect, useContext} from 'react'
 import {useParams} from 'react-router-dom'
 import {observer} from 'mobx-react'
+import { useQuery } from 'react-query'
 
 import StoresContext from '../../context/StoreContext'
 import StartIcon from '../../Icons/StartIcon'
@@ -31,13 +32,9 @@ const JobDetails = observer(() => {
   } = jobStore
 
   const jobsId = useParams()
-
-  useEffect(() => {
-    const {id} = jobsId
-
-    getJobDetailsApi(id)
-  }, [])
-
+  const {id} = jobsId
+  useQuery(["jobDetailsData",id], ()=>getJobDetailsApi(id))
+  
   const renderJobLoadingView = () => (
     <div className="loader-container jobs-loader" data-testid="loader">
       <Oval

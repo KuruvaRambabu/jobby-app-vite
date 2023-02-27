@@ -5,7 +5,7 @@ const ProtectedRoute = (props:any) => {
 
   const jwtToken = Cookies.get('jwt_token')
   if (jwtToken === undefined) {
-    return <Navigate to="/login" replace state={location} />
+    return <Navigate to="/login" replace   />
   }
   return <Outlet {...props} />
 }

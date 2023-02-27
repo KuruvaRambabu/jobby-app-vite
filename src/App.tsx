@@ -1,5 +1,5 @@
-import {Routes, Route} from 'react-router-dom'
-import {observer} from 'mobx-react'
+import { Routes, Route } from 'react-router-dom'
+import { observer } from 'mobx-react'
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 import StoresContext from './context/StoreContext'
@@ -14,7 +14,8 @@ import Jobs from './components/Jobs'
 import './App.css'
 import Layout from './components/Layout';
 
-const {loginStore, jobStore} = stores
+const { loginStore, jobStore } = stores
+
 const queryClient = new QueryClient();
 
 

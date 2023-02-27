@@ -25,8 +25,8 @@ const SimilarJobs = (props:JobPropTypes) => {
     id
   } = job
   return (
-    <Link to={`/jobs/${id}`} className="job-details-similar-job-card">
     <li className="similar-job-card">
+      <Link to={`/jobs/${id}`} className="job-details-similar-job-card">
       <div className="similar-job-logo job-logo-container">
         <img
           className="job-logo"
@@ -57,8 +57,8 @@ const SimilarJobs = (props:JobPropTypes) => {
           <p className="location-package-content">{employmentType}</p>
         </div>
       </div>
-    </li>
     </Link>
+    </li>
   )
 }
 

@@ -1,5 +1,11 @@
 .similar-job-card {
-    width: 100%;
+    width:24%;
+    background-color: #272727;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    padding-bottom: 20px;
+    color: #ffffff;
   }
   
   .similar-job-description {
@@ -24,17 +30,14 @@
   }
   
   .job-details-similar-job-card{
-    text-decoration: none;
-    width:24%;
+    width: 100%;
     background-color: #272727;
-    margin: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    padding: 20px;
-    border-radius: 20px;
-    padding-bottom: 20px;
     color: #ffffff;
     min-height: 50vh;
+    text-decoration: none;
+
   }

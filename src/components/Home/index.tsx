@@ -5,8 +5,6 @@ import Header from '../Header'
 import './index.css'
 
 const Home = () => (
-  <>
-    <Header />
     <div className="home-bg-img-container">
       <div className="home-page-content">
         <h1 className="heading">Find The Job That Fits Your Life</h1>
@@ -19,6 +17,5 @@ const Home = () => (
         </Link>
       </div>
     </div>
-  </>
 )
 export default Home

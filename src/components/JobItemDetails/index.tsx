@@ -187,10 +187,7 @@ const JobDetails = observer(() => {
   }
 
   return (
-    <>
-      <Header />
       <div className="job-details-container">{renderJobDetails()}</div>
-    </>
   )
 })
 

@@ -178,8 +178,6 @@ const Jobs = observer(() => {
   )
 
   return (
-    <>
-      <Header />
       <div className="jobs-main-container">
         <div className="container">
           {renderLeftSideSection()}
@@ -189,7 +187,6 @@ const Jobs = observer(() => {
           </div>
         </div>
       </div>
-    </>
   )
 })
 

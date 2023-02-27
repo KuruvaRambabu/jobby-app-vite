@@ -12,25 +12,31 @@ import JobDetails from './components/JobItemDetails'
 import Jobs from './components/Jobs'
 
 import './App.css'
+import Layout from './components/Layout';
 
 const {loginStore, jobStore} = stores
 const queryClient = new QueryClient();
 
 
+
 const App = observer(() => (
   <QueryClientProvider client={queryClient}>
-    <StoresContext.Provider value={{loginStore, jobStore}}>
-    <Routes>
-      <Route path='*' element={<NotFound />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="/" element={<ProtectedRoute component={Home} />} />
-      <Route path="/jobs" element={<ProtectedRoute component={Jobs} />} />
-      <Route
-        path="/jobs/:id"
-        element={<ProtectedRoute component={JobDetails} />}
-        />
-    </Routes>
-   </StoresContext.Provider>
+      <StoresContext.Provider value={{loginStore, jobStore}}>
+        <Routes>
+          <Route path='*' element={<NotFound />} />
+            <Route path="/login" element={<Login />} />
+                <Route path="/" element = {<Layout />}>
+                  <Route element ={<ProtectedRoute />}>
+                      <Route  index element={<Home/>} />
+                      <Route path="jobs" element={<Jobs />} />
+                      <Route
+                        path="jobs/:id"
+                        element={<JobDetails />}
+                        />
+                  </Route>
+            </Route>
+        </Routes>
+     </StoresContext.Provider>
   </QueryClientProvider>
 ))
 

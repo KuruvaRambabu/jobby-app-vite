@@ -25,8 +25,8 @@ const JobCard = (props:JobCardPropTypes) => {
     title,
   } = jobData
   return (
-    <Link to={`/jobs/${id}`} className="job-card-link-styles">
-      <li className="job-card-container">
+    <li className="job-card-container">
+      <Link to={`/jobs/${id}`} className="job-card-link-styles">
         <div className="job-logo-container">
           <img className="job-logo" src={companyUrl} alt="company logo" />
           <div className="job-role-container">
@@ -55,8 +55,8 @@ const JobCard = (props:JobCardPropTypes) => {
           <h1 className="description-heading">Description</h1>
           <p className="job-description">{jobDescription}</p>
         </div>
-      </li>
     </Link>
+      </li>
   )
 }
 

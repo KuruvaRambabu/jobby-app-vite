@@ -1,4 +1,4 @@
-import {useEffect, useContext} from 'react'
+import {useContext} from 'react'
 import {useParams} from 'react-router-dom'
 import {observer} from 'mobx-react'
 import { useQuery } from 'react-query'
@@ -14,7 +14,6 @@ import SkillsDataModel from '../../stores/JobStore/models/skillsDataModel'
 
 import Skills from '../Skills'
 import SimilarJobs from '../SimilarJobs'
-import Header from '../Header'
 
 import './index.css'
 

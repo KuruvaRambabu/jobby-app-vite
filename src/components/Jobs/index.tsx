@@ -1,4 +1,4 @@
-import {useEffect, useState, useContext} from 'react'
+import {useState, useContext} from 'react'
 import { ThreeDots } from 'react-loader-spinner'
 import {observer} from 'mobx-react'
 import { useQuery } from 'react-query'
@@ -13,7 +13,6 @@ import Profile from '../Profile'
 import DisplayEmploymentTypeFilters from '../DisplayFilters'
 import SalaryRangeFilter from '../SalaryRange'
 import JobCard from '../JobCard'
-import Header from '../Header'
 
 import './index.css'
 

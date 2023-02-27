@@ -10,9 +10,9 @@ import Home from './components/Home'
 import NotFound from './components/NotFound'
 import JobDetails from './components/JobItemDetails'
 import Jobs from './components/Jobs'
+import Layout from './components/Layout';
 
 import './App.css'
-import Layout from './components/Layout';
 
 const { loginStore, jobStore } = stores
 

@@ -1,6 +1,6 @@
-import {useContext} from 'react'
-import {useParams} from 'react-router-dom'
-import {observer} from 'mobx-react'
+import { useContext } from 'react'
+import { useParams } from 'react-router-dom'
+import { observer } from 'mobx-react'
 import { useQuery } from 'react-query'
 
 import StoresContext from '../../context/StoreContext'
@@ -21,7 +21,7 @@ import { Oval } from 'react-loader-spinner'
 
 const JobDetails = observer(() => {
   const store = useContext(StoresContext)
-  const {jobStore} = store
+  const { jobStore } = store
 
   const {
     getJobDetailsApi,
@@ -31,20 +31,20 @@ const JobDetails = observer(() => {
   } = jobStore
 
   const jobsId = useParams()
-  const {id} = jobsId
-  useQuery(["jobDetailsData",id], ()=>getJobDetailsApi(id))
-  
+  const { id } = jobsId
+  useQuery(["jobDetailsData", id], () => getJobDetailsApi(id))
+
   const renderJobLoadingView = () => (
     <div className="loader-container jobs-loader" data-testid="loader">
       <Oval
-            height={30}
-            width={30}
-            color="#ffffff"
-            visible={true}
-            ariaLabel='oval-loading'
-            strokeWidth={2}
-            strokeWidthSecondary={2}
-          />
+        height={30}
+        width={30}
+        color="#ffffff"
+        visible={true}
+        ariaLabel='oval-loading'
+        strokeWidth={2}
+        strokeWidthSecondary={2}
+      />
     </div>
   )
 
@@ -67,18 +67,18 @@ const JobDetails = observer(() => {
   )
 
   const renderSimilarJobs = () => (
-    <div className="similar-jobs-main-container">
+    <section className="similar-jobs-main-container">
       <h1>Similar jobs</h1>
       <ul className="similar-jobs">
-        {similarJobsData.map((job:JobDataModel) => (
+        {similarJobsData.map((job: JobDataModel) => (
           <SimilarJobs key={job.id} job={job} />
         ))}
       </ul>
-    </div>
+    </section>
   )
 
   const renderLifeAtCompany = (lifeAtCompany: { description: string; imageUrl: string }) => {
-    const {description, imageUrl} = lifeAtCompany
+    const { description, imageUrl } = lifeAtCompany
 
     return (
       <div className="life-at-company-container">
@@ -91,11 +91,11 @@ const JobDetails = observer(() => {
     )
   }
 
-  const renderSkillsView = (skills:Array<SkillsDataModel>) => (
+  const renderSkillsView = (skills: Array<SkillsDataModel>) => (
     <>
       <h1>Skills</h1>
       <ul className="skills-main-container">
-        {skills.map((skill:SkillsDataModel) => (
+        {skills.map((skill: SkillsDataModel) => (
           <Skills skill={skill} />
         ))}
       </ul>
@@ -186,7 +186,7 @@ const JobDetails = observer(() => {
   }
 
   return (
-      <div className="job-details-container">{renderJobDetails()}</div>
+    <div className="job-details-container">{renderJobDetails()}</div>
   )
 })
 

@@ -1,6 +1,6 @@
-import {useState, useContext} from 'react'
+import { useState, useContext } from 'react'
 import { ThreeDots } from 'react-loader-spinner'
-import {observer} from 'mobx-react'
+import { observer } from 'mobx-react'
 import { useQuery } from 'react-query'
 
 import apiConstants from '../../constants/apiConstants'
@@ -22,26 +22,26 @@ const Jobs = observer(() => {
   const [searchInput, setSearchInput] = useState<string>('')
 
   const store = useContext(StoresContext)
-  const {jobStore} = store
-  const {getJobsDataApi} = jobStore
+  const { jobStore } = store
+  const { getJobsDataApi } = jobStore
 
   useQuery(
-    ["JobsData",employementFilters, salaryRangeFilter, searchInput],
-    () => getJobsDataApi(employementFilters, salaryRangeFilter, searchInput), 
+    ["JobsData", employementFilters, salaryRangeFilter, searchInput],
+    () => getJobsDataApi(employementFilters, salaryRangeFilter, searchInput),
   );
 
 
   const renderJobsLoadingView = () => (
     <div className="loader-container jobs-loader" data-testid="loader">
-      <ThreeDots 
-          height="80" 
-          width="80" 
-          radius="9"
-          color="#ffffff" 
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          visible={true}
-          />
+      <ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="#ffffff"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        visible={true}
+      />
     </div>
   )
 
@@ -76,22 +76,27 @@ const Jobs = observer(() => {
   )
 
   const renderJobsSuccessView = () => {
-    const {jobList} = jobStore
+    const { jobList } = jobStore
 
     if (jobList.length > 0) {
       return (
-        <ul>
-          {jobList.map(jobData => (
-            <JobCard key={jobData.id} jobData={jobData} />
-          ))}
-        </ul>
+        <section>
+          <ul>
+            {jobList.map(jobData => (
+              <JobCard key={jobData.id} jobData={jobData} />
+            ))}
+          </ul>
+        </section>
       )
     }
     return renderNoJobsView()
   }
 
+
+
+
   const renderJobsRightSideSection = () => {
-    const {jobsApiStatus} = jobStore
+    const { jobsApiStatus } = jobStore
 
     switch (jobsApiStatus) {
       case apiConstants.fetching:
@@ -106,9 +111,9 @@ const Jobs = observer(() => {
   }
 
   const onSelectEmploymentType = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedEmploymentType:string = event.target.id
+    const selectedEmploymentType: string = event.target.id
 
-    const filtersCopy:Array<string> = [...employementFilters]
+    const filtersCopy: Array<string> = [...employementFilters]
     const index = filtersCopy.indexOf(selectedEmploymentType)
     if (index === -1) {
       filtersCopy.push(selectedEmploymentType)
@@ -128,7 +133,7 @@ const Jobs = observer(() => {
   }
 
   const renderJobsSearchInputField = () => (
-    <div className="search-main-container">
+    <section className="search-main-container">
       <div className="search-container">
         <input
           className="search-input"
@@ -145,47 +150,52 @@ const Jobs = observer(() => {
           <JobsSearchIcon />
         </button>
       </div>
-    </div>
+
+    </section>
   )
 
   const renderLeftSideSection = () => (
-    <div className="jobs-left-section">
+    <aside className="jobs-left-section">
       <Profile />
       <hr className="horizontal-line" />
-      <p className="filter-heading">Type of Employment</p>
-      <ul>
-        {employmentTypesList.map(type => (
-          <DisplayEmploymentTypeFilters
-            onSelectEmploymentType={onSelectEmploymentType}
-            key={type.employmentTypeId}
-            type={type}
-          />
-        ))}
-      </ul>
+      <section>
+        <h1 className="filter-heading">Type of Employment</h1>
+        <ul>
+          {employmentTypesList.map(type => (
+            <DisplayEmploymentTypeFilters
+              onSelectEmploymentType={onSelectEmploymentType}
+              key={type.employmentTypeId}
+              type={type}
+            />
+          ))}
+        </ul>
+      </section>
       <hr className="horizontal-line" />
-      <p className="filter-heading">Salary Range</p>
-      <ul>
-        {salaryRangesList.map(salaryRange => (
-          <SalaryRangeFilter
-            onChangeSalaryRange={onChangeSalaryRange}
-            key={salaryRange.salaryRangeId}
-            salary={salaryRange}
-          />
-        ))}
-      </ul>
-    </div>
+      <section >
+        <h1 className="filter-heading">Salary Range</h1>
+        <ul>
+          {salaryRangesList.map(salaryRange => (
+            <SalaryRangeFilter
+              onChangeSalaryRange={onChangeSalaryRange}
+              key={salaryRange.salaryRangeId}
+              salary={salaryRange}
+            />
+          ))}
+        </ul>
+      </section>
+    </aside>
   )
 
   return (
-      <div className="jobs-main-container">
-        <div className="container">
-          {renderLeftSideSection()}
-          <div className="jobs-right-section">
-            {renderJobsSearchInputField()}
-            {renderJobsRightSideSection()}
-          </div>
+    <div className="jobs-main-container">
+      <div className="container">
+        {renderLeftSideSection()}
+        <div className="jobs-right-section">
+          {renderJobsSearchInputField()}
+          {renderJobsRightSideSection()}
         </div>
       </div>
+    </div>
   )
 })
 

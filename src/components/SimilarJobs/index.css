@@ -30,6 +30,12 @@
   }
   
   .job-details-similar-job-card{
+    
+    text-decoration: none;
+
+  }
+
+  .job-details-article{
     width: 100%;
     background-color: #272727;
     display: flex;
@@ -38,6 +44,4 @@
     align-items: flex-start;
     color: #ffffff;
     min-height: 50vh;
-    text-decoration: none;
-
   }

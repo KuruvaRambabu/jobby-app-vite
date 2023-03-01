@@ -4,6 +4,7 @@ import JobsIcon from '../../Icons/JobsIcon'
 import StartIcon from '../../Icons/StartIcon'
 import LocationIcon from '../../Icons/LocationIcon'
 import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
+import { JOBBY_APP_JOBS_PAGE_PATH } from '../../constants/navigationConstants'
 
 import './index.css'
 
@@ -26,7 +27,7 @@ const JobCard = (props: JobCardPropTypes) => {
   } = jobData
   return (
     <li className="job-card-container">
-      <Link to={`/jobs/${id}`} className="job-card-link-styles">
+      <Link to={`${JOBBY_APP_JOBS_PAGE_PATH}/${id}`} className="job-card-link-styles">
         <article>
           <div className="job-logo-container">
             <img className="job-logo" src={companyUrl} alt="company logo" />

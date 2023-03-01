@@ -1,6 +1,8 @@
 import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
+import { JOBBY_APP_HOME_PATH, JOBBY_APP_JOBS_PAGE_PATH } from '../../constants/navigationConstants'
+
 import StoresContext from '../../context/StoreContext'
 import HomeIcon from '../../Icons/HomeIcon'
 import JobsIcon from '../../Icons/JobsIcon'
@@ -27,7 +29,7 @@ const Header = () => {
       <nav>
         <ul className="header-container">
           <li className="home-page-logo-container">
-            <Link to="/">
+            <Link to={JOBBY_APP_HOME_PATH}>
               <img
                 src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
                 alt="website logo"
@@ -37,19 +39,19 @@ const Header = () => {
           </li>
           <div className="headers-buttons-container">
             <li>
-              <Link to="/" className="home-btn header-button" type="button">
+              <Link to={JOBBY_APP_HOME_PATH} className="home-btn header-button" type="button">
                 Home
               </Link>
-              <Link to="/" className="home-btn-mobile header-button" type="button">
+              <Link to={JOBBY_APP_HOME_PATH} className="home-btn-mobile header-button" type="button">
                 <HomeIcon />
               </Link>
             </li>
             <li>
-              <Link to="/jobs" className="home-btn header-button" type="button">
+              <Link to={JOBBY_APP_JOBS_PAGE_PATH} className="home-btn header-button" type="button">
                 Jobs
               </Link>
               <Link
-                to="/jobs"
+                to={JOBBY_APP_JOBS_PAGE_PATH}
                 className="home-btn-mobile header-button"
                 type="button"
               >

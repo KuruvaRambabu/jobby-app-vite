@@ -7,6 +7,8 @@ import { useMutation } from 'react-query'
 
 import StoresContext from '../../context/StoreContext'
 import apiConstants from '../../constants/apiConstants'
+import { JOBBY_APP_HOME_PATH } from '../../constants/navigationConstants'
+
 
 import './index.css'
 
@@ -71,7 +73,7 @@ const Login = observer(() => {
   )
 
   const onSubmitSuccess = () => {
-    navigate('/', { replace: true })
+    navigate(JOBBY_APP_HOME_PATH, { replace: true })
   }
 
 
@@ -86,7 +88,7 @@ const Login = observer(() => {
 
   const jwtToken = Cookies.get('jwt_token')
   if (jwtToken !== undefined) {
-    return <Navigate to="/" replace />
+    return <Navigate to={JOBBY_APP_HOME_PATH} replace />
   }
   return (
     <div className="login-container">

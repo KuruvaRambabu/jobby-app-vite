@@ -4,6 +4,7 @@ import StartIcon from '../../Icons/StartIcon'
 import LocationIcon from '../../Icons/LocationIcon'
 import JobsIcon from '../../Icons/JobsIcon'
 import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
+import { JOBBY_APP_JOBS_PAGE_PATH } from "../../constants/navigationConstants";
 
 import './index.css'
 
@@ -26,8 +27,8 @@ const SimilarJobs = (props: JobPropTypes) => {
   } = job
   return (
     <li className="similar-job-card">
-      <Link to={`/jobs/${id}`} className="job-details-similar-job-card">
-        <article>
+      <Link to={`${JOBBY_APP_JOBS_PAGE_PATH}/${id}`} className="job-details-similar-job-card">
+        <article className="job-details-article">
           <div className="similar-job-logo job-logo-container">
             <img
               className="job-logo"

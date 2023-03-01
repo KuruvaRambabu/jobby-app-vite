@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom'
 
+import { JOBBY_APP_JOBS_PAGE_PATH } from '../../constants/navigationConstants'
+
 
 import './index.css'
 
@@ -11,7 +13,7 @@ const Home = () => (
         Millions of people are searching for jobs, salary, information,
         company reviews. Find the Jobs that fits your abilities and potential
       </p>
-      <Link to="/jobs" className="find-jobs-btn">
+      <Link to={JOBBY_APP_JOBS_PAGE_PATH} className="find-jobs-btn">
         Find Jobs
       </Link>
     </div>

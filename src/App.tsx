@@ -12,6 +12,7 @@ import NotFound from './components/NotFound'
 import JobDetails from './components/JobItemDetails'
 import Jobs from './components/Jobs'
 import Layout from './components/Layout';
+import { JOBBY_APP_HOME_PATH, JOBBY_APP_JOBS_PAGE_PATH, JOBBY_APP_JOB_DETAILS_PAGE_PATH, JOBBY_APP_LOGIN_PATH } from './constants/navigationConstants';
 
 import './App.css'
 
@@ -20,19 +21,18 @@ const { loginStore, jobStore } = stores
 const queryClient = new QueryClient();
 
 
-Cookies.set("jwt_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsIiwicm9sZSI6IlBSSU1FX1VTRVIiLCJpYXQiOjE2MjMwNjU1MzJ9.D13s5wN3Oh59aa_qtXMo3Ec4wojOx0EZh8Xr5C5sRkU")
 const App = observer(() => (
   <QueryClientProvider client={queryClient}>
     <StoresContext.Provider value={{ loginStore, jobStore }}>
       <Routes>
         <Route path='*' element={<NotFound />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/" element={<Layout />}>
+        <Route path={JOBBY_APP_LOGIN_PATH} element={<Login />} />
+        <Route path={JOBBY_APP_HOME_PATH} element={<Layout />}>
           <Route element={<ProtectedRoute />}>
-            <Route index element={<Jobs />} />
-            <Route path="jobs" element={<Jobs />} />
+            <Route index element={<Home />} />
+            <Route path={JOBBY_APP_JOBS_PAGE_PATH} element={<Jobs />} />
             <Route
-              path="jobs/:id"
+              path={JOBBY_APP_JOB_DETAILS_PAGE_PATH}
               element={<JobDetails />}
             />
           </Route>

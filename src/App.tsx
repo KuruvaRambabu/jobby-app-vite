@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { observer } from 'mobx-react'
 import { QueryClient, QueryClientProvider } from 'react-query';
+import Cookies from "js-cookie"
 
 import StoresContext from './context/StoreContext'
 import Login from './components/Login'
@@ -19,25 +20,25 @@ const { loginStore, jobStore } = stores
 const queryClient = new QueryClient();
 
 
-
+Cookies.set("jwt_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsIiwicm9sZSI6IlBSSU1FX1VTRVIiLCJpYXQiOjE2MjMwNjU1MzJ9.D13s5wN3Oh59aa_qtXMo3Ec4wojOx0EZh8Xr5C5sRkU")
 const App = observer(() => (
   <QueryClientProvider client={queryClient}>
-      <StoresContext.Provider value={{loginStore, jobStore}}>
-        <Routes>
-          <Route path='*' element={<NotFound />} />
-            <Route path="/login" element={<Login />} />
-                <Route path="/" element = {<Layout />}>
-                  <Route element ={<ProtectedRoute />}>
-                      <Route  index element={<Home/>} />
-                      <Route path="jobs" element={<Jobs />} />
-                      <Route
-                        path="jobs/:id"
-                        element={<JobDetails />}
-                        />
-                  </Route>
-            </Route>
-        </Routes>
-     </StoresContext.Provider>
+    <StoresContext.Provider value={{ loginStore, jobStore }}>
+      <Routes>
+        <Route path='*' element={<NotFound />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/" element={<Layout />}>
+          <Route element={<ProtectedRoute />}>
+            <Route index element={<Home />} />
+            <Route path="jobs" element={<Jobs />} />
+            <Route
+              path="jobs/:id"
+              element={<JobDetails />}
+            />
+          </Route>
+        </Route>
+      </Routes>
+    </StoresContext.Provider>
   </QueryClientProvider>
 ))
 

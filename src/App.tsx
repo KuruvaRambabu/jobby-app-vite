@@ -29,7 +29,7 @@ const App = observer(() => (
         <Route path="/login" element={<Login />} />
         <Route path="/" element={<Layout />}>
           <Route element={<ProtectedRoute />}>
-            <Route index element={<Home />} />
+            <Route index element={<Jobs />} />
             <Route path="jobs" element={<Jobs />} />
             <Route
               path="jobs/:id"

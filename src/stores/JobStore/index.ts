@@ -20,7 +20,7 @@ class JobsStore {
   profileData!:profileDetailsTypes | {}
   jobDetailsApiStatus!:string
   jobDetailsApiErrorMessage!:string|null
-  jobDetailsData!:JobDetailsModel |{}
+  jobDetailsData!:any
   similarJobsData!:Array<JobDataModel>
 
   constructor() {

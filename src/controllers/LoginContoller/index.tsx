@@ -1,11 +1,10 @@
-import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { observer, useLocalObservable } from 'mobx-react'
 
-import StoresContext from '../../context/StoreContext'
 import { JOBBY_APP_HOME_PATH } from '../../constants/navigationConstants'
 import Login from '../../components/Login'
 
+import { useloginAPI } from '../../hooks/loginApiHook'
 
 interface localStateTypes {
     username: string
@@ -15,6 +14,8 @@ interface localStateTypes {
 }
 
 const LoginController = observer(() => {
+
+    const { mutate, isLoading, isError, error } = useloginAPI()
 
     const localState = useLocalObservable<localStateTypes>(() => ({
         username: '',
@@ -28,23 +29,20 @@ const LoginController = observer(() => {
         }
     }))
 
-
-    const store = useContext(StoresContext)
-    const { loginStore } = store
-    const { onClickLogin, apiStatus, errorMessage } = loginStore
     const navigate = useNavigate()
 
     const onSubmitSuccess = () => {
         navigate(JOBBY_APP_HOME_PATH, { replace: true })
     }
 
-
     const onSubmitForm = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault()
         const { username, password } = localState
         const userDetails: any = { username, password }
 
-        onClickLogin(userDetails, onSubmitSuccess)
+        mutate(userDetails, {
+            onSuccess: () => onSubmitSuccess()
+        })
     }
 
     const { username, password, setPassword, setUsername } = localState
@@ -54,11 +52,13 @@ const LoginController = observer(() => {
         password={password}
         setPassword={setPassword}
         setUsername={setUsername}
-        apiStatus={apiStatus}
-        errorMessage={errorMessage}
+        isLoading={isLoading}
+        isError={isError}
         onSubmitForm={onSubmitForm}
+        errorMessage={error}
     />)
 })
 
 
 export default LoginController
+

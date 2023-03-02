@@ -1,30 +1,30 @@
 import { observer } from 'mobx-react'
 import { Oval } from 'react-loader-spinner'
-import apiConstants from '../../constants/apiConstants'
 
 import './index.css'
 
-
 interface LoginPropTypes {
   onSubmitForm: (event: React.FormEvent<HTMLFormElement>) => void
-  apiStatus: string
-  errorMessage: string | null
+  isError: any
+  isLoading: string | boolean
   username: string | undefined
   password: string | undefined
   setUsername: (event: React.ChangeEvent<HTMLInputElement>) => void
   setPassword: (event: React.ChangeEvent<HTMLInputElement>) => void
+  errorMessage: any
 }
 
 const Login = observer((props: LoginPropTypes) => {
 
   const {
     onSubmitForm,
-    apiStatus,
-    errorMessage,
+    isLoading,
     username,
     password,
     setUsername,
-    setPassword
+    setPassword,
+    isError,
+    errorMessage
   } = props
 
   const renderUsernameInput = () => (
@@ -59,7 +59,6 @@ const Login = observer((props: LoginPropTypes) => {
     </>
   )
 
-
   return (
     <div className="login-container">
       <div className="login-form-container">
@@ -73,8 +72,8 @@ const Login = observer((props: LoginPropTypes) => {
         <form className="form-container" onSubmit={onSubmitForm}>
           {renderUsernameInput()}
           {renderPasswordInput()}
-          {apiStatus === apiConstants.failure && <p className="error-message">{errorMessage}</p>}
-          {apiStatus === apiConstants.fetching ? (
+          {isError && <p className="error-message">{errorMessage.message}</p>}
+          {isLoading ? (
             <div className="loader-container login-button" data-testid="loader">
               <Oval
                 height={30}

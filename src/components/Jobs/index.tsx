@@ -1,35 +1,40 @@
-import { useState, useContext } from 'react'
 import { ThreeDots } from 'react-loader-spinner'
 import { observer } from 'mobx-react'
-import { useQuery } from 'react-query'
 
 import apiConstants from '../../constants/apiConstants'
 import employmentTypesList from '../../constants/employmentTypeConstants'
 import salaryRangesList from '../../constants/salaryRangeConstants'
-import StoresContext from '../../context/StoreContext'
 import JobsSearchIcon from '../../Icons/SearchIcon'
+import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
 
-import Profile from '../Profile'
+import ProfileController from '../../controllers/ProfileController'
 import DisplayEmploymentTypeFilters from '../DisplayFilters'
 import SalaryRangeFilter from '../SalaryRange'
 import JobCard from '../JobCard'
 
 import './index.css'
 
-const Jobs = observer(() => {
-  const [employementFilters, upDateEmployementFilter] = useState<Array<string>>([])
-  const [salaryRangeFilter, updateSalaryrangeFilter] = useState<string>('')
-  const [searchInput, setSearchInput] = useState<string>('')
+interface JobsPropTypes {
+  searchInput: string
+  onSelectEmploymentType: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChangeSalaryRange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  onChangeSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void
+  getJobsDataApi: any
+  jobList: any
+  jobsApiStatus: string
+}
 
-  const store = useContext(StoresContext)
-  const { jobStore } = store
-  const { getJobsDataApi } = jobStore
+const Jobs = observer((props: JobsPropTypes) => {
 
-  useQuery(
-    ["JobsData", employementFilters, salaryRangeFilter, searchInput],
-    () => getJobsDataApi(employementFilters, salaryRangeFilter, searchInput),
-  );
-
+  const {
+    searchInput,
+    onSelectEmploymentType,
+    onChangeSalaryRange,
+    onChangeSearchInput,
+    getJobsDataApi,
+    jobList,
+    jobsApiStatus
+  } = props
 
   const renderJobsLoadingView = () => (
     <div className="loader-container jobs-loader" data-testid="loader">
@@ -76,13 +81,12 @@ const Jobs = observer(() => {
   )
 
   const renderJobsSuccessView = () => {
-    const { jobList } = jobStore
 
     if (jobList.length > 0) {
       return (
         <section>
           <ul>
-            {jobList.map(jobData => (
+            {jobList.map((jobData: JobDataModel) => (
               <JobCard key={jobData.id} jobData={jobData} />
             ))}
           </ul>
@@ -92,11 +96,7 @@ const Jobs = observer(() => {
     return renderNoJobsView()
   }
 
-
-
-
   const renderJobsRightSideSection = () => {
-    const { jobsApiStatus } = jobStore
 
     switch (jobsApiStatus) {
       case apiConstants.fetching:
@@ -108,28 +108,6 @@ const Jobs = observer(() => {
       default:
         return ''
     }
-  }
-
-  const onSelectEmploymentType = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedEmploymentType: string = event.target.id
-
-    const filtersCopy: Array<string> = [...employementFilters]
-    const index = filtersCopy.indexOf(selectedEmploymentType)
-    if (index === -1) {
-      filtersCopy.push(selectedEmploymentType)
-    } else {
-      filtersCopy.splice(index, 1)
-    }
-    upDateEmployementFilter([...filtersCopy])
-  }
-
-  const onChangeSalaryRange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateSalaryrangeFilter(event.target.id)
-  }
-
-
-  const onChangeSearchInput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(event.target.value)
   }
 
   const renderJobsSearchInputField = () => (
@@ -156,7 +134,7 @@ const Jobs = observer(() => {
 
   const renderLeftSideSection = () => (
     <aside className="jobs-left-section">
-      <Profile />
+      <ProfileController />
       <hr className="horizontal-line" />
       <section>
         <h1 className="filter-heading">Type of Employment</h1>

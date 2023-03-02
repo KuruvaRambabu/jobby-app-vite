@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { JOBBY_APP_HOME_PATH, JOBBY_APP_JOBS_PAGE_PATH } from '../../constants/navigationConstants'
+import { JOBBY_APP_HOME_PATH, JOBBY_APP_JOBS_PAGE_PATH, JOBBY_APP_LOGIN_PATH } from '../../constants/navigationConstants'
 
 import StoresContext from '../../context/StoreContext'
 import HomeIcon from '../../Icons/HomeIcon'
@@ -21,7 +21,7 @@ const Header = () => {
 
   const onClickLogoutBtn = () => {
     onClickLogout()
-    navigate('/login', { replace: true })
+    navigate(JOBBY_APP_LOGIN_PATH, { replace: true })
   }
 
   return (

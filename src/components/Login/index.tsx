@@ -1,44 +1,31 @@
-import { useContext } from 'react'
-import { useNavigate, Navigate, Params } from 'react-router-dom'
+import { observer } from 'mobx-react'
 import { Oval } from 'react-loader-spinner'
-import Cookies from 'js-cookie'
-import { observer, useLocalObservable } from 'mobx-react'
-import { useMutation } from 'react-query'
-
-import StoresContext from '../../context/StoreContext'
 import apiConstants from '../../constants/apiConstants'
-import { JOBBY_APP_HOME_PATH } from '../../constants/navigationConstants'
-
 
 import './index.css'
 
 
-interface localStateTypes {
-  username: string
-  password: string
+interface LoginPropTypes {
+  onSubmitForm: (event: React.FormEvent<HTMLFormElement>) => void
+  apiStatus: string
+  errorMessage: string | null
+  username: string | undefined
+  password: string | undefined
   setUsername: (event: React.ChangeEvent<HTMLInputElement>) => void
   setPassword: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-const Login = observer(() => {
-  const localState = useLocalObservable<localStateTypes>(() => ({
-    username: '',
-    password: '',
+const Login = observer((props: LoginPropTypes) => {
 
-    setUsername(event: React.ChangeEvent<HTMLInputElement>) {
-      this.username = event.target.value
-    },
-    setPassword(event: React.ChangeEvent<HTMLInputElement>) {
-      this.password = event.target.value
-    }
-  }))
-
-
-  const store = useContext(StoresContext)
-  const { loginStore } = store
-  const { onClickLogin, apiStatus, errorMessage } = loginStore
-  // const loginMutateFn = useMutation(onClickLogin): any
-  const navigate = useNavigate()
+  const {
+    onSubmitForm,
+    apiStatus,
+    errorMessage,
+    username,
+    password,
+    setUsername,
+    setPassword
+  } = props
 
   const renderUsernameInput = () => (
     <>
@@ -49,9 +36,9 @@ const Login = observer(() => {
         type="text"
         className=" input username-input "
         id="username"
-        value={localState.username}
+        value={username}
         placeholder="Username"
-        onChange={localState.setUsername}
+        onChange={setUsername}
       />
     </>
   )
@@ -65,31 +52,14 @@ const Login = observer(() => {
         type="password"
         className="password-input input"
         id="password"
-        value={localState.password}
+        value={password}
         placeholder="Password"
-        onChange={localState.setPassword}
+        onChange={setPassword}
       />
     </>
   )
 
-  const onSubmitSuccess = () => {
-    navigate(JOBBY_APP_HOME_PATH, { replace: true })
-  }
 
-
-  const onSubmitForm = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const { username, password } = localState
-    const userDetails: any = { username, password }
-
-    // loginMutateFn.mutate(userDetails, onSubmitSuccess): MutateOptions<unknown, unknown, void, unknown>
-    onClickLogin(userDetails, onSubmitSuccess)
-  }
-
-  const jwtToken = Cookies.get('jwt_token')
-  if (jwtToken !== undefined) {
-    return <Navigate to={JOBBY_APP_HOME_PATH} replace />
-  }
   return (
     <div className="login-container">
       <div className="login-form-container">

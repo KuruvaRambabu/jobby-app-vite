@@ -1,39 +1,42 @@
-import {useEffect, useContext} from 'react'
-import {ThreeDots} from 'react-loader-spinner'
-import {observer} from 'mobx-react'
-import { useQuery } from 'react-query';
+import { ThreeDots } from 'react-loader-spinner'
+import { observer } from 'mobx-react'
 
 import apiConstants from '../../constants/apiConstants'
-import StoresContext from '../../context/StoreContext'
 
 import './index.css'
 
 
-const Profile = observer(() => {
-  const store = useContext(StoresContext)
-  const {jobStore} = store
-  const {profileApiStatus, profileData, getProfileData} = jobStore
+interface profilePropTypes {
+  profileApiStatus: string
+  profileData: any
+  getProfileData: () => void
+}
 
-  useQuery('userProfile', getProfileData)
+const Profile = observer((props: profilePropTypes) => {
 
+  const {
+    profileApiStatus,
+    profileData,
+    getProfileData
+  } = props
+
+  const { profileImageUrl, shortBio, name } = profileData
 
   const renderLoadingView = () => (
     <div className="loader-container" data-testid="loader">
-       <ThreeDots 
-          height="80" 
-          width="80" 
-          radius="9"
-          color="#ffffff" 
-          ariaLabel="three-dots-loading"
-          wrapperStyle={{}}
-          visible={true}
-          />
+      <ThreeDots
+        height="80"
+        width="80"
+        radius="9"
+        color="#ffffff"
+        ariaLabel="three-dots-loading"
+        wrapperStyle={{}}
+        visible={true}
+      />
     </div>
   )
 
-
   const renderSuccessView = () => {
-    const {profileImageUrl, shortBio, name}:any = profileData
     return (
       <div className="profile-details-container">
         <img className="profile-pic" src={profileImageUrl} alt="profile" />

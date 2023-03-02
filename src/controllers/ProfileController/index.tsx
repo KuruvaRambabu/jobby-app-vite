@@ -1,15 +1,32 @@
+import { observer } from "mobx-react"
 import { useContext } from "react"
-import { useQuery } from "react-query"
+import { isError, useQuery } from "react-query"
 import Profile from "../../components/Profile"
 import StoresContext from "../../context/StoreContext"
+import { useGetProfileDataApi } from "../../hooks/getProfileApiHook"
+import apiConstants from '../../constants/apiConstants'
 
-const ProfileController = () => {
+const ProfileController = observer(() => {
+
     const store = useContext(StoresContext)
     const { jobStore } = store
-    const { profileApiStatus, profileData, getProfileData } = jobStore
+    const { profileData, getProfileData } = jobStore
 
-    useQuery('userProfile', getProfileData)
+    const { isLoading, isError } = useGetProfileDataApi()
 
+    const getProfileStatus = () => {
+        if (isLoading) {
+            return apiConstants.fetching
+        }
+        else if (isError) {
+            return apiConstants.failure
+        }
+        else {
+            return apiConstants.success
+        }
+    }
+    const profileApiStatus = getProfileStatus()
+    console.log(profileData, "controller")
     return (
         <Profile
             profileApiStatus={profileApiStatus}
@@ -18,6 +35,6 @@ const ProfileController = () => {
 
         />
     )
-}
+})
 
 export default ProfileController

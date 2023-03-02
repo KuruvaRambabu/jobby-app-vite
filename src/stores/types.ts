@@ -51,3 +51,8 @@ export interface JobDataResponseObj{
     rating:string
     title:string
 }
+
+export interface JobDetailsAndSimilarJobsDataApi{
+    job_details:JobDetailsDataResponseObj
+    similar_jobs:JobDataResponseObj
+}

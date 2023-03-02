@@ -144,7 +144,7 @@ class JobsStore {
 
   onJobInfoAPIFailure() {
     this.jobDetailsApiStatus = apiConstants.failure
-  }
+  } 
 }
 
 export default JobsStore

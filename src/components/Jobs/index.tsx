@@ -7,8 +7,8 @@ import salaryRangesList from '../../constants/salaryRangeConstants'
 import JobsSearchIcon from '../../Icons/SearchIcon'
 import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
 
-import LoadingWrapper from '../../common/components/loadingWrapper'
-import FailureView from '../../common/components/FailureView'
+import LoadingWrapper from '../../Common/components/loadingWrapper'
+import FailureView from '../../Common/components/FailureView'
 
 import ProfileController from '../../controllers/ProfileController'
 import DisplayEmploymentTypeFilters from '../DisplayFilters'

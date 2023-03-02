@@ -1,17 +1,16 @@
-import { ThreeDots } from 'react-loader-spinner'
 import { observer } from 'mobx-react'
 
 import apiConstants from '../../constants/apiConstants'
 
 import './index.css'
-import LoadingWrapper from '../../common/components/loadingWrapper'
-import FailureView from '../../common/components/FailureView'
+import LoadingWrapper from '../../Common/components/loadingWrapper'
+import FailureView from '../../Common/components/FailureView'
 
 
 interface profilePropTypes {
-  profileApiStatus: string
   profileData: any
   getProfileData: () => void
+  profileApiStatus: string | undefined
 }
 
 const Profile = observer((props: profilePropTypes) => {
@@ -21,6 +20,7 @@ const Profile = observer((props: profilePropTypes) => {
     profileData,
     getProfileData
   } = props
+
 
   const { profileImageUrl, shortBio, name } = profileData
 

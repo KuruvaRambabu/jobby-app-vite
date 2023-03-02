@@ -7,6 +7,9 @@ import salaryRangesList from '../../constants/salaryRangeConstants'
 import JobsSearchIcon from '../../Icons/SearchIcon'
 import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
 
+import LoadingWrapper from '../../common/components/loadingWrapper'
+import FailureView from '../../common/components/FailureView'
+
 import ProfileController from '../../controllers/ProfileController'
 import DisplayEmploymentTypeFilters from '../DisplayFilters'
 import SalaryRangeFilter from '../SalaryRange'
@@ -22,6 +25,7 @@ interface JobsPropTypes {
   getJobsDataApi: any
   jobList: any
   jobsApiStatus: string
+  onClickRetry: () => void
 }
 
 const Jobs = observer((props: JobsPropTypes) => {
@@ -33,40 +37,9 @@ const Jobs = observer((props: JobsPropTypes) => {
     onChangeSearchInput,
     getJobsDataApi,
     jobList,
-    jobsApiStatus
+    jobsApiStatus,
+    onClickRetry
   } = props
-
-  const renderJobsLoadingView = () => (
-    <div className="loader-container jobs-loader" data-testid="loader">
-      <ThreeDots
-        height="80"
-        width="80"
-        radius="9"
-        color="#ffffff"
-        ariaLabel="three-dots-loading"
-        wrapperStyle={{}}
-        visible={true}
-      />
-    </div>
-  )
-
-  const renderJobsFailureView = () => (
-    <div className="failure-container">
-      <img
-        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
-        alt="failure view"
-      />
-      <h1>Oops! Something Went Wrong</h1>
-      <p>We cannot seem to find the page you are looking for.</p>
-      <button
-        type="button"
-        onClick={getJobsDataApi}
-        className="profile-retry-btn"
-      >
-        Retry
-      </button>
-    </div>
-  )
 
   const renderNoJobsView = () => (
     <div className="no-jobs-found-container ">
@@ -100,11 +73,11 @@ const Jobs = observer((props: JobsPropTypes) => {
 
     switch (jobsApiStatus) {
       case apiConstants.fetching:
-        return renderJobsLoadingView()
+        return <LoadingWrapper />
       case apiConstants.success:
         return renderJobsSuccessView()
       case apiConstants.failure:
-        return renderJobsFailureView()
+        return <FailureView onClickRetry={onClickRetry} />
       default:
         return ''
     }

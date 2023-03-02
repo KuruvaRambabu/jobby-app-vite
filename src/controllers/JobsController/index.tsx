@@ -3,7 +3,7 @@ import { useQuery } from "react-query"
 import Jobs from "../../components/Jobs"
 import StoresContext from "../../context/StoreContext"
 
-const JobsRoute = () => {
+const JobsController = () => {
 
     const [employementFilters, upDateEmployementFilter] = useState<Array<string>>([])
     const [salaryRangeFilter, updateSalaryrangeFilter] = useState<string>('')
@@ -13,9 +13,9 @@ const JobsRoute = () => {
     const { jobStore } = store
     const { getJobsDataApi } = jobStore
 
-    useQuery(
+    const queryResult = useQuery(
         ["JobsData", employementFilters, salaryRangeFilter, searchInput],
-        () => getJobsDataApi(employementFilters, salaryRangeFilter, searchInput),
+        () => getJobsDataApi(employementFilters, salaryRangeFilter, searchInput), { refetchOnWindowFocus: false, retry: false }
     );
 
     const onSelectEmploymentType = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -39,6 +39,9 @@ const JobsRoute = () => {
         setSearchInput(event.target.value)
     }
 
+    const onClickRetry = () => {
+        queryResult.refetch()
+    }
     const { jobList, jobsApiStatus } = jobStore
 
     return (
@@ -50,8 +53,9 @@ const JobsRoute = () => {
             getJobsDataApi={getJobsDataApi}
             jobList={jobList}
             jobsApiStatus={jobsApiStatus}
+            onClickRetry={onClickRetry}
         />
     )
 }
 
-export default JobsRoute
+export default JobsController

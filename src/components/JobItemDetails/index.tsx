@@ -1,9 +1,5 @@
-import { useContext } from 'react'
-import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react'
-import { useQuery } from 'react-query'
 
-import StoresContext from '../../context/StoreContext'
 import StartIcon from '../../Icons/StartIcon'
 import LocationIcon from '../../Icons/LocationIcon'
 import JobsIcon from '../../Icons/JobsIcon'
@@ -19,20 +15,21 @@ import './index.css'
 
 import { Oval } from 'react-loader-spinner'
 
-const JobDetails = observer(() => {
-  const store = useContext(StoresContext)
-  const { jobStore } = store
+interface JobDetailsPropTypes {
+  jobDetailsData: any
+  similarJobsData: Array<JobDataModel>
+  jobDetailsApiStatus: string
+  getJobDetailsApi: any
+}
+
+const JobDetails = observer((props: JobDetailsPropTypes) => {
 
   const {
-    getJobDetailsApi,
     jobDetailsData,
     similarJobsData,
     jobDetailsApiStatus,
-  } = jobStore
-
-  const jobsId = useParams()
-  const { id } = jobsId
-  useQuery(["jobDetailsData", id], () => getJobDetailsApi(id))
+    getJobDetailsApi
+  } = props
 
   const renderJobLoadingView = () => (
     <div className="loader-container jobs-loader" data-testid="loader">

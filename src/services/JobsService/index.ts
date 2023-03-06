@@ -3,7 +3,7 @@ import { JobDataResponseObj, JobDetailsAndSimilarJobsDataApi, profileDetailsResp
 interface JobsServiceInterface {
     getJobsAPI():Promise<JobDataResponseObj>
     getProfileApi():Promise<profileDetailsResponseObj | unknown>
-    getJobDetailsApi(id:any):Promise<JobDetailsAndSimilarJobsDataApi>
+    getJobDetailsApi(id:string | undefined):Promise<JobDetailsAndSimilarJobsDataApi>
 }
 
 export default JobsServiceInterface

@@ -8,7 +8,7 @@ class JobsServiceAPI implements JobsServiceInterface {
     }
 
     getJobsAPI = async (
-        employementFilters?: any,
+        employementFilters?: Array<string> | any,
         salaryRangeFilter?: string,
         searchInput?: string
     ) => {

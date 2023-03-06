@@ -2,7 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 import { observer } from 'mobx-react'
 import { QueryClient, QueryClientProvider } from 'react-query';
 
-import StoresContext from './context/LoginStoreContext'
 import stores from './stores/index'
 import ProtectedRoute from './components/ProtectedRoute'
 import NotFound from './components/NotFound'
@@ -11,12 +10,9 @@ import LoginRoute from './routes/LoginRoute';
 import HomeRoute from './routes/HomeRoute';
 import JobsRoute from './routes/JobsRoute';
 import JobDetailsRoute from './routes/JobDetailsRoute';
-
 import { JOBBY_APP_HOME_PATH, JOBBY_APP_JOBS_PAGE_PATH, JOBBY_APP_JOB_DETAILS_PAGE_PATH, JOBBY_APP_LOGIN_PATH } from './constants/navigationConstants';
-
 import LoginStoreContext from './context/LoginStoreContext';
 import JobStoreContext from './context/JobStoreContext';
-import JobsStore from './stores/JobStore';
 
 import './App.css'
 

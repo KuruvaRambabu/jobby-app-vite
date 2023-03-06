@@ -4,7 +4,7 @@ import LoginStoreContext from "../context/LoginStoreContext";
 
 
 
-const usejobStore = ()=>{
+const useJobStore = ()=>{
     const jobStore = useContext(JobStoreContext)
 
     if (!jobStore) {
@@ -13,4 +13,4 @@ const usejobStore = ()=>{
     return jobStore
 }
 
-export {usejobStore}
+export {useJobStore}

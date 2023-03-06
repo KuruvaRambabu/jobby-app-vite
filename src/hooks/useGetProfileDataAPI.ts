@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import {useQuery } from "react-query";
 import { useJobsService } from "./useJobsService";
-import { usejobStore } from "./useJobStore";
+import { useJobStore } from "./useJobStore";
 
 export const useGetProfileDataApi = ()=>{
 
-const jobStore = usejobStore()
+const jobStore = useJobStore()
 const jobService = useJobsService()
 
     return useQuery("profileData",jobService.getProfileApi,{

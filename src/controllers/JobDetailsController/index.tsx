@@ -5,11 +5,11 @@ import StoresContext from '../../context/LoginStoreContext'
 
 import JobDetails from "../../components/JobItemDetails"
 import { useGetJobDetailsAPI } from '../../hooks/useGetJobDetailsAPI'
-import { usejobStore } from '../../hooks/useJobStore'
+import { useJobStore } from '../../hooks/useJobStore'
 
 const JobDetailsController = () => {
 
-    const jobStore = usejobStore()
+    const jobStore = useJobStore()
 
     const {
         jobDetailsData,

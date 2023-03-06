@@ -4,6 +4,7 @@ import Profile from "../../components/Profile"
 import { useGetProfileDataApi } from "../../hooks/useGetProfileDataAPI"
 import apiConstants from '../../constants/apiConstants'
 import { useJobStore } from "../../hooks/useJobStore"
+import { getApiStatus } from "../../utils/APIStatusWrapper"
 
 const ProfileController = observer(() => {
 
@@ -12,18 +13,7 @@ const ProfileController = observer(() => {
 
     const { isLoading, isError, refetch } = useGetProfileDataApi()
 
-    const getProfileStatus = () => {
-        if (isLoading) {
-            return apiConstants.fetching
-        }
-        else if (isError) {
-            return apiConstants.failure
-        }
-        else {
-            return apiConstants.success
-        }
-    }
-    const profileApiStatus = getProfileStatus()
+    const profileApiStatus = getApiStatus(isLoading, isError)
 
     const onClickRetry = () => {
         refetch()

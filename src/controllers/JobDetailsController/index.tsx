@@ -1,11 +1,9 @@
-import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
-
-import StoresContext from '../../context/LoginStoreContext'
 
 import JobDetails from "../../components/JobItemDetails"
 import { useGetJobDetailsAPI } from '../../hooks/useGetJobDetailsAPI'
 import { useJobStore } from '../../hooks/useJobStore'
+import { getApiStatus } from '../../utils/APIStatusWrapper'
 
 const JobDetailsController = () => {
 
@@ -14,18 +12,18 @@ const JobDetailsController = () => {
     const {
         jobDetailsData,
         similarJobsData,
-        jobDetailsApiStatus,
     } = jobStore
 
     const jobsId = useParams()
     const { id } = jobsId
 
-    const queryResult = useGetJobDetailsAPI(id)
+    const { isLoading, isError, refetch } = useGetJobDetailsAPI(id)
 
     const onClickRetry = () => {
-        queryResult.refetch()
+        refetch()
     }
 
+    const jobDetailsApiStatus = getApiStatus(isLoading, isError)
     return (
         <JobDetails
             similarJobsData={similarJobsData}

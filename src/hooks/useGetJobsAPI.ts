@@ -1,7 +1,7 @@
 import {useQuery } from "react-query";
 import { JobDataResponseObj } from "../stores/types";
 import { useJobsService } from "./useJobsService";
-import { useJobStore } from "./useJobStore";
+import {useJobStore}  from "./useJobStore";
 
 export const useGetJobsAPI = (employementFilters?: Array<string>, salaryRangeFilter?: string, searchInput?: string)=>{
 const jobStore = useJobStore()

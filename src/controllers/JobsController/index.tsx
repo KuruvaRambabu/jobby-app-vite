@@ -1,4 +1,7 @@
 import { useState } from "react"
+
+import { getApiStatus } from "../../utils/APIStatusWrapper"
+
 import Jobs from "../../components/Jobs"
 import { useGetJobsAPI } from "../../hooks/useGetJobsAPI"
 import { useJobStore } from "../../hooks/useJobStore"
@@ -11,7 +14,7 @@ const JobsController = () => {
 
     const jobStore = useJobStore()
 
-    const queryResult = useGetJobsAPI(employementFilters, salaryRangeFilter, searchInput);
+    const { isLoading, isError, refetch } = useGetJobsAPI(employementFilters, salaryRangeFilter, searchInput);
 
     const onSelectEmploymentType = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedEmploymentType: string = event.target.id
@@ -34,9 +37,12 @@ const JobsController = () => {
     }
 
     const onClickRetry = () => {
-        queryResult.refetch()
+        refetch()
     }
-    const { jobList, jobsApiStatus } = jobStore
+
+    const { jobList } = jobStore
+
+    const jobsApiStatus = getApiStatus(isLoading, isError)
 
     return (
         <Jobs

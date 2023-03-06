@@ -3,4 +3,3 @@ import JobsStore from '../stores/JobStore'
 
 const JobStoreContext = createContext<JobsStore | null>(null)
 
-export default JobStoreContext

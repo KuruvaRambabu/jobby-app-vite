@@ -11,20 +11,18 @@ import HomeRoute from './routes/HomeRoute';
 import JobsRoute from './routes/JobsRoute';
 import JobDetailsRoute from './routes/JobDetailsRoute';
 import { JOBBY_APP_HOME_PATH, JOBBY_APP_JOBS_PAGE_PATH, JOBBY_APP_JOB_DETAILS_PAGE_PATH, JOBBY_APP_LOGIN_PATH } from './constants/navigationConstants';
-import LoginStoreContext from './context/LoginStoreContext';
-import JobStoreContext from './context/JobStoreContext';
+import { JobStoreProvider } from './hooks/useJobStore';
+import { LoginStoreProvider } from './hooks/useLoginStore';
 
 import './App.css'
 
-const { loginStore, jobStore } = stores
 
 const queryClient = new QueryClient();
 
-
 const App = observer(() => (
   <QueryClientProvider client={queryClient}>
-    <LoginStoreContext.Provider value={loginStore}>
-      <JobStoreContext.Provider value={jobStore}>
+    <LoginStoreProvider>
+      <JobStoreProvider>
         <Routes>
           <Route path='*' element={<NotFound />} />
           <Route path={JOBBY_APP_LOGIN_PATH} element={<LoginRoute />} />
@@ -39,8 +37,8 @@ const App = observer(() => (
             </Route>
           </Route>
         </Routes>
-      </JobStoreContext.Provider>
-    </LoginStoreContext.Provider>
+      </JobStoreProvider>
+    </LoginStoreProvider>
   </QueryClientProvider>
 ))
 

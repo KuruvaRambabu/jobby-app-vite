@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import {useQuery } from "react-query";
-import { useJobsService } from "./jobsServiceHook";
+import { useJobsService } from "./useJobsService";
 import StoresContext from "./storeHook";
 
 export const useGetProfileDataApi = ()=>{

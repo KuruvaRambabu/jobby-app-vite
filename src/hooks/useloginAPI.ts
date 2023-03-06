@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { useMutation } from "react-query";
-import { useLoginService } from "./loginServiceHook";
+import { useLoginService } from "./useLoginService";
 import StoresContext from "./storeHook";
+import { useLoginStore } from "./useLoginStore";
 
 export const useloginAPI = ()=>{
-const stores = useContext(StoresContext)
+const loginStore = useLoginStore()
 const loginService = useLoginService()
-const {loginStore} = stores
 
     return useMutation<any | unknown,any,any>(loginService.loginAPI,{
     onSuccess: (data)=>{

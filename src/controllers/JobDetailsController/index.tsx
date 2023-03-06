@@ -1,10 +1,10 @@
 import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
 
-import StoresContext from '../../context/StoreContext'
+import StoresContext from '../../context/LoginStoreContext'
 
 import JobDetails from "../../components/JobItemDetails"
-import { useGetJobDetailsAPI } from '../../hooks/getJobDetailsHook'
+import { useGetJobDetailsAPI } from '../../hooks/useGetJobDetailsAPI'
 
 const JobDetailsController = () => {
 

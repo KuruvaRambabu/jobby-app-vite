@@ -1,8 +1,8 @@
 import { useContext, useState } from "react"
 import { useQuery } from "react-query"
 import Jobs from "../../components/Jobs"
-import StoresContext from "../../context/StoreContext"
-import { useGetJobsAPI } from "../../hooks/getJobsHook"
+import StoresContext from "../../context/LoginStoreContext"
+import { useGetJobsAPI } from "../../hooks/useGetJobsAPI"
 
 const JobsController = () => {
 

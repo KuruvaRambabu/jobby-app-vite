@@ -2,8 +2,8 @@ import { observer } from "mobx-react"
 import { useContext } from "react"
 import { isError, useQuery } from "react-query"
 import Profile from "../../components/Profile"
-import StoresContext from "../../context/StoreContext"
-import { useGetProfileDataApi } from "../../hooks/getProfileApiHook"
+import StoresContext from "../../context/LoginStoreContext"
+import { useGetProfileDataApi } from "../../hooks/useGetProfileDataAPI"
 import apiConstants from '../../constants/apiConstants'
 
 const ProfileController = observer(() => {

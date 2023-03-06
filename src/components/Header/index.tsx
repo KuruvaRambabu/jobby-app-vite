@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 import { JOBBY_APP_HOME_PATH, JOBBY_APP_JOBS_PAGE_PATH, JOBBY_APP_LOGIN_PATH } from '../../constants/navigationConstants'
 
-import StoresContext from '../../context/StoreContext'
+import { useLoginStore } from '../../hooks/useLoginStore'
 import HomeIcon from '../../Icons/HomeIcon'
 import JobsIcon from '../../Icons/JobsIcon'
 import LogoutIcon from '../../Icons/LogoutIcon'
@@ -12,9 +12,8 @@ import './index.css'
 
 const Header = () => {
 
-  const store = useContext(StoresContext)
+  const loginStore = useLoginStore()
 
-  const { loginStore } = store
   const { onClickLogout } = loginStore
 
   const navigate = useNavigate()

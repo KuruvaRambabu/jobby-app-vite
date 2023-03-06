@@ -13,7 +13,6 @@ const JobsController = () => {
 
     const store = useContext(StoresContext)
     const { jobStore } = store
-    const { getJobsDataApi } = jobStore
 
     const queryResult = useGetJobsAPI(employementFilters, salaryRangeFilter, searchInput);
 
@@ -48,11 +47,9 @@ const JobsController = () => {
             onSelectEmploymentType={onSelectEmploymentType}
             onChangeSalaryRange={onChangeSalaryRange}
             onChangeSearchInput={onChangeSearchInput}
-            getJobsDataApi={getJobsDataApi}
             jobList={jobList}
             jobsApiStatus={jobsApiStatus}
-            onClickRetry={onClickRetry}
-        />
+            onClickRetry={onClickRetry} getJobsDataApi={undefined} />
     )
 }
 

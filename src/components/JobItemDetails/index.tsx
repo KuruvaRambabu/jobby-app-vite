@@ -13,13 +13,14 @@ import SimilarJobs from '../SimilarJobs'
 
 import './index.css'
 
-import { Oval } from 'react-loader-spinner'
+import LoadingWrapper from '../../Common/components/loadingWrapper'
+import FailureView from '../../Common/components/FailureView'
 
 interface JobDetailsPropTypes {
   jobDetailsData: any
   similarJobsData: Array<JobDataModel>
   jobDetailsApiStatus: string
-  getJobDetailsApi: any
+  onClickRetry: any
 }
 
 const JobDetails = observer((props: JobDetailsPropTypes) => {
@@ -28,40 +29,8 @@ const JobDetails = observer((props: JobDetailsPropTypes) => {
     jobDetailsData,
     similarJobsData,
     jobDetailsApiStatus,
-    getJobDetailsApi
+    onClickRetry
   } = props
-
-  const renderJobLoadingView = () => (
-    <div className="loader-container jobs-loader" data-testid="loader">
-      <Oval
-        height={30}
-        width={30}
-        color="#ffffff"
-        visible={true}
-        ariaLabel='oval-loading'
-        strokeWidth={2}
-        strokeWidthSecondary={2}
-      />
-    </div>
-  )
-
-  const renderJobFailureView = () => (
-    <div className="failure-container">
-      <img
-        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
-        alt="failure view"
-      />
-      <h1>Oops! Something Went Wrong</h1>
-      <p>We cannot seem to find the page you are looking for.</p>
-      <button
-        type="button"
-        onClick={getJobDetailsApi}
-        className="profile-retry-btn"
-      >
-        Retry
-      </button>
-    </div>
-  )
 
   const renderSimilarJobs = () => (
     <section className="similar-jobs-main-container">
@@ -172,11 +141,11 @@ const JobDetails = observer((props: JobDetailsPropTypes) => {
   const renderJobDetails = () => {
     switch (jobDetailsApiStatus) {
       case apiConstants.fetching:
-        return renderJobLoadingView()
+        return <LoadingWrapper />
       case apiConstants.success:
         return renderJobSuccessView()
       case apiConstants.failure:
-        return renderJobFailureView()
+        return <FailureView onClickRetry={onClickRetry} />
       default:
         return ''
     }

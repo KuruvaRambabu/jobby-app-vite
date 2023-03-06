@@ -12,7 +12,6 @@ const JobDetailsController = () => {
     const { jobStore } = store
 
     const {
-        getJobDetailsApi,
         jobDetailsData,
         similarJobsData,
         jobDetailsApiStatus,
@@ -21,16 +20,18 @@ const JobDetailsController = () => {
     const jobsId = useParams()
     const { id } = jobsId
 
-    useGetJobDetailsAPI(id)
+    const queryResult = useGetJobDetailsAPI(id)
 
+    const onClickRetry = () => {
+        queryResult.refetch()
+    }
 
     return (
         <JobDetails
             similarJobsData={similarJobsData}
             jobDetailsApiStatus={jobDetailsApiStatus}
             jobDetailsData={jobDetailsData}
-            getJobDetailsApi={getJobDetailsApi}
-
+            onClickRetry={onClickRetry}
         />
     )
 }

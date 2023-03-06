@@ -35,7 +35,6 @@ const Jobs = observer((props: JobsPropTypes) => {
     onSelectEmploymentType,
     onChangeSalaryRange,
     onChangeSearchInput,
-    getJobsDataApi,
     jobList,
     jobsApiStatus,
     onClickRetry

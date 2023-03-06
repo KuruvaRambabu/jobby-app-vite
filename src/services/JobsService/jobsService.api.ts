@@ -49,7 +49,25 @@ class JobsServiceAPI implements JobsServiceInterface {
         return data;
     }
 
-    getJobDetailsApi = async () => {
+    getJobDetailsApi = async (id: string | undefined) => {
+
+    const url = `${this.api}/jobs/${id}`
+    const jwtToken = Cookies.get('jwt_token')
+
+    const options = {
+      headers: {
+        Authorization: `Bearer ${jwtToken}`,
+      },
+      method: 'GET',
+    }
+
+    const response = await fetch(url, options)
+    const data = await response.json()
+
+    if (!response.ok) {
+        throw new Error(data.error_msg);
+    }
+    return data;
     }
 
 }

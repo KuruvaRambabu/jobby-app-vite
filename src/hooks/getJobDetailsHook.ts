@@ -4,15 +4,15 @@ import { JobDataResponseObj } from "../stores/types";
 import { useJobsService } from "./jobsServiceHook";
 import StoresContext from "./storeHook";
 
-export const useGetJobsAPI = (employementFilters?: Array<string>, salaryRangeFilter?: string, searchInput?: string)=>{
+export const useGetJobDetailsAPI = (id:string| undefined)=>{
 const stores = useContext(StoresContext)
 const jobService = useJobsService()
 const {jobStore} = stores
-    return useQuery<unknown |JobDataResponseObj,any,any>(["JobsData", employementFilters, salaryRangeFilter, searchInput],
-    () => jobService.getJobsAPI(employementFilters, salaryRangeFilter, searchInput),{
+    return useQuery<unknown |JobDataResponseObj,any,any>(["JobDetailsData", id],
+    () => jobService.getJobDetailsApi(id),{
 
     onSuccess: (data)=>{
-        jobStore.onjobsApiSuccess(data)
+        jobStore.onJobInfoAPISuccess(data)
     }
     })
 }

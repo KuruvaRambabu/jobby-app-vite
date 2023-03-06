@@ -1,11 +1,10 @@
 import { useContext } from 'react'
 import { useParams } from 'react-router-dom'
-import { observer } from 'mobx-react'
-import { useQuery } from 'react-query'
 
 import StoresContext from '../../context/StoreContext'
 
 import JobDetails from "../../components/JobItemDetails"
+import { useGetJobDetailsAPI } from '../../hooks/getJobDetailsHook'
 
 const JobDetailsController = () => {
 
@@ -22,7 +21,8 @@ const JobDetailsController = () => {
     const jobsId = useParams()
     const { id } = jobsId
 
-    useQuery(["jobDetailsData", id], () => getJobDetailsApi(id))
+    useGetJobDetailsAPI(id)
+
 
     return (
         <JobDetails

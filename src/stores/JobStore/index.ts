@@ -42,35 +42,9 @@ class JobsStore {
   
   }
 
-  getJobsDataApi = async (
-    employementFilters?: any,
-    salaryRangeFilter?: string,
-    searchInput?: string,
-  ) => {
-    this.jobsApiStatus = apiConstants.fetching
-
-    const employmentFilters = employementFilters.join(',')
-    const jwtToken = Cookies.get('jwt_token')
-    const url = `https://apis.ccbp.in/jobs?employment_type=${employmentFilters}&minimum_package=${salaryRangeFilter}&search=${searchInput}`
-    const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-      method: 'GET',
-    }
-    const response = await fetch(url, options)
-    const data = await response.json()
-    this.jobList = data
-    if (response.ok === true) {
-      this.onjobsApiSuccess(data)
-    } else {
-      this.onJobsApiFailure()
-    }
-  }
 
   onjobsApiSuccess = (data:any) => {
     const {jobs} = data
-
     this.jobList = jobs.map((jobData: any) => new JobDataModel(jobData))
     this.jobsApiStatus = apiConstants.success
   }
@@ -79,25 +53,6 @@ class JobsStore {
     this.jobsApiStatus = apiConstants.failure
   }
 
-  getProfileData = async () => {
-    this.profileApiStatus = apiConstants.fetching
-    const url = 'https://apis.ccbp.in/profile'
-    const jwtToken = Cookies.get('jwt_token')
-
-    const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-      method: 'GET',
-    }
-    const response = await fetch(url, options)
-    const data = await response.json()
-    if (response.ok === true) {
-      this.onUserProfileApiSuccess(data)
-    } else {
-      this.onUserProfileApiFailure()
-    }
-  }
 
   onUserProfileApiSuccess(data:profileDetailsResponseObj) {
     const profileDetails = data.profile_details
@@ -107,29 +62,6 @@ class JobsStore {
 
   onUserProfileApiFailure() {
     this.profileApiStatus = apiConstants.failure
-  }
-
-  getJobDetailsApi = async (id:any) => {
-    this.jobDetailsApiStatus = apiConstants.fetching
-
-    const url = `https://apis.ccbp.in/jobs/${id}`
-    const jwtToken = Cookies.get('jwt_token')
-
-    const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-      method: 'GET',
-    }
-
-    const response = await fetch(url, options)
-    const data = await response.json()
-
-    if (response.ok === true) {
-      this.onJobInfoAPISuccess(data)
-    } else {
-      this.onJobInfoAPIFailure()
-    }
   }
 
   onJobInfoAPISuccess(data:any) {

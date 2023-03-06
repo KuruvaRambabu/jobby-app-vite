@@ -19,7 +19,6 @@ const JobsController = () => {
 
     const onSelectEmploymentType = (event: React.ChangeEvent<HTMLInputElement>) => {
         const selectedEmploymentType: string = event.target.id
-
         const filtersCopy: Array<string> = [...employementFilters]
         const index = filtersCopy.indexOf(selectedEmploymentType)
         if (index === -1) {

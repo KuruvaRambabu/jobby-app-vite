@@ -10,9 +10,9 @@ import { usejobStore } from "../../hooks/useJobStore"
 const ProfileController = observer(() => {
 
     const jobStore = usejobStore()
-    const { profileData, getProfileData } = jobStore
+    const { profileData } = jobStore
 
-    const { isLoading, isError } = useGetProfileDataApi()
+    const { isLoading, isError, refetch } = useGetProfileDataApi()
 
     const getProfileStatus = () => {
         if (isLoading) {
@@ -26,13 +26,16 @@ const ProfileController = observer(() => {
         }
     }
     const profileApiStatus = getProfileStatus()
-    console.log(profileData, "controller")
+
+    const onClickRetry = () => {
+        refetch()
+    }
+
     return (
         <Profile
             profileApiStatus={profileApiStatus}
             profileData={profileData}
-            getProfileData={getProfileData}
-
+            onClickRetry={onClickRetry}
         />
     )
 })

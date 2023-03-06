@@ -9,7 +9,7 @@ import FailureView from '../../Common/components/FailureView'
 
 interface profilePropTypes {
   profileData: any
-  getProfileData: () => void
+  onClickRetry: () => void
   profileApiStatus: string | undefined
 }
 
@@ -18,7 +18,7 @@ const Profile = observer((props: profilePropTypes) => {
   const {
     profileApiStatus,
     profileData,
-    getProfileData
+    onClickRetry
   } = props
 
 
@@ -42,7 +42,7 @@ const Profile = observer((props: profilePropTypes) => {
       case apiConstants.success:
         return renderSuccessView()
       case apiConstants.failure:
-        return <FailureView onClickRetry={getProfileData} />
+        return <FailureView onClickRetry={onClickRetry} />
       default:
         return ''
     }

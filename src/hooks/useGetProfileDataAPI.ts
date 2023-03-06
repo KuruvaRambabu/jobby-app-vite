@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import {useQuery } from "react-query";
 import { useJobsService } from "./useJobsService";
 import { useJobStore } from "./useJobStore";

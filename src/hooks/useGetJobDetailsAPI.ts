@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import {useQuery } from "react-query";
 import { JobDataResponseObj } from "../stores/types";
 import { useJobsService } from "./useJobsService";

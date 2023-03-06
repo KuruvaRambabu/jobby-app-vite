@@ -1,5 +1,4 @@
 import {makeAutoObservable} from 'mobx'
-import Cookies from 'js-cookie'
 
 import apiConstants from "../../constants/apiConstants"
 

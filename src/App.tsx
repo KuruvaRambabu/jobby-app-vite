@@ -14,10 +14,11 @@ import JobDetailsRoute from './routes/JobDetailsRoute';
 
 import { JOBBY_APP_HOME_PATH, JOBBY_APP_JOBS_PAGE_PATH, JOBBY_APP_JOB_DETAILS_PAGE_PATH, JOBBY_APP_LOGIN_PATH } from './constants/navigationConstants';
 
-import './App.css'
 import LoginStoreContext from './context/LoginStoreContext';
 import JobStoreContext from './context/JobStoreContext';
 import JobsStore from './stores/JobStore';
+
+import './App.css'
 
 const { loginStore, jobStore } = stores
 

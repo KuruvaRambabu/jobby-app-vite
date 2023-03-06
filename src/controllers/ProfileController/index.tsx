@@ -5,11 +5,11 @@ import Profile from "../../components/Profile"
 import StoresContext from "../../context/LoginStoreContext"
 import { useGetProfileDataApi } from "../../hooks/useGetProfileDataAPI"
 import apiConstants from '../../constants/apiConstants'
+import { usejobStore } from "../../hooks/useJobStore"
 
 const ProfileController = observer(() => {
 
-    const store = useContext(StoresContext)
-    const { jobStore } = store
+    const jobStore = usejobStore()
     const { profileData, getProfileData } = jobStore
 
     const { isLoading, isError } = useGetProfileDataApi()

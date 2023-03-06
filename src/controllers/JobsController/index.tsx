@@ -3,6 +3,7 @@ import { useQuery } from "react-query"
 import Jobs from "../../components/Jobs"
 import StoresContext from "../../context/LoginStoreContext"
 import { useGetJobsAPI } from "../../hooks/useGetJobsAPI"
+import { usejobStore } from "../../hooks/useJobStore"
 
 const JobsController = () => {
 
@@ -10,9 +11,7 @@ const JobsController = () => {
     const [salaryRangeFilter, updateSalaryrangeFilter] = useState<string>('')
     const [searchInput, setSearchInput] = useState<string>('')
 
-
-    const store = useContext(StoresContext)
-    const { jobStore } = store
+    const jobStore = usejobStore()
 
     const queryResult = useGetJobsAPI(employementFilters, salaryRangeFilter, searchInput);
 

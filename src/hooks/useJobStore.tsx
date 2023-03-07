@@ -1,5 +1,5 @@
 
-import { createContext, ReactElement, useContext } from "react";
+import { createContext, ReactElement, useContext, useRef } from "react";
 import JobsStore from "../stores/JobStore";
 
 const JobStoreContext = createContext<JobsStore | null>(null)
@@ -7,9 +7,9 @@ const JobStoreContext = createContext<JobsStore | null>(null)
 
 export const JobStoreProvider = (props: { children: ReactElement }) => {
     const { children } = props
-    const jobStore = new JobsStore()
+    const jobStore = useRef(new JobsStore())
 
-    return (<JobStoreContext.Provider value={jobStore}>{children}</JobStoreContext.Provider>
+    return (<JobStoreContext.Provider value={jobStore.current}>{children}</JobStoreContext.Provider>
     )
 }
 

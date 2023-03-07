@@ -1,4 +1,4 @@
-import { createContext, ReactElement, useContext } from "react";
+import { createContext, ReactElement, useContext, useRef } from "react";
 import LoginStore from "../stores/LoginStore";
 
 
@@ -7,9 +7,9 @@ const LoginStoreContext = createContext<LoginStore | null>(null)
 
 export const LoginStoreProvider = (props: { children: ReactElement }) => {
     const { children } = props
-    const loginStore = new LoginStore()
+    const loginStore = useRef(new LoginStore())
 
-    return (<LoginStoreContext.Provider value={loginStore}>{children}</LoginStoreContext.Provider>
+    return (<LoginStoreContext.Provider value={loginStore.current}>{children}</LoginStoreContext.Provider>
     )
 }
 

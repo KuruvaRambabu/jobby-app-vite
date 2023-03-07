@@ -7,6 +7,8 @@ import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
 import { JOBBY_APP_JOBS_PAGE_PATH } from "../../constants/navigationConstants";
 
 import './index.css'
+import { JobDetailsArticle, SimilarJobLiElement } from "./styledComponents";
+import { CompanyLogo, DescriptionContent, DescriptionHeading, EmploymentType, EmploymentTypeContainer, JobCardLogoContainer, JobDescriptionContainer, JobLocation, JobRoleContainer, LocationAndEmploymentTypeContainer, LocationAndSalaryContainer, LocationContainer, RoleHeading, RoleRating, RoleRatingContainer } from "../JobCard/styledComponents";
 
 
 interface JobPropTypes {
@@ -26,42 +28,41 @@ const SimilarJobs = (props: JobPropTypes) => {
     id
   } = job
   return (
-    <li className="similar-job-card">
+    <SimilarJobLiElement>
       <Link to={`${JOBBY_APP_JOBS_PAGE_PATH}/${id}`} className="job-details-similar-job-card">
-        <article className="job-details-article">
-          <div className="similar-job-logo job-logo-container">
-            <img
-              className="job-logo"
+        <JobDetailsArticle>
+          <JobCardLogoContainer>
+            <CompanyLogo
               src={companyUrl}
               alt="similar job company logo"
             />
-            <div className="job-role-container">
-              <h1 className="title">{title}</h1>
-              <div className="rating-container">
-                <StartIcon className="star" />
-                <p className="rating">{rating}</p>
-              </div>
-            </div>
-          </div>
-          <div className="job-description-container">
-            <h1 className=" description-heading similar-job-description">
+            <JobRoleContainer>
+              <RoleHeading>{title}</RoleHeading>
+              <RoleRatingContainer>
+                <StartIcon />
+                <RoleRating >{rating}</RoleRating>
+              </RoleRatingContainer>
+            </JobRoleContainer>
+          </JobCardLogoContainer>
+          <JobDescriptionContainer>
+            <DescriptionHeading>
               Description
-            </h1>
-            <p className="job-description">{jobDescription}</p>
-          </div>
-          <div className="location-job-type-container">
-            <div className="location-container">
+            </DescriptionHeading>
+            <DescriptionContent>{jobDescription}</DescriptionContent>
+          </JobDescriptionContainer>
+          <LocationAndEmploymentTypeContainer >
+            <LocationContainer>
               <LocationIcon />
-              <p className="location-package-content">{location}</p>
-            </div>
-            <div className="employment-container">
+              <JobLocation >{location}</JobLocation>
+            </LocationContainer>
+            <EmploymentTypeContainer>
               <JobsIcon />
-              <p className="location-package-content">{employmentType}</p>
-            </div>
-          </div>
-        </article>
+              <EmploymentType>{employmentType}</EmploymentType>
+            </EmploymentTypeContainer>
+          </LocationAndEmploymentTypeContainer>
+        </JobDetailsArticle>
       </Link>
-    </li>
+    </SimilarJobLiElement>
   )
 }
 

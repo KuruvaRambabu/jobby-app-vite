@@ -1,17 +1,17 @@
 import './index.css'
+import { NotFoundContainer, NotFoundImg, NotFoundHeading, NotFoundDescription } from './styledComponents'
 
 const NotFound = () => (
-  <div className="not-found-container">
-    <img
+  <NotFoundContainer>
+    <NotFoundImg
       src="https://assets.ccbp.in/frontend/react-js/jobby-app-not-found-img.png"
       alt="not found"
-      className="not-found-img"
     />
-    <h1 className="not-found-content">Page Not Found</h1>
-    <p className="not-found-content">
+    <NotFoundHeading >Page Not Found</NotFoundHeading>
+    <NotFoundDescription>
       We are sorry, the page you requested could not be found.
-    </p>
-  </div>
+    </NotFoundDescription>
+  </NotFoundContainer>
 )
 
 export default NotFound

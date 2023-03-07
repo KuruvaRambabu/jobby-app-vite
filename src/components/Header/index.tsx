@@ -1,4 +1,3 @@
-import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 import { JOBBY_APP_HOME_PATH, JOBBY_APP_JOBS_PAGE_PATH, JOBBY_APP_LOGIN_PATH } from '../../constants/navigationConstants'
@@ -9,6 +8,7 @@ import JobsIcon from '../../Icons/JobsIcon'
 import LogoutIcon from '../../Icons/LogoutIcon'
 
 import './index.css'
+import { HeaderMainContainer, Nav, HeaderUiEl, HeaderLiEl, ButtonContainer, WebsiteLogo, LogoutBtn, LogoutBtnMobile } from './styledComponents'
 
 const Header = () => {
 
@@ -24,28 +24,27 @@ const Header = () => {
   }
 
   return (
-    <header>
-      <nav>
-        <ul className="header-container">
-          <li className="home-page-logo-container">
+    <HeaderMainContainer>
+      <Nav>
+        <HeaderUiEl >
+          <HeaderLiEl>
             <Link to={JOBBY_APP_HOME_PATH}>
-              <img
+              <WebsiteLogo
                 src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
                 alt="website logo"
-                className="header-website-logo"
               />
             </Link>
-          </li>
-          <div className="headers-buttons-container">
-            <li>
+          </HeaderLiEl>
+          <ButtonContainer>
+            <HeaderLiEl>
               <Link to={JOBBY_APP_HOME_PATH} className="home-btn header-button" type="button">
                 Home
               </Link>
               <Link to={JOBBY_APP_HOME_PATH} className="home-btn-mobile header-button" type="button">
                 <HomeIcon />
               </Link>
-            </li>
-            <li>
+            </HeaderLiEl>
+            <HeaderLiEl>
               <Link to={JOBBY_APP_JOBS_PAGE_PATH} className="home-btn header-button" type="button">
                 Jobs
               </Link>
@@ -56,23 +55,22 @@ const Header = () => {
               >
                 <JobsIcon />
               </Link>
-            </li>
-          </div>
-          <li>
-            <button onClick={onClickLogoutBtn} className="logout-btn" type="button">
+            </HeaderLiEl>
+          </ButtonContainer>
+          <HeaderLiEl>
+            <LogoutBtn onClick={onClickLogoutBtn} className="logout-btn" type="button">
               Logout
-            </button>
-            <button
+            </LogoutBtn>
+            <LogoutBtnMobile
               onClick={onClickLogoutBtn}
-              className="logout-btn-mobile"
               type="button"
             >
               <LogoutIcon />
-            </button>
-          </li>
-        </ul>
-      </nav>
-    </header>
+            </LogoutBtnMobile>
+          </HeaderLiEl>
+        </HeaderUiEl>
+      </Nav>
+    </HeaderMainContainer>
   )
 }
 

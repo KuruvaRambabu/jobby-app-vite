@@ -1,5 +1,4 @@
 
-
 const FailureView = (props: { onClickRetry: () => void }) => {
     const { onClickRetry } = props
     return (

@@ -1,32 +1,32 @@
 import './index.css'
+import { EmploymentFiltersLiEl, InputCheckbox, CheckboxLabel } from './styledComponents'
 
-interface TypesOfEmployment{
-  employmentTypeId:string
-  label:string
+interface TypesOfEmployment {
+  employmentTypeId: string
+  label: string
 }
 
 interface EmploymentTypePropTypes {
-  type:TypesOfEmployment
-  onSelectEmploymentType:(event:React.ChangeEvent<HTMLInputElement>)=>void
+  type: TypesOfEmployment
+  onSelectEmploymentType: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 
 const DisplayEmploymentTypeFilters = (props: EmploymentTypePropTypes) => {
-  const {type, onSelectEmploymentType} = props
-  const {employmentTypeId, label} = type
+  const { type, onSelectEmploymentType } = props
+  const { employmentTypeId, label } = type
 
   return (
-    <li className="employment-type-container">
-      <input
+    <EmploymentFiltersLiEl className="employment-type-container">
+      <InputCheckbox
         onChange={onSelectEmploymentType}
-        className="input-checkbox"
         type="checkbox"
         id={employmentTypeId}
       />
-      <label className="checkbox-lable" htmlFor={employmentTypeId}>
+      <CheckboxLabel className="checkbox-lable" htmlFor={employmentTypeId}>
         {label}
-      </label>
-    </li>
+      </CheckboxLabel>
+    </EmploymentFiltersLiEl>
   )
 }
 

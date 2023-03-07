@@ -6,6 +6,7 @@ const StartIcon = (props: JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement
     xmlnsXlink="http://www.w3.org/1999/xlink"
     width={16}
     height={16}
+    color="#fbbf24"
     {...props}
   >
     <defs>

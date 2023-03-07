@@ -1,20 +1,40 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
-import JobsIcon from '../../Icons/JobsIcon'
-import StartIcon from '../../Icons/StartIcon'
-import LocationIcon from '../../Icons/LocationIcon'
-import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
-import { JOBBY_APP_JOBS_PAGE_PATH } from '../../constants/navigationConstants'
+import JobsIcon from "../../Icons/JobsIcon";
+import StartIcon from "../../Icons/StartIcon";
+import LocationIcon from "../../Icons/LocationIcon";
+import JobDataModel from "../../stores/JobStore/models/jobsDataModel";
+import { JOBBY_APP_JOBS_PAGE_PATH } from "../../constants/navigationConstants";
 
-import './index.css'
+import "./index.css";
+import {
+  Article,
+  CompanyLogo,
+  DescriptionContent,
+  DescriptionHeading,
+  EmploymentType,
+  EmploymentTypeContainer,
+  JobCardContainer,
+  JobCardHr,
+  JobCardLogoContainer,
+  JobDescriptionContainer,
+  JobLocation,
+  JobRoleContainer,
+  LocationAndEmploymentTypeContainer,
+  LocationAndSalaryContainer,
+  LocationContainer,
+  PackagePerAnnum,
+  RoleHeading,
+  RoleRating,
+  RoleRatingContainer,
+} from "./styledComponents";
 
 interface JobCardPropTypes {
-  jobData: JobDataModel
+  jobData: JobDataModel;
 }
 
-
 const JobCard = (props: JobCardPropTypes) => {
-  const { jobData } = props
+  const { jobData } = props;
   const {
     companyUrl,
     employmentType,
@@ -24,43 +44,46 @@ const JobCard = (props: JobCardPropTypes) => {
     packagePerAnnum,
     rating,
     title,
-  } = jobData
+  } = jobData;
   return (
-    <li className="job-card-container">
-      <Link to={`${JOBBY_APP_JOBS_PAGE_PATH}/${id}`} className="job-card-link-styles">
-        <article>
-          <div className="job-logo-container">
-            <img className="job-logo" src={companyUrl} alt="company logo" />
-            <div className="job-role-container">
-              <h1 className="title">{title}</h1>
-              <div className="rating-container">
-                <StartIcon className="star" />
-                <p className="rating">{rating}</p>
-              </div>
-            </div>
-          </div>
-          <div className="location-salary-container">
-            <div className="location-job-type-container">
-              <div className="location-container">
+    <JobCardContainer>
+      <Link
+        to={`${JOBBY_APP_JOBS_PAGE_PATH}/${id}`}
+        className="job-card-link-styles"
+      >
+        <Article>
+          <JobCardLogoContainer>
+            <CompanyLogo src={companyUrl} alt="company logo" />
+            <JobRoleContainer>
+              <RoleHeading>{title}</RoleHeading>
+              <RoleRatingContainer>
+                <StartIcon />
+                <RoleRating>{rating}</RoleRating>
+              </RoleRatingContainer>
+            </JobRoleContainer>
+          </JobCardLogoContainer>
+          <LocationAndSalaryContainer>
+            <LocationAndEmploymentTypeContainer>
+              <LocationContainer>
                 <LocationIcon />
-                <p className="location-package-content">{location}</p>
-              </div>
-              <div className="employment-container">
+                <JobLocation>{location}</JobLocation>
+              </LocationContainer>
+              <EmploymentTypeContainer>
                 <JobsIcon />
-                <p className="location-package-content">{employmentType}</p>
-              </div>
-            </div>
-            <p className="location-package-content">{packagePerAnnum}</p>
-          </div>
-          <hr className="job-card-hr" />
-          <div className="job-description-container">
-            <h1 className="description-heading">Description</h1>
-            <p className="job-description">{jobDescription}</p>
-          </div>
-        </article>
+                <EmploymentType>{employmentType}</EmploymentType>
+              </EmploymentTypeContainer>
+            </LocationAndEmploymentTypeContainer>
+            <PackagePerAnnum>{packagePerAnnum}</PackagePerAnnum>
+          </LocationAndSalaryContainer>
+          <JobCardHr />
+          <JobDescriptionContainer >
+            <DescriptionHeading>Description</DescriptionHeading>
+            <DescriptionContent>{jobDescription}</DescriptionContent>
+          </JobDescriptionContainer>
+        </Article>
       </Link>
-    </li>
-  )
-}
+    </JobCardContainer>
+  );
+};
 
-export default JobCard
+export default JobCard;

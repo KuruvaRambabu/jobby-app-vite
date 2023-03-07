@@ -1,8 +1,6 @@
 import { createContext, ReactElement, useContext, useRef } from "react";
 import LoginStore from "../stores/LoginStore";
 
-
-
 const LoginStoreContext = createContext<LoginStore | null>(null)
 
 export const LoginStoreProvider = (props: { children: ReactElement }) => {

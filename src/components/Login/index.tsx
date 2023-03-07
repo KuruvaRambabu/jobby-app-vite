@@ -2,6 +2,7 @@ import { observer } from 'mobx-react'
 import { Oval } from 'react-loader-spinner'
 
 import './index.css'
+import { MainContainer, LoginFormContainer, WebisteLogoContainer, Form, ErrorMessageText, WebisteImg, LoaderContainer, LoginBtn, InputLabel, Input } from './styledComponents'
 
 interface LoginPropTypes {
   onSubmitForm: (event: React.FormEvent<HTMLFormElement>) => void
@@ -29,12 +30,11 @@ const Login = observer((props: LoginPropTypes) => {
 
   const renderUsernameInput = () => (
     <>
-      <label className="input-lable " htmlFor="username">
+      <InputLabel htmlFor="username">
         USERNAME
-      </label>
-      <input
+      </InputLabel>
+      <Input
         type="text"
-        className=" input username-input "
         id="username"
         value={username}
         placeholder="Username"
@@ -45,10 +45,10 @@ const Login = observer((props: LoginPropTypes) => {
 
   const renderPasswordInput = () => (
     <>
-      <label className="input-lable" htmlFor="password">
+      <InputLabel className="input-lable" htmlFor="password">
         PASSWORD
-      </label>
-      <input
+      </InputLabel>
+      <Input
         type="password"
         className="password-input input"
         id="password"
@@ -60,21 +60,20 @@ const Login = observer((props: LoginPropTypes) => {
   )
 
   return (
-    <div className="login-container">
-      <div className="login-form-container">
-        <div className="website-logo-container">
-          <img
+    <MainContainer>
+      <LoginFormContainer>
+        <WebisteLogoContainer>
+          <WebisteImg
             src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
             alt="website logo"
-            className="website-logo"
           />
-        </div>
-        <form className="form-container" onSubmit={onSubmitForm}>
+        </WebisteLogoContainer>
+        <Form onSubmit={onSubmitForm}>
           {renderUsernameInput()}
           {renderPasswordInput()}
-          {isError && <p className="error-message">{errorMessage.message}</p>}
+          {isError && <ErrorMessageText>{errorMessage.message}</ErrorMessageText>}
           {isLoading ? (
-            <div className="loader-container login-button" data-testid="loader">
+            <LoaderContainer data-testid="loader">
               <Oval
                 height={30}
                 width={30}
@@ -84,15 +83,15 @@ const Login = observer((props: LoginPropTypes) => {
                 strokeWidth={2}
                 strokeWidthSecondary={2}
               />
-            </div>
+            </LoaderContainer>
           ) : (
-            <button className="login-button" type="submit">
+            <LoginBtn type="submit">
               Login
-            </button>
+            </LoginBtn>
           )}
-        </form>
-      </div>
-    </div>
+        </Form>
+      </LoginFormContainer>
+    </MainContainer>
   )
 })
 

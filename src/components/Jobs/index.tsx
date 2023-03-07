@@ -1,4 +1,3 @@
-import { ThreeDots } from 'react-loader-spinner'
 import { observer } from 'mobx-react'
 
 import apiConstants from '../../constants/apiConstants'
@@ -16,6 +15,7 @@ import SalaryRangeFilter from '../SalaryRange'
 import JobCard from '../JobCard'
 
 import './index.css'
+import { MainContainer, JobsRightSideSection, JobsContainer, JobsLeftSideSection, EmploymentFilterSection, EmploymentTypeUlEl, HorizontalLine, EmploymentTypeHeading, InputSearchSection, JobsSearchInputField, SearchButton, SearchContainer, JobsListSection, JobsListUlElement, NoJobsDescription, NoJobsFoundContainer, NoJobsHeading, NoJobsImg } from './styledComponents'
 
 interface JobsPropTypes {
   searchInput: string
@@ -41,28 +41,27 @@ const Jobs = observer((props: JobsPropTypes) => {
   } = props
 
   const renderNoJobsView = () => (
-    <div className="no-jobs-found-container ">
-      <img
+    <NoJobsFoundContainer>
+      <NoJobsImg
         src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png "
         alt="no jobs"
-        className="no-jobs-view"
       />
-      <h1>No Jobs Found</h1>
-      <p>We could not find any jobs try other filter.</p>
-    </div>
+      <NoJobsHeading>No Jobs Found</NoJobsHeading>
+      <NoJobsDescription>We could not find any jobs try other filter.</NoJobsDescription>
+    </NoJobsFoundContainer>
   )
 
   const renderJobsSuccessView = () => {
 
     if (jobList.length > 0) {
       return (
-        <section>
-          <ul>
+        <JobsListSection>
+          <JobsListUlElement>
             {jobList.map((jobData: JobDataModel) => (
               <JobCard key={jobData.id} jobData={jobData} />
             ))}
-          </ul>
-        </section>
+          </JobsListUlElement>
+        </JobsListSection>
       )
     }
     return renderNoJobsView()
@@ -83,34 +82,32 @@ const Jobs = observer((props: JobsPropTypes) => {
   }
 
   const renderJobsSearchInputField = () => (
-    <section className="search-main-container">
-      <div className="search-container">
-        <input
-          className="search-input"
+    <InputSearchSection >
+      <SearchContainer>
+        <JobsSearchInputField
           type="search"
           placeholder="Search"
           value={searchInput}
           onChange={onChangeSearchInput}
         />
-        <button
-          className="search-icon-btn"
+        <SearchButton
           type="button"
           data-testid="searchButton"
         >
           <JobsSearchIcon />
-        </button>
-      </div>
+        </SearchButton>
+      </SearchContainer>
 
-    </section>
+    </InputSearchSection>
   )
 
   const renderLeftSideSection = () => (
-    <aside className="jobs-left-section">
+    <JobsLeftSideSection>
       <ProfileController />
-      <hr className="horizontal-line" />
-      <section>
-        <h1 className="filter-heading">Type of Employment</h1>
-        <ul>
+      <HorizontalLine />
+      <EmploymentFilterSection>
+        <EmploymentTypeHeading >Type of Employment</EmploymentTypeHeading>
+        <EmploymentTypeUlEl>
           {employmentTypesList.map(type => (
             <DisplayEmploymentTypeFilters
               onSelectEmploymentType={onSelectEmploymentType}
@@ -118,12 +115,12 @@ const Jobs = observer((props: JobsPropTypes) => {
               type={type}
             />
           ))}
-        </ul>
-      </section>
-      <hr className="horizontal-line" />
-      <section >
-        <h1 className="filter-heading">Salary Range</h1>
-        <ul>
+        </EmploymentTypeUlEl>
+      </EmploymentFilterSection>
+      <HorizontalLine />
+      <EmploymentFilterSection >
+        <EmploymentTypeHeading>Salary Range</EmploymentTypeHeading>
+        <EmploymentTypeUlEl>
           {salaryRangesList.map(salaryRange => (
             <SalaryRangeFilter
               onChangeSalaryRange={onChangeSalaryRange}
@@ -131,21 +128,21 @@ const Jobs = observer((props: JobsPropTypes) => {
               salary={salaryRange}
             />
           ))}
-        </ul>
-      </section>
-    </aside>
+        </EmploymentTypeUlEl>
+      </EmploymentFilterSection>
+    </JobsLeftSideSection>
   )
 
   return (
-    <div className="jobs-main-container">
-      <div className="container">
+    <MainContainer>
+      <JobsContainer>
         {renderLeftSideSection()}
-        <div className="jobs-right-section">
+        <JobsRightSideSection>
           {renderJobsSearchInputField()}
           {renderJobsRightSideSection()}
-        </div>
-      </div>
-    </div>
+        </JobsRightSideSection>
+      </JobsContainer>
+    </MainContainer>
   )
 })
 

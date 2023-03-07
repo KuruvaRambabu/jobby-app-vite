@@ -1,7 +1,8 @@
 import { ThreeDots } from "react-loader-spinner";
+import { MainContainer } from "./styledComponents";
 
 const LoadingWrapper = () => (
-    <div className="loader-container jobs-loader" data-testid="loader" >
+    <MainContainer data-testid="loader" >
         <ThreeDots
             height="80"
             width="80"
@@ -11,7 +12,7 @@ const LoadingWrapper = () => (
             wrapperStyle={{}}
             visible={true}
         />
-    </div>
+    </MainContainer>
 )
 
 export default LoadingWrapper

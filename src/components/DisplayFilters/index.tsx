@@ -17,13 +17,13 @@ const DisplayEmploymentTypeFilters = (props: EmploymentTypePropTypes) => {
   const { employmentTypeId, label } = type
 
   return (
-    <EmploymentFiltersLiEl className="employment-type-container">
+    <EmploymentFiltersLiEl>
       <InputCheckbox
         onChange={onSelectEmploymentType}
         type="checkbox"
         id={employmentTypeId}
       />
-      <CheckboxLabel className="checkbox-lable" htmlFor={employmentTypeId}>
+      <CheckboxLabel htmlFor={employmentTypeId}>
         {label}
       </CheckboxLabel>
     </EmploymentFiltersLiEl>

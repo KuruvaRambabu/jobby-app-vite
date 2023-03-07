@@ -1,22 +1,32 @@
-import { observer } from 'mobx-react'
-import { Oval } from 'react-loader-spinner'
+import { observer } from "mobx-react";
+import { Oval } from "react-loader-spinner";
+import GlobalStyles from "../../styles/GlobalStyles";
 
-import './index.css'
-import { MainContainer, LoginFormContainer, WebisteLogoContainer, Form, ErrorMessageText, WebisteImg, LoaderContainer, LoginBtn, InputLabel, Input } from './styledComponents'
+import "./index.css";
+import {
+  MainContainer,
+  LoginFormContainer,
+  WebisteLogoContainer,
+  Form,
+  ErrorMessageText,
+  WebisteImg,
+  LoginBtn,
+  InputLabel,
+  Input,
+} from "./styledComponents";
 
 interface LoginPropTypes {
-  onSubmitForm: (event: React.FormEvent<HTMLFormElement>) => void
-  isError: any
-  isLoading: string | boolean
-  username: string | undefined
-  password: string | undefined
-  setUsername: (event: React.ChangeEvent<HTMLInputElement>) => void
-  setPassword: (event: React.ChangeEvent<HTMLInputElement>) => void
-  errorMessage: any
+  onSubmitForm: (event: React.FormEvent<HTMLFormElement>) => void;
+  isError: any;
+  isLoading: string | boolean;
+  username: string | undefined;
+  password: string | undefined;
+  setUsername: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  setPassword: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  errorMessage: any;
 }
 
 const Login = observer((props: LoginPropTypes) => {
-
   const {
     onSubmitForm,
     isLoading,
@@ -25,14 +35,12 @@ const Login = observer((props: LoginPropTypes) => {
     setUsername,
     setPassword,
     isError,
-    errorMessage
-  } = props
+    errorMessage,
+  } = props;
 
   const renderUsernameInput = () => (
     <>
-      <InputLabel htmlFor="username">
-        USERNAME
-      </InputLabel>
+      <InputLabel htmlFor="username">USERNAME</InputLabel>
       <Input
         type="text"
         id="username"
@@ -41,7 +49,7 @@ const Login = observer((props: LoginPropTypes) => {
         onChange={setUsername}
       />
     </>
-  )
+  );
 
   const renderPasswordInput = () => (
     <>
@@ -57,7 +65,7 @@ const Login = observer((props: LoginPropTypes) => {
         onChange={setPassword}
       />
     </>
-  )
+  );
 
   return (
     <MainContainer>
@@ -71,28 +79,28 @@ const Login = observer((props: LoginPropTypes) => {
         <Form onSubmit={onSubmitForm}>
           {renderUsernameInput()}
           {renderPasswordInput()}
-          {isError && <ErrorMessageText>{errorMessage.message}</ErrorMessageText>}
+          {isError && (
+            <ErrorMessageText>{errorMessage.message}</ErrorMessageText>
+          )}
           {isLoading ? (
-            <LoaderContainer data-testid="loader">
+            <LoginBtn>
               <Oval
                 height={30}
                 width={30}
                 color="#ffffff"
                 visible={true}
-                ariaLabel='oval-loading'
+                ariaLabel="oval-loading"
                 strokeWidth={2}
                 strokeWidthSecondary={2}
               />
-            </LoaderContainer>
-          ) : (
-            <LoginBtn type="submit">
-              Login
             </LoginBtn>
+          ) : (
+            <LoginBtn type="submit">Login</LoginBtn>
           )}
         </Form>
       </LoginFormContainer>
     </MainContainer>
-  )
-})
+  );
+});
 
-export default Login
+export default Login;

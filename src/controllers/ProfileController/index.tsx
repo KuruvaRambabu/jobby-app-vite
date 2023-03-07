@@ -13,12 +13,12 @@ const ProfileController = observer(() => {
 
     const { isLoading, isError, refetch } = useGetProfileDataApi()
 
-    const profileApiStatus = getApiStatus(isLoading, isError)
 
     const onClickRetry = () => {
         refetch()
     }
 
+    const profileApiStatus = getApiStatus(isLoading, isError)
     return (
         <Profile
             profileApiStatus={profileApiStatus}

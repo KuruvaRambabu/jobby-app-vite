@@ -1,37 +1,17 @@
-import styled from "styled-components";
+import tw, { styled } from "twin.macro";
 
 export const NotFoundContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #000000;
-    color: #ffffff;
-    flex-direction: column;
-    @media screen and (max-width: 567px) {
-        min-height: 100vh;
-  }
-    
-`
+  ${tw`flex justify-center items-center min-h-screen bg-black text-white flex-col`}
+`;
 
 export const NotFoundImg = styled.img`
+  ${tw`w-full md:w-1/4`}
+`;
 
-@media screen and (max-width: 567px) {
-      width: 100%;
-}
-    
-`
-
-export const NotFoundHeading = styled.h1``
+export const NotFoundHeading = styled.h1`
+  ${tw`text-2xl font-bold m-2 `}
+`;
 
 export const NotFoundDescription = styled.p`
-
-@media screen and (max-width: 567px) {
-    margin: 20px;
-    text-align: center;
-}
-
-`
-
-
-
+  ${tw`m-4 text-center`}
+`;

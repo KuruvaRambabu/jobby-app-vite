@@ -1,136 +1,71 @@
-import styled from "styled-components";
+import tw, { styled } from "twin.macro";
 
 export const MainContainer = styled.div`
-background-color: #000000;
-min-height: 90vh;
-color: #ffffff;
-padding: 30px;
+  ${tw`bg-black min-h-screen text-white p-4 md:p-8`}
+`;
 
-@media screen and (max-width:568px){
-    padding: 16px;
-}
-`
 export const JobsContainer = styled.div`
-display: flex;
-flex-direction: row;
-margin-left: 20px;
-justify-content: space-between;
-@media screen and (max-width: 567px) {
-    display: flex;
-    flex-direction: column;
-    margin:0px;
-}
-
-`
+  ${tw`flex flex-col m-0 md:ml-6 justify-between md:flex-row`}
+`;
 
 export const JobsRightSideSection = styled.div`
-width: 80%;
-@media screen and (max-width: 567px) {
-width: 100%;
-
+${tw`w-full md:w-4/5`}
 }
-`
-
+`;
 
 export const JobsLeftSideSection = styled.aside`
-width: 18%;
-@media screen and (max-width: 567px) {
-    width: 100%;
-}
-
-`
+  ${tw`w-full md:w-1/6`}
+`;
 
 export const HorizontalLine = styled.hr`
-margin-top: 30px;
-margin-bottom: 30px;
-`
+  ${tw` my-8`}
+`;
 
-export const EmploymentFilterSection = styled.section``
+export const EmploymentFilterSection = styled.section``;
 
 export const EmploymentTypeUlEl = styled.ul`
-    padding:0;
-`
+  ${tw`p-0`}
+`;
 
 export const EmploymentTypeHeading = styled.h1`
-    font-size: 18px;
-    font-weight: bold;
-`
+  ${tw`text-xl leading-4 font-medium`}
+`;
 
 export const InputSearchSection = styled.section`
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 50px;
-    margin: 20px;
-    @media screen and (max-width:568px){
-      margin-top: 20px;
-      margin-left: 0;
-    }
-`
+  ${tw`flex justify-start items-center h-12 m-6 md:ml-0`}
+`;
 
 export const SearchContainer = styled.div`
-    border: 2px solid #ffffff50;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @media screen and (max-width:568px){
-      width: 100%;
-
-    }
-`
-
+  ${tw`flex justify-center items-center w-full md:w-2/6`}
+  border: 2px solid #ffffff50;
+`;
 
 export const JobsSearchInputField = styled.input`
-    height: 30px;
-    width: 300px;
-    background-color: transparent;
-    color: #ffffff;
-    border: none;
-    outline: none;
-    padding: 10px;
-    @media screen and (max-width:568px){
-      width: 100%;
-    }
-
-`
-
+  ${tw`h-10 w-full bg-transparent text-white outline-0 p-2 md:w-80`}
+`;
 
 export const SearchButton = styled.button`
-    background-color: #272727;
-    color: #ffffff;
-    border: none;
-    width: 50px;
-    text-align: center;
-    cursor:pointer;
+  ${tw`text-white border-0 w-8 text-center cursor-pointer grow h-10 flex justify-center items-center`}
+  background-color: #272727;
+`;
 
-`
-
-export const JobsListSection = styled.div``
-
+export const JobsListSection = styled.div``;
 
 export const JobsListUlElement = styled.ul`
-padding:0;
-margin:0;
-`
-
+  ${tw`p-0 m-0`}
+`;
 
 export const NoJobsFoundContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 
-`
+${tw `flex justify-center items-center flex-col`}
+`;
 
 export const NoJobsImg = styled.img`
+${tw `w-full md:w-2/4`}
+`;
 
-@media screen and (max-width:568px){
-    width: 100%;
-}
-`
+export const NoJobsHeading = styled.h1`
+${tw `text-3xl`}
+`;
 
-export const NoJobsHeading = styled.h1``
-
-export const NoJobsDescription = styled.p``
-
-
+export const NoJobsDescription = styled.p``;

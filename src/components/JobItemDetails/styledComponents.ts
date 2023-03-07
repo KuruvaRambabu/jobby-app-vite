@@ -1,118 +1,65 @@
-import styled from "styled-components";
+import tw, { styled } from "twin.macro";
 
 export const JobDetailsMainContainer = styled.div`
-  background-color: #000000;
-  min-height: 90vh;
-  color: #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${tw`bg-black min-h-screen text-white flex justify-center items-center`}
 `;
- 
+
 export const JobDetailsSection = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  ${tw`flex justify-center items-center flex-col`}
 `;
 
 export const JobDetailsContainer = styled.div`
-  width: 85%;
-  min-height: 90vh;
-  margin-top: 20px;
+  ${tw` w-11/12 p-0 md:p-3 md:w-5/6 min-h-screen mt-5 rounded-md`}
   background-color: #272727;
-  border-radius: 10px;
-  @media screen and (max-width: 567px) {
-    width: 95%;
-    padding: 10px;
-  }
 `;
 
 export const JobDetailsBottomSection = styled.div`
-  padding-left: 20px;
-  padding-right: 20px;
+  ${tw`px-5`}
 `;
 
 export const CompnanyWebsiteUrl = styled.a`
-  display: flex;
+  ${tw`flex justify-between items-center no-underline	`}
   color: #6366f1;
-  justify-content: space-between;
-  align-items: center;
-  text-decoration: none;
 `;
 
 export const JobDetailsDescriptionContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
+  ${tw`flex justify-between`}
 `;
 
 export const SkillHeading = styled.h1``;
 
 export const SkillsList = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  padding-left: 0%;
+  ${tw`flex flex-wrap p-0`}
 `;
 
 export const LifeAtCompanyContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  ${tw`flex flex-col`}
 `;
 
 export const LifeAtCompanyHeading = styled.h1``;
 
 export const LifeAtCompnayContentContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  @media screen and (max-width:568px){
-    display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-  }
+  ${tw`flex flex-col justify-center items-center md:flex-row`}
 `;
 
 export const LifeAtCompanyDescription = styled.p`
-  width: 70%;
-  @media screen and (max-width:568px){
-    width: 100%;
-  }
+${tw `w-full md:w-8/12	`}
 `;
 
 export const LifeAtCompanyImg = styled.img`
-  width: 30%;
-  height: 300px;
-
-  @media screen and (max-width: 568px) {
-    width: 100%;
-    height: 300px;
-  }
+${tw `w-full md:w-2/6	h-72`}
 `;
-
 
 export const SimilarJobsSection = styled.div`
 
-display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    width: 85%;
-    padding-left: 20px;
-    padding-right: 20px;
+${tw `flex flex-col justify-start w-11/12	md:w-5/6	 px-5`}
+`;
 
-    @media screen and (max-width:568px){
-      width: 95%;
-      padding: 0;
-    }
-
-`
-
-export const SimilarJobsSectionHeading = styled.h1``
+export const SimilarJobsSectionHeading = styled.h1`
+${tw `text-3xl font-bold mt-4`}
+`;
 
 export const SimilarJobsList = styled.ul`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-items: center;
-    padding:0
-`
+
+${tw `flex flex-wrap justify-start items-center p-0`}
+`;

@@ -1,16 +1,11 @@
-import styled from "styled-components"
+import tw, { styled } from "twin.macro";
 
 export const EmploymentFiltersLiEl = styled.li`
-    font-size: 17px;
-    font-weight: 300;
-    padding: 5px;
-    list-style-type:none;
-    margin:0;
-`
+  ${tw`text-lg font-light p-1 list-none m-0`}
+`;
 
-export const InputCheckbox = styled.input``
+export const InputCheckbox = styled.input``;
 
 export const CheckboxLabel = styled.label`
-padding-left: 5px;
-
-`
+  ${tw`pl-1`}
+`;

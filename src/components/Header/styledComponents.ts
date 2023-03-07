@@ -1,67 +1,30 @@
-import styled from "styled-components";
+import tw, { styled } from "twin.macro";
 
-export const HeaderMainContainer = styled.header`
-`
+export const HeaderMainContainer = styled.header``;
 
-export const Nav = styled.nav`
-`
+export const Nav = styled.nav``;
 export const HeaderUiEl = styled.ul`
-    height: 10vh;
-    background-color: #272727;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    padding-left: 40px;
-    padding-right: 40px;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-
-    @media screen and (max-width:560px){
-            padding: 10px;
-    }
-`
+  ${tw`h-24	flex justify-between items-center flex-row px-10 p-0 m-0 md:p-2	`}
+  background-color: #272727;
+`;
 export const HeaderLiEl = styled.li`
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-`
-
+  ${tw`list-none  p-0 m-0`}
+`;
 
 export const ButtonContainer = styled.div`
-    display: flex;
-
-`
+  ${tw`flex`}
+`;
 
 export const WebsiteLogo = styled.img`
-    width: 100%;
-    height: 50px;
-    cursor: pointer;
-    margin:10px;
-`
+  ${tw`w-full h-12 cursor-pointer m-2`}
+`;
 
 export const LogoutBtn = styled.button`
-    background-color: #6366f1;
-    width: 100px;
-    height: 30px;
-    color: #ffffff;
-    border: none;
-    border-radius: 5px;
-    font-size: 14px;
-    font-weight: 300;
-    cursor: pointer;
-    @media screen and (max-width: 567px) {
-        display:none;
-    }
-`
 
-export const LogoutBtnMobile  = styled.button`
-    display: flex;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    @media screen and (min-width: 568px) {
-        display:none;
-    }
-`
+${tw`w-24 h-7 text-white border-0 text-center rounded-md text-xs flex justify-center items-center font-medium cursor-pointer md:inline-flex hidden `}
+  background-color: #6366f1;
+`;
+
+export const LogoutBtnMobile = styled.button`
+${tw`flex border-0 cursor-pointer md:hidden `}
+`;

@@ -1,142 +1,79 @@
-import styled from "styled-components";
+import tw, { styled } from "twin.macro";
 
 export const JobCardContainer = styled.li`
-  margin: 20px;
-  background-color: #121212;
-  list-style: none;
-  margin-left: 0;
-  list-style-type: none;
-  border-radius: 20px;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
-  @media screen and (max-width: 567px) {
-    margin: 10px;
-  padding:10px;
 
+${tw` m-4 list-none m-4 md:ml-0 rounded-lg shadow-md p-2 md:p-0`}
+background-color: #121212;
   }
 `;
 
 export const Article = styled.article``;
 
 export const JobCardLogoContainer = styled.div`
-  display: flex;
-  padding-left: 20px;
-  padding-right: 20px;
-  @media screen and (max-width: 567px) {
-    padding-left: 0px;
-  }
+  ${tw`flex px-4 md:pl-0`}
 `;
 
 export const CompanyLogo = styled.img`
-  width: 60px;
-  height: 60px;
-  margin: 10px;
-  
+  ${tw` w-14 h-14 m-2`}
 `;
 
 export const JobRoleContainer = styled.div`
-  margin: 0;
-  display: flex;
-  flex-direction: column;
+  ${tw`m-0 flex flex-col`}
 `;
 
 export const RoleHeading = styled.h1`
-  font-size: 24px;
+  ${tw`text-lg font-bold`}
 `;
 
 export const RoleRatingContainer = styled.div`
-  margin: 0;
-  display: flex;
-  flex-direction: row;
+  ${tw`m-0 flex flex-row`}
 `;
 
 export const RoleRating = styled.p`
-  margin-left: 5px;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-right: 0;
+  ${tw`ml-1 my-0 mr-0`}
 `;
 
 export const LocationAndSalaryContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  @media screen and (max-width: 567px) {
-      padding: 0;
-    }
+  ${tw` flex justify-between items-center p-0  md:px-6`}
 `;
 
 export const LocationAndEmploymentTypeContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
+  ${tw`flex justify-evenly`}
 `;
 
 export const LocationContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  ${tw`flex justify-center items-center mx-3`}
 `;
 
 export const JobLocation = styled.p`
-  padding-left: 10px;
-  @media screen and (max-width: 567px) {
-    padding: 0;
-  }
+  ${tw`p-0 md:pl-3`}
 `;
 
 export const EmploymentTypeContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 10px;
-  margin-right: 10px;
+  ${tw`flex justify-center items-center mx-3`}
 `;
 
 export const EmploymentType = styled.p`
-  padding-left: 10px;
-  @media screen and (max-width: 567px) {
-    padding: 0;
-    margin: 2px;
-  }
+  ${tw`p-0 md:pl-3 m-1 md:m-0`}
 `;
 
 export const PackagePerAnnum = styled.p`
-  padding-left: 10px;
-  @media screen and (max-width: 567px) {
-    padding: 0;
-  }
+  ${tw`p-0 md:pl-3`}
 `;
 
 export const JobDescriptionContainer = styled.div`
-  padding-left: 20px;
-  padding-right: 20px;
-  @media screen and (max-width: 567px) {
-    padding: 0;
-  }
+  ${tw`p-0 md:px-5`}
 `;
 
 export const DescriptionHeading = styled.h1`
-  margin: 0;
-  padding-bottom: 10px;
-  font-size: 20px;
-
+  ${tw`m-0 pb-3 text-lg`}
 `;
 
 export const DescriptionContent = styled.p`
-  margin: 0;
-  color: #cbd5e1;
+  ${tw`m-0 text-slate-300	`}
 `;
 
 export const JobCardHr = styled.hr`
-  margin: 20px;
+  ${tw`mx-0 md:m-10 `}
   color: #ffffff60;
-  @media screen and (max-width: 567px) {
-    margin-left: 0;
-    margin-left: 0;
-  }
-  
 `;

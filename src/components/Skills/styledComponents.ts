@@ -1,24 +1,13 @@
-import styled from "styled-components";
+import tw, { styled } from "twin.macro";
 
 export const SkillsContainer = styled.li`
-  display: flex;
-  width: 25%;
-  height: 100px;
-  justify-content: flex-start;
-  align-items: center;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-
-  @media screen and (max-width: 567px) {
-    width: 49%;
-  }
+  ${tw`flex w-2/4 md:w-1/4 h-24 justify-start items-center list-none m-0 p-0`}
 `;
 
 export const SkillImg = styled.img`
-  width: 60px;
+  ${tw` w-16`}
 `;
 
 export const SkillName = styled.p`
-  padding-left: 20px;
+  ${tw`pl-5`}
 `;

@@ -1,53 +1,19 @@
-import styled from "styled-components";
+import tw, { styled } from "twin.macro";
 
 export const MainContainer = styled.main`
-    background-image: url('https://assets.ccbp.in/frontend/react-js/home-lg-bg.png');
-    min-height: 90vh;
-    background-size: cover;
-    display: flex;
-    color: #ffffff;
-    justify-content: flex-start;
-    @media screen and (max-width: 567px) {
-          background-image: url('https://assets.ccbp.in/frontend/react-js/home-sm-bg.png');
-          min-height: 100vh;
-          background-size: cover;
-      }
-`
-
+  ${tw`bg-cover flex text-white justify-start min-h-screen	 `}
+  background-image: url('https://assets.ccbp.in/frontend/react-js/home-lg-bg.png');
+  @media screen and (max-width: 567px) {
+    background-image: url("https://assets.ccbp.in/frontend/react-js/home-sm-bg.png");
+  }
+`;
 
 export const Heading = styled.h1`
-margin: 0px;
-font-size: 60px;
-font-weight: bold;
-@media screen and (max-width:567px){
-        flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      margin: 0px;
-      font-size: 32px;
-      font-weight: bold;
-}
-`
+  ${tw`m-0 text-4xl md:text-6xl font-bold	flex flex-col`}
+`;
 
 export const HomePageContentContainer = styled.div`
-    display: flex;
-    width: 30%;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin-left: 40px;
-    padding-left: 6px;
-    @media screen and (max-width:567px){
-      display: flex;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      justify-content: flex-start;
-      margin: 0;
-      margin-top: 40px;
-      padding: 10px;
-    }
-`
+  ${tw`flex w-full md:w-4/12 justify-start mt-10 p-4 flex-col items-start md:justify-center md:ml-10 md:p-2`}
+`;
 
-export const HomePageDescription = styled.p``
+export const HomePageDescription = styled.p``;

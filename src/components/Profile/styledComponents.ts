@@ -1,29 +1,21 @@
-import styled from "styled-components";
+import tw, { styled } from "twin.macro";
 
 export const ProfileMainContainer = styled.div`
-  height: 200px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  ${tw`h-52	flex justify-center items-center`}
 `;
 
 export const ProfileDetailsContainer = styled.div`
+  ${tw`w-full bg-cover h-52 p-3 rounded-lg	flex justify-around flex-col`}
   background-image: url("https://assets.ccbp.in/frontend/react-js/profile-bg.png");
-  width: 100%;
-  background-size: cover;
-  height: 200px;
-  padding: 20px;
-  border-radius: 20px;
 `;
 
 export const ProfileImg = styled.img`
-  width: 60px;
+  ${tw`w-16`}
 `;
 
 export const ProfileName = styled.p`
-  font-size: 20px;
+  ${tw`text-lg font-medium`}
   color: #4f46e5;
-  font-weight: 400;
 `;
 
 export const ProfileShortDescription = styled.p`

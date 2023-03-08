@@ -5,8 +5,9 @@ export const ProfileMainContainer = styled.div`
 `;
 
 export const ProfileDetailsContainer = styled.div`
-  ${tw`w-full bg-cover h-52 p-3 rounded-lg	flex justify-around flex-col`}
-  background-image: url("https://assets.ccbp.in/frontend/react-js/profile-bg.png");
+  ${tw`w-full bg-cover h-52 p-3 rounded-lg	flex justify-around flex-col
+   bg-[url("https://assets.ccbp.in/frontend/react-js/profile-bg.png")]
+  `}
 `;
 
 export const ProfileImg = styled.img`
@@ -14,10 +15,9 @@ export const ProfileImg = styled.img`
 `;
 
 export const ProfileName = styled.p`
-  ${tw`text-lg font-medium`}
-  color: #4f46e5;
+  ${tw`text-lg font-medium text-[#4f46e5]`}
 `;
 
 export const ProfileShortDescription = styled.p`
-  color: #475569;
+  ${tw`text-[#475569]`}
 `;

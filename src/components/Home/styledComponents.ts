@@ -1,11 +1,10 @@
 import tw, { styled } from "twin.macro";
 
 export const MainContainer = styled.main`
-  ${tw`bg-cover flex text-white justify-start min-h-screen	 `}
-  background-image: url('https://assets.ccbp.in/frontend/react-js/home-lg-bg.png');
-  @media screen and (max-width: 567px) {
-    background-image: url("https://assets.ccbp.in/frontend/react-js/home-sm-bg.png");
-  }
+  ${tw`bg-cover flex text-white justify-start min-h-[90vh]	
+    bg-[url("https://assets.ccbp.in/frontend/react-js/home-sm-bg.png")]
+    md:bg-[url("https://assets.ccbp.in/frontend/react-js/home-lg-bg.png")]
+  `}
 `;
 
 export const Heading = styled.h1`

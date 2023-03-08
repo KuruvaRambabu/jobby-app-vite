@@ -32,6 +32,5 @@ export const InputLabel = styled.label`
 `;
 
 export const Input = styled.input`
-  ${tw`grow w-full h-10 p-2 mt-1 rounded-sm bg-transparent text-white`};
-  border: 1px solid #7e858e;
+  ${tw`grow w-full h-10 p-2 border-[1px] border-solid border-[#7e858e] mt-1 rounded-sm bg-transparent text-white`};
 `;

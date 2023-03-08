@@ -4,8 +4,7 @@ export const HeaderMainContainer = styled.header``;
 
 export const Nav = styled.nav``;
 export const HeaderUiEl = styled.ul`
-  ${tw`h-24	flex justify-between items-center flex-row px-10 p-0 m-0 md:p-2	`}
-  background-color: #272727;
+  ${tw` min-h-[10vh]	flex justify-between bg-[#272727] items-center flex-row px-10 p-0 m-0 md:p-2	`}
 `;
 export const HeaderLiEl = styled.li`
   ${tw`list-none  p-0 m-0`}
@@ -21,8 +20,7 @@ export const WebsiteLogo = styled.img`
 
 export const LogoutBtn = styled.button`
 
-${tw`w-24 h-7 text-white border-0 text-center rounded-md text-xs flex justify-center items-center font-medium cursor-pointer md:inline-flex hidden `}
-  background-color: #6366f1;
+${tw`w-24 h-7 bg-[#6366f1] text-white border-0 text-center rounded-md text-xs flex justify-center items-center font-medium cursor-pointer md:inline-flex hidden `}
 `;
 
 export const LogoutBtnMobile = styled.button`

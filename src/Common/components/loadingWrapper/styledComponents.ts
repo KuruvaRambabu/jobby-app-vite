@@ -1,9 +1,6 @@
-import styled from "styled-components";
+import tw, {styled} from "twin.macro"
 
 export const MainContainer = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
 
+${tw`flex justify-center items-center h-[80vh]`}
 `

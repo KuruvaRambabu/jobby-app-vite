@@ -36,8 +36,7 @@ export const InputSearchSection = styled.section`
 `;
 
 export const SearchContainer = styled.div`
-  ${tw`flex justify-center items-center w-full md:w-2/6`}
-  border: 2px solid #ffffff50;
+  ${tw`flex justify-center items-center border-[2px] border-solid border-[ #ffffff50] w-full md:w-2/6`}
 `;
 
 export const JobsSearchInputField = styled.input`
@@ -45,8 +44,7 @@ export const JobsSearchInputField = styled.input`
 `;
 
 export const SearchButton = styled.button`
-  ${tw`text-white border-0 w-8 text-center cursor-pointer grow h-10 flex justify-center items-center`}
-  background-color: #272727;
+  ${tw`text-white border-0 bg-[#272727] w-8 text-center cursor-pointer grow h-10 flex justify-center items-center`}
 `;
 
 export const JobsListSection = styled.div``;
@@ -56,16 +54,15 @@ export const JobsListUlElement = styled.ul`
 `;
 
 export const NoJobsFoundContainer = styled.div`
-
-${tw `flex justify-center items-center flex-col`}
+  ${tw`flex justify-center items-center flex-col`}
 `;
 
 export const NoJobsImg = styled.img`
-${tw `w-full md:w-2/4`}
+  ${tw`w-full md:w-2/4`}
 `;
 
 export const NoJobsHeading = styled.h1`
-${tw `text-3xl`}
+  ${tw`text-3xl`}
 `;
 
 export const NoJobsDescription = styled.p``;

@@ -1,10 +1,7 @@
 import tw, { styled } from "twin.macro";
 
 export const JobCardContainer = styled.li`
-
-${tw` m-4 list-none m-4 md:ml-0 rounded-lg shadow-md p-2 md:p-0`}
-background-color: #121212;
-  }
+  ${tw` m-4 list-none bg-[#121212] m-4 md:ml-0 rounded-lg shadow-md p-2 md:p-0`}
 `;
 
 export const Article = styled.article``;
@@ -74,6 +71,5 @@ export const DescriptionContent = styled.p`
 `;
 
 export const JobCardHr = styled.hr`
-  ${tw`mx-0 md:m-10 `}
-  color: #ffffff60;
+  ${tw`mx-0 md:m-10 text-[#ffffff60] `}
 `;

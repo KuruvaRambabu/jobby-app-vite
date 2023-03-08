@@ -1,4 +1,3 @@
-import './index.css'
 import { NotFoundContainer, NotFoundImg, NotFoundHeading, NotFoundDescription } from './styledComponents'
 
 const NotFound = () => (

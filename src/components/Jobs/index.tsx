@@ -14,7 +14,6 @@ import DisplayEmploymentTypeFilters from '../DisplayFilters'
 import SalaryRangeFilter from '../SalaryRange'
 import JobCard from '../JobCard'
 
-import './index.css'
 import { MainContainer, JobsRightSideSection, JobsContainer, JobsLeftSideSection, EmploymentFilterSection, EmploymentTypeUlEl, HorizontalLine, EmploymentTypeHeading, InputSearchSection, JobsSearchInputField, SearchButton, SearchContainer, JobsListSection, JobsListUlElement, NoJobsDescription, NoJobsFoundContainer, NoJobsHeading, NoJobsImg } from './styledComponents'
 
 interface JobsPropTypes {

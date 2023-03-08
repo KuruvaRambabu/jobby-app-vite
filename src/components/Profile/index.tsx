@@ -2,7 +2,6 @@ import { observer } from 'mobx-react'
 
 import apiConstants from '../../constants/apiConstants'
 
-import './index.css'
 import LoadingWrapper from '../../Common/components/loadingWrapper'
 import FailureView from '../../Common/components/FailureView'
 import { ProfileDetailsContainer, ProfileImg, ProfileName, ProfileShortDescription, ProfileMainContainer } from './styledComponents'
@@ -28,10 +27,10 @@ const Profile = observer((props: profilePropTypes) => {
 
   const renderSuccessView = () => {
     return (
-      <ProfileDetailsContainer className="profile-details-container">
-        <ProfileImg className="profile-pic" src={profileImageUrl} alt="profile" />
-        <ProfileName className="profile-name">{name}</ProfileName>
-        <ProfileShortDescription className="short-bio">{shortBio}</ProfileShortDescription>
+      <ProfileDetailsContainer >
+        <ProfileImg src={profileImageUrl} alt="profile" />
+        <ProfileName >{name}</ProfileName>
+        <ProfileShortDescription>{shortBio}</ProfileShortDescription>
       </ProfileDetailsContainer>
     )
   }
@@ -49,7 +48,7 @@ const Profile = observer((props: profilePropTypes) => {
     }
   }
 
-  return <ProfileMainContainer className="profile-card-container">{renderProfileDetails()}</ProfileMainContainer>
+  return <ProfileMainContainer>{renderProfileDetails()}</ProfileMainContainer>
 })
 
 export default Profile

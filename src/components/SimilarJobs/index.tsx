@@ -1,23 +1,36 @@
 import { Link } from "react-router-dom";
 
-import StartIcon from '../../Icons/StartIcon'
-import LocationIcon from '../../Icons/LocationIcon'
-import JobsIcon from '../../Icons/JobsIcon'
-import JobDataModel from '../../stores/JobStore/models/jobsDataModel'
+import StartIcon from "../../Icons/StartIcon";
+import LocationIcon from "../../Icons/LocationIcon";
+import JobsIcon from "../../Icons/JobsIcon";
+import JobDataModel from "../../stores/JobStore/models/jobsDataModel";
 import { JOBBY_APP_JOBS_PAGE_PATH } from "../../constants/navigationConstants";
 
-import './index.css'
 import { JobDetailsArticle, SimilarJobLiElement } from "./styledComponents";
-import { CompanyLogo, DescriptionContent, DescriptionHeading, EmploymentType, EmploymentTypeContainer, JobCardLogoContainer, JobDescriptionContainer, JobLocation, JobRoleContainer, LocationAndEmploymentTypeContainer, LocationAndSalaryContainer, LocationContainer, RoleHeading, RoleRating, RoleRatingContainer } from "../JobCard/styledComponents";
-
+import {
+  CompanyLogo,
+  DescriptionContent,
+  DescriptionHeading,
+  EmploymentType,
+  EmploymentTypeContainer,
+  JobCardLogoContainer,
+  JobDescriptionContainer,
+  JobLocation,
+  JobRoleContainer,
+  LocationAndEmploymentTypeContainer,
+  LocationAndSalaryContainer,
+  LocationContainer,
+  RoleHeading,
+  RoleRating,
+  RoleRatingContainer,
+} from "../JobCard/styledComponents";
 
 interface JobPropTypes {
-  job: JobDataModel
+  job: JobDataModel;
 }
 
-
 const SimilarJobs = (props: JobPropTypes) => {
-  const { job } = props
+  const { job } = props;
   const {
     companyUrl,
     employmentType,
@@ -25,35 +38,30 @@ const SimilarJobs = (props: JobPropTypes) => {
     location,
     rating,
     title,
-    id
-  } = job
+    id,
+  } = job;
   return (
     <SimilarJobLiElement>
-      <Link to={`${JOBBY_APP_JOBS_PAGE_PATH}/${id}`} className="job-details-similar-job-card">
+      <Link to={`${JOBBY_APP_JOBS_PAGE_PATH}/${id}`} className="no-underline">
         <JobDetailsArticle>
           <JobCardLogoContainer>
-            <CompanyLogo
-              src={companyUrl}
-              alt="similar job company logo"
-            />
+            <CompanyLogo src={companyUrl} alt="similar job company logo" />
             <JobRoleContainer>
               <RoleHeading>{title}</RoleHeading>
               <RoleRatingContainer>
                 <StartIcon />
-                <RoleRating >{rating}</RoleRating>
+                <RoleRating>{rating}</RoleRating>
               </RoleRatingContainer>
             </JobRoleContainer>
           </JobCardLogoContainer>
           <JobDescriptionContainer>
-            <DescriptionHeading>
-              Description
-            </DescriptionHeading>
+            <DescriptionHeading>Description</DescriptionHeading>
             <DescriptionContent>{jobDescription}</DescriptionContent>
           </JobDescriptionContainer>
-          <LocationAndEmploymentTypeContainer >
+          <LocationAndEmploymentTypeContainer>
             <LocationContainer>
               <LocationIcon />
-              <JobLocation >{location}</JobLocation>
+              <JobLocation>{location}</JobLocation>
             </LocationContainer>
             <EmploymentTypeContainer>
               <JobsIcon />
@@ -63,7 +71,7 @@ const SimilarJobs = (props: JobPropTypes) => {
         </JobDetailsArticle>
       </Link>
     </SimilarJobLiElement>
-  )
-}
+  );
+};
 
-export default SimilarJobs
+export default SimilarJobs;

@@ -1,8 +1,6 @@
 import { observer } from "mobx-react";
 import { Oval } from "react-loader-spinner";
-import GlobalStyles from "../../styles/GlobalStyles";
 
-import "./index.css";
 import {
   MainContainer,
   LoginFormContainer,

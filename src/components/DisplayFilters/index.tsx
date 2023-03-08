@@ -1,4 +1,3 @@
-import './index.css'
 import { EmploymentFiltersLiEl, InputCheckbox, CheckboxLabel } from './styledComponents'
 
 interface TypesOfEmployment {

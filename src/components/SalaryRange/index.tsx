@@ -1,4 +1,3 @@
-import './index.css'
 import { SalaryRangeFilterLiContainer, RadioInputField, RadioInputLabel } from './styledComponent'
 
 interface SalaryTypes {
@@ -16,14 +15,14 @@ const SalaryRangeFilter = (props: SalaryRangePropsTypes) => {
   const { salaryRangeId, label } = salary
 
   return (
-    <SalaryRangeFilterLiContainer className="salary-type-container">
+    <SalaryRangeFilterLiContainer>
       <RadioInputField
         onChange={onChangeSalaryRange}
         type="radio"
         name="Salary"
         id={salaryRangeId}
       />
-      <RadioInputLabel className="radio-lable" htmlFor={salaryRangeId}>
+      <RadioInputLabel htmlFor={salaryRangeId}>
         {label}
       </RadioInputLabel>
     </SalaryRangeFilterLiContainer>

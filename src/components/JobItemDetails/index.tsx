@@ -11,7 +11,6 @@ import SkillsDataModel from '../../stores/JobStore/models/skillsDataModel'
 import Skills from '../Skills'
 import SimilarJobs from '../SimilarJobs'
 
-import './index.css'
 
 import LoadingWrapper from '../../Common/components/loadingWrapper'
 import FailureView from '../../Common/components/FailureView'

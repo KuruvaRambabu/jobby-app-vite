@@ -72,6 +72,7 @@ const Login = observer((props: LoginPropTypes) => {
           <WebisteImg
             src="https://assets.ccbp.in/frontend/react-js/logo-img.png"
             alt="website logo"
+            data-testid="login-logo"
           />
         </WebisteLogoContainer>
         <Form onSubmit={onSubmitForm}>
@@ -81,7 +82,7 @@ const Login = observer((props: LoginPropTypes) => {
             <ErrorMessageText>{errorMessage.message}</ErrorMessageText>
           )}
           {isLoading ? (
-            <LoginBtn>
+            <LoginBtn data-testid="login-loader">
               <Oval
                 height={30}
                 width={30}

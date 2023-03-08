@@ -53,7 +53,7 @@ const JobCard = (props: JobCardPropTypes) => {
       >
         <Article>
           <JobCardLogoContainer>
-            <CompanyLogo src={companyUrl} alt="company logo" />
+            <CompanyLogo data-testid="company-logo" src={companyUrl} alt="company logo" />
             <JobRoleContainer>
               <RoleHeading>{title}</RoleHeading>
               <RoleRatingContainer>

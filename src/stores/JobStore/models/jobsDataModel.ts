@@ -7,7 +7,7 @@ class JobDataModel {
     jobDescription:string
     location:string
     packagePerAnnum:string
-    rating:string
+    rating:number
     title:string
     
     constructor(job:JobDataResponseObj) {

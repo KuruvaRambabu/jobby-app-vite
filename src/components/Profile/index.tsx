@@ -24,11 +24,12 @@ const Profile = observer((props: profilePropTypes) => {
 
   const { profileImageUrl, shortBio, name } = profileData
 
+  console.log(profileData)
 
   const renderSuccessView = () => {
     return (
       <ProfileDetailsContainer >
-        <ProfileImg src={profileImageUrl} alt="profile" />
+        <ProfileImg data-testid="profile-pic" src={profileImageUrl} alt="profile" />
         <ProfileName >{name}</ProfileName>
         <ProfileShortDescription>{shortBio}</ProfileShortDescription>
       </ProfileDetailsContainer>

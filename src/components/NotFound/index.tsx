@@ -5,6 +5,7 @@ const NotFound = () => (
     <NotFoundImg
       src="https://assets.ccbp.in/frontend/react-js/jobby-app-not-found-img.png"
       alt="not found"
+      data-testid="not-found"
     />
     <NotFoundHeading >Page Not Found</NotFoundHeading>
     <NotFoundDescription>

@@ -48,7 +48,7 @@ export interface JobDataResponseObj{
     job_description :string
     location:string
     package_per_annum:string
-    rating:string
+    rating:number
     title:string
 }
 

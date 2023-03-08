@@ -1,9 +1,10 @@
 import { fireEvent, getByPlaceholderText, getByText, render, screen } from "@testing-library/react"
+import userEvent from "@testing-library/user-event";
 import { BrowserRouter } from "react-router-dom";
+import { vi } from "vitest";
 import Login from ".";
-import { LoginFormContainer } from "./styledComponents";
 
-const routerWrapper = ({ children }) => <BrowserRouter>{children}</BrowserRouter>
+const routerWrapper = ({ children }: any) => <BrowserRouter>{children}</BrowserRouter>
 
 describe("Login component Test", () => {
 
@@ -144,40 +145,28 @@ describe("Login component Test", () => {
         expect(labelText).toBeInTheDocument()
     })
 
-    // it("should test login userName change", () => {
-    //     const { getByLabelText } = render(<Login
-    //         username=""
-    //         password=""
-    //         setPassword={setPassword}
-    //         setUsername={setUsername}
-    //         isLoading={false}
-    //         isError={true}
-    //         onSubmitForm={onSubmitForm}
-    //         errorMessage={{ message: "Invalid username" }}
-    //     />, { wrapper: routerWrapper });
+    it("should test on form submission", async () => {
+        const submitFormFn = vi.fn()
 
-    //     const input = getByLabelText('USERNAME');
-    //     fireEvent.change(input, { target: { value: 'Rambabu' } });
-    //     expect(input.value).toBe("Rambabu")
-    // })
+        const { getByRole, getByLabelText } = render(<Login
 
-    // it("should test login password change", () => {
-    //     const { getByLabelText } = render(<Login
-    //         username=""
-    //         password=""
-    //         setPassword={setPassword}
-    //         setUsername={setUsername}
-    //         isLoading={false}
-    //         isError={true}
-    //         onSubmitForm={onSubmitForm}
-    //         errorMessage={{ message: "Invalid username" }}
-    //     />, { wrapper: routerWrapper });
+            username={username}
+            password={password}
+            setPassword={setPassword}
+            setUsername={setUsername}
+            isLoading={false}
+            isError={false}
+            onSubmitForm={submitFormFn}
+            errorMessage={""}
+        />, {
+            wrapper: routerWrapper,
+        });
 
-    //     const input = getByLabelText('PASSWORD');
-    //     fireEvent.change(input, { target: { value: 'Rambabu' } });
-    //     const inputNode = screen.getByPlaceholderText('Password')
-    //     expect(input).toBeInTheDocument()
-    //     console.log(inputNode)
-    // })
 
+        const submitBtn = getByRole('button', { name: "Login" })
+        fireEvent.submit(submitBtn);
+        console.log(submitBtn)
+        expect(submitFormFn).toBeCalledTimes(1);
+
+    })
 })

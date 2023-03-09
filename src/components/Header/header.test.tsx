@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, MemoryRouter, Route, Routes } from "react-router-dom";
 import userEvent from '@testing-library/user-event'
@@ -14,6 +14,7 @@ import Home from "../Home";
 import Layout from "../Layout";
 import Login from "../Login";
 import ProtectedRoute from "../ProtectedRoute";
+import Cookies from "js-cookie";
 
 const queryClient = new QueryClient();
 
@@ -98,39 +99,83 @@ describe("Header component Tests", () => {
     //     expect(window.location.pathname).toBe("/login");
     // });
 
-    // it("should test navigate to jobs Route on Click Jobs", async () => {
-    //     const user = userEvent.setup()
-    //     const MockDestination = () => <div>Mock Destination</div>;
-    //     const { getByText, getByPlaceholderText, getAllByRole } = render(
-    //         <MemoryRouter initialEntries={["/"]}>
-    //             <QueryClientProvider client={queryClient}>
-    //                 <LoginStoreProvider>
-    //                     <JobStoreProvider>
-    //                         <Routes>
-    //                             <Route path={JOBBY_APP_HOME_PATH} element={<Layout />}>
-    //                                 <Route path="/" element={<Header />} />
-    //                                 <Route path="/jobs" element={<MockDestination />} />
-    //                             </Route>
-    //                         </Routes>
-    //                     </JobStoreProvider>
-    //                 </LoginStoreProvider>
-    //             </QueryClientProvider>
-    //         </MemoryRouter>
-    //     );
+    it("should test navigate to jobs Route on Click Jobs", async () => {
+        const user = userEvent.setup()
+        const MockDestination = () => <div>Mock Destination</div>;
+        Cookies.set("jwt_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsIiwicm9sZSI6IlBSSU1FX1VTRVIiLCJpYXQiOjE2MjMwNjU1MzJ9.D13s5wN3Oh59aa_qtXMo3Ec4wojOx0EZh8Xr5C5sRkU");
+        const { getByText, getByPlaceholderText, getAllByRole } = render(
+            <MemoryRouter initialEntries={["/"]}>
+                <QueryClientProvider client={queryClient}>
+                    <LoginStoreProvider>
+                        <JobStoreProvider>
+                            <Routes>
+                                <Route path={JOBBY_APP_HOME_PATH} element={<Layout />}>
+                                    <Route path="/" element={<HomeRoute />} />
+                                    <Route path="/jobs" element={<MockDestination />} />
+                                </Route>
+                            </Routes>
+                        </JobStoreProvider>
+                    </LoginStoreProvider>
+                </QueryClientProvider>
+            </MemoryRouter>
+        );
 
-    //     await user.click(screen.getByRole("button", { name: /Logout/i }))
-    //     expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
-    //     const findJobsBtn = getAllByRole("link", { name: "Logout" })
+        // user.click(screen.getByRole("button", { name: "Logout" }))
+        // expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
+        const findJobsBtn = screen.getAllByText("Logout")
+        // user.click(findJobsBtn)
 
-    //     // findJobsBtn.forEach(link => {
-    //     //     fireEvent.click(link);
-    //     //     expect(history.location.pathname).toBe('/jobs');
-    //     //     // Reset the history object for the next iteration
-    //     //     history.push('/');
-    //     // })
+        findJobsBtn.forEach(async link => {
+            fireEvent.click(link);
+            await waitFor(() => {
 
-    //     // fireEvent.click(findJobsBtn)
-    //     // expect(history.location.pathname).toBe('/jobs');
-    // })
+                expect(window.location.pathname).toBe('/login');
+            })
+            // Reset the history object for the next iteration
+        })
+
+        // fireEvent.click(findJobsBtn)
+        // expect(history.location.pathname).toBe('/jobs');
+    })
+
+
+    it("should test navigate to jobs Route on Click Jobs", async () => {
+        const user = userEvent.setup()
+        const MockDestination = () => <div>Mock Destination</div>;
+        Cookies.set("jwt_token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InJhaHVsIiwicm9sZSI6IlBSSU1FX1VTRVIiLCJpYXQiOjE2MjMwNjU1MzJ9.D13s5wN3Oh59aa_qtXMo3Ec4wojOx0EZh8Xr5C5sRkU");
+        const { getByText, getByPlaceholderText, getAllByRole } = render(
+            <MemoryRouter initialEntries={["/"]}>
+                <QueryClientProvider client={queryClient}>
+                    <LoginStoreProvider>
+                        <JobStoreProvider>
+                            <Routes>
+                                <Route path={JOBBY_APP_HOME_PATH} element={<Layout />}>
+                                    <Route path="/" element={<HomeRoute />} />
+                                    <Route path="/jobs" element={<MockDestination />} />
+                                </Route>
+                            </Routes>
+                        </JobStoreProvider>
+                    </LoginStoreProvider>
+                </QueryClientProvider>
+            </MemoryRouter>
+        );
+
+        // user.click(screen.getByRole("button", { name: "Logout" }))
+        // expect(screen.getByText(/you are on the about page/i)).toBeInTheDocument()
+        const findJobsBtn = screen.getAllByText("Jobds")
+        // user.click(findJobsBtn)
+
+        findJobsBtn.forEach(async link => {
+            fireEvent.click(link);
+            await waitFor(() => {
+
+                expect(window.location.pathname).toBe('/jobssadf');
+            })
+            // Reset the history object for the next iteration
+        })
+
+        // fireEvent.click(findJobsBtn)
+        // expect(history.location.pathname).toBe('/jobs');
+    })
 });
 

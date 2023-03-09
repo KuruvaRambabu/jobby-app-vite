@@ -45,7 +45,7 @@ const SimilarJobs = (props: JobPropTypes) => {
       <Link to={`${JOBBY_APP_JOBS_PAGE_PATH}/${id}`} className="no-underline">
         <JobDetailsArticle>
           <JobCardLogoContainer>
-            <CompanyLogo src={companyUrl} alt="similar job company logo" />
+            <CompanyLogo data-testid="company-logo" src={companyUrl} alt="similar job company logo" />
             <JobRoleContainer>
               <RoleHeading>{title}</RoleHeading>
               <RoleRatingContainer>

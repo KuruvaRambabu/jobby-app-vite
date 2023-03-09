@@ -6,7 +6,7 @@ class JobDataModel {
     id:string
     jobDescription:string
     location:string
-    packagePerAnnum:string
+    packagePerAnnum?:string
     rating:number
     title:string
     

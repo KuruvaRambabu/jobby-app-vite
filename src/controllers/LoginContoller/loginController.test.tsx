@@ -6,12 +6,24 @@ import {
     waitFor,
 } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { BrowserRouter, Routes, useNavigate } from "react-router-dom";
+import {
+    BrowserRouter,
+    MemoryRouter,
+    Route,
+    Routes,
+    useNavigate,
+} from "react-router-dom";
 import LoginController from ".";
 
 import { useloginAPI } from "../../hooks/useloginAPI";
 import { LoginStoreProvider } from "../../hooks/useLoginStore";
 import { vi } from "vitest";
+import Header from "../../components/Header";
+import { JobStoreProvider } from "../../hooks/useJobStore";
+import Home from "../../components/Home";
+import LoginRoute from "../../routes/LoginRoute";
+import Login from "../../components/Login";
+import ProtectedRoute from "../../components/ProtectedRoute";
 
 const queryClient = new QueryClient();
 
@@ -24,7 +36,7 @@ const routerWrapper = ({ children }: any) => (
 );
 
 describe("Login Controller Tests", () => {
-    it.skip("should test on Change username", () => {
+    it("should test on Change username", () => {
         const { getByLabelText } = render(<LoginController />, {
             wrapper: routerWrapper,
         });
@@ -36,7 +48,7 @@ describe("Login Controller Tests", () => {
         expect(input.value).toBe("Rambabu");
     });
 
-    it.skip("should test on Change password", () => {
+    it("should test on Change password", () => {
         const { getByLabelText } = render(<LoginController />, {
             wrapper: routerWrapper,
         });
@@ -47,7 +59,7 @@ describe("Login Controller Tests", () => {
         });
         expect(input.value).toBe("Rambabu");
     });
-    it.skip("should test on form submit loader view", async () => {
+    it("should test on form submit loader view", async () => {
         const {
             getByPlaceholderText,
             getByRole,
@@ -78,51 +90,38 @@ describe("Login Controller Tests", () => {
         waitFor(() => getByLabelText("login-loader"));
     });
 
-    it("should test on form submission success view", async () => {
-        // const {
-        //     getByPlaceholderText,
-        //     getByRole,
-        //     queryByRole,
-        //     queryByLabelText,
-        //     getByTestId,
-        //     debug,
-        //     getByLabelText,
-        // } = render(
+    it("should test login success flow", () => {
+        const MockDestination = () => <div>Mock Destination</div>;
+        const { getByText, getByPlaceholderText, getByRole } = render(
+            <MemoryRouter>
+                <QueryClientProvider client={queryClient}>
+                    <LoginStoreProvider>
+                        <JobStoreProvider>
+                            <Routes>
+                                <Route path="/login" element={<LoginController />} />
+                                <Route element={<ProtectedRoute />}>
+                                    <Route path="/" element={<MockDestination />} />
+                                </Route>
+                            </Routes>
+                        </JobStoreProvider>
+                    </LoginStoreProvider>
+                </QueryClientProvider>
+            </MemoryRouter>
+        );
 
-        //     <BrowserRouter>
-        //         <QueryClientProvider client={queryClient}>
-        //             <LoginStoreProvider>
-        //                 <LoginController />
-        //             </LoginStoreProvider>
-        //         </QueryClientProvider>
-        //     </BrowserRouter>);
+        const username = "test-user";
+        const password = "test-password";
 
-        // const username = "test-user";
-        // const password = "test-password";
+        const usernameField = getByPlaceholderText("Username");
+        const passwordField = getByPlaceholderText("Password");
+        const signInButton = getByRole("button", {
+            name: "Login",
+        });
 
-        // const mockSuccessPromise = new Promise(function (resolve, reject) {
-        //     resolve("");
-        // });
+        fireEvent.change(usernameField, { target: { value: username } });
+        fireEvent.change(passwordField, { target: { value: password } });
+        fireEvent.click(signInButton);
 
-        // const usernameField = getByPlaceholderText("Username");
-        // const passwordField = getByPlaceholderText("Password");
-        // const signInButton = getByRole("button", {
-        //     name: "Login",
-        // });
-        // fireEvent.change(usernameField, {
-        //     target: { value: username },
-        // });
-        // fireEvent.change(passwordField, {
-        //     target: { value: password },
-        // });
-        // fireEvent.click(signInButton);
-
-        // const mockSignInAPI = vi.fn();
-        // mockSignInAPI.mockReturnValue(mockSuccessPromise);
-
-        // const { mutate } = renderHook(() => useloginAPI());
-        // console.log(mutate)
-
-        // mutate({ username, password });
+        expect(window.location.pathname).toBe("/");
     });
 });

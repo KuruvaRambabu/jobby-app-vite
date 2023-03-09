@@ -1,6 +1,5 @@
 import SkillsDataModel from '../../stores/JobStore/models/SkillsDataModel/skillsDataModel'
 
-import './index.css'
 import { SkillsContainer, SkillImg, SkillName } from './styledComponents'
 
 
@@ -12,9 +11,9 @@ const Skills = (props: SkillsPropTypes) => {
   const { skill } = props
   const { imageUrl, name } = skill
   return (
-    <SkillsContainer className="skill-container">
-      <SkillImg className="skill-logo" src={imageUrl} alt={name} />
-      <SkillName className="skill-name">{name}</SkillName>
+    <SkillsContainer>
+      <SkillImg data-testid="skill-image" src={imageUrl} alt={name} />
+      <SkillName>{name}</SkillName>
     </SkillsContainer>
   )
 }

@@ -13,7 +13,7 @@ const jobsData = {
   package_per_annum: "10 LPA",
 };
 
-describe("Test cases for Profile Details Model", () => {
+describe("Test cases for Jobs Data Model", () => {
   let jobsDataModel: JobDataModel;
 
   beforeEach(() => (jobsDataModel = new JobDataModel(jobsData)));

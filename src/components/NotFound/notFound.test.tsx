@@ -5,7 +5,7 @@ import NotFound from ".";
 
 const queryClient = new QueryClient();
 
-const routerWrapper = ({ children }) => (
+const routerWrapper = ({ children }: any) => (
     <BrowserRouter>
         <QueryClientProvider client={queryClient}>
             {children}

@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { vi } from "vitest";
 import DisplayEmploymentTypeFilters from ".";
 
-const routerWrapper = ({ children }) => (
+const routerWrapper = ({ children }: any) => (
     <BrowserRouter>{children}</BrowserRouter>
 );
 

@@ -6,7 +6,6 @@ import LocationIcon from "../../Icons/LocationIcon";
 import JobDataModel from "../../stores/JobStore/models/JobsDataModel/jobsDataModel";
 import { JOBBY_APP_JOBS_PAGE_PATH } from "../../constants/navigationConstants";
 
-import "./index.css";
 import {
   Article,
   CompanyLogo,
@@ -49,7 +48,7 @@ const JobCard = (props: JobCardPropTypes) => {
     <JobCardContainer>
       <Link
         to={`${JOBBY_APP_JOBS_PAGE_PATH}/${id}`}
-        className="job-card-link-styles"
+        className="no-underline text-white p-10"
       >
         <Article>
           <JobCardLogoContainer>

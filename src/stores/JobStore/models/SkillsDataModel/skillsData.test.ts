@@ -6,7 +6,7 @@ const skillsData = {
   name: "Docker",
 };
 
-describe("Test cases for Profile Details Model", () => {
+describe("Test cases for Skills Data Model", () => {
   let skillsDataModel: SkillsDataModel;
 
   beforeEach(() => (skillsDataModel = new SkillsDataModel(skillsData)));

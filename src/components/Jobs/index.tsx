@@ -21,7 +21,6 @@ interface JobsPropTypes {
   onSelectEmploymentType: (event: React.ChangeEvent<HTMLInputElement>) => void
   onChangeSalaryRange: (event: React.ChangeEvent<HTMLInputElement>) => void
   onChangeSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void
-  getJobsDataApi: any
   jobList: any
   jobsApiStatus: string
   onClickRetry: () => void

@@ -52,7 +52,7 @@ const JobsController = () => {
             onChangeSearchInput={onChangeSearchInput}
             jobList={jobList}
             jobsApiStatus={jobsApiStatus}
-            onClickRetry={onClickRetry} getJobsDataApi={undefined} />
+            onClickRetry={onClickRetry} />
     )
 }
 

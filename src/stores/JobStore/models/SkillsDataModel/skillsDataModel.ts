@@ -1,4 +1,4 @@
-import { SkillObj } from "../../types"
+import { SkillObj } from "../../../types"
 
 class SkillsDataModel {
     imageUrl:string

@@ -1,4 +1,4 @@
-import { profileDetailsTypes } from "../../types"
+import { profileDetailsTypes } from "../../../types"
 
 class ProfileDetailsModel {
     name:string

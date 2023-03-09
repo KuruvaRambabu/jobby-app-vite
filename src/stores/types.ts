@@ -35,7 +35,7 @@ export interface JobDetailsDataResponseObj{
     job_description:string
     location:string
     package_per_annum:string
-    rating:string
+    rating:number
     skills:Array<SkillObj>
     title:string
     life_at_company:LifeAtCompanyTypes

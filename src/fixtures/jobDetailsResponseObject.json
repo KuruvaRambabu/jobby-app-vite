@@ -1,0 +1,41 @@
+{
+  "companyLogoUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.png",
+  "companyWebsiteUrl": "https://about.netflix.com/en",
+  "employmentType": "Internship",
+  "id": "bb95e51b-b1b2-4d97-bee4-1d5ec2b96751",
+  "jobDescription": "We are looking for a DevOps Engineer with a minimum of 5 years of industry experience, preferably working in the financial IT community. The position in the team is focused on delivering exceptional services to both BU and Dev partners to minimize/avoid any production outages. The role will focus on production support.",
+  "lifeAtCompany": {
+    "description": "Our core philosophy is people over process. Our culture has been instrumental to our success. It has helped us attract and retain stunning colleagues, making work here more satisfying. Entertainment, like friendship, is a fundamental human need, and it changes how we feel and gives us common ground. We want to entertain the world.",
+    "imageUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/life-netflix-img.png"
+  },
+  "location": "Delhi",
+  "packagePerAnnum": "10 LPA",
+  "rating": 4,
+  "skills": [
+    {
+      "imageUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/docker-img.png",
+      "name": "Docker"
+    },
+    {
+      "imageUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/kubernetes-img.png",
+      "name": "Kubernetes"
+    },
+    {
+      "imageUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/terraform-img.png",
+      "name": "Terraform"
+    },
+    {
+      "imageUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/jenkins-img.png",
+      "name": "Jenkins"
+    },
+    {
+      "imageUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/go-img.png",
+      "name": "GO"
+    },
+    {
+      "imageUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/ansible-img.png",
+      "name": "Ansible"
+    }
+  ],
+  "title": "Devops Engineer"
+}

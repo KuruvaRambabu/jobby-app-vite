@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import StartIcon from "../../Icons/StartIcon";
 import LocationIcon from "../../Icons/LocationIcon";
 import JobsIcon from "../../Icons/JobsIcon";
-import JobDataModel from "../../stores/JobStore/models/jobsDataModel";
+import JobDataModel from "../../stores/JobStore/models/JobsDataModel/jobsDataModel";
 import { JOBBY_APP_JOBS_PAGE_PATH } from "../../constants/navigationConstants";
 
 import { JobDetailsArticle, SimilarJobLiElement } from "./styledComponents";

@@ -1,4 +1,4 @@
-import { JobDataResponseObj } from "../../types"
+import { JobDataResponseObj } from "../../../types"
 
 class JobDataModel {
     companyUrl:string

@@ -1,0 +1,29 @@
+[
+  {
+    "companyUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.png",
+    "employmentType": "Freelance",
+    "id": "2b40029d-e5a5-48cc-84a6-b6e12d25625d",
+    "jobDescription": "The Experimentation Platform team builds internal tools with a big impact across the company. We are looking to add a UI engineer to our team to continue to improve our experiment analysis workflow and tools. Ideal candidates will be excited by direct contact with our users, fast feedback, and quick iteration.",
+    "location": "Delhi",
+    "rating": 4,
+    "title": "Frontend Engineer"
+  },
+  {
+    "companyUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.png",
+    "employmentType": "Part Time",
+    "id": "3cc666e5-23a5-4981-ade2-61115f95ac0b",
+    "jobDescription": "The Experimentation Platform team builds internal tools with a big impact across the company. We are looking to add a UI engineer to our team to continue to improve our experiment analysis workflow and tools. Ideal candidates will be excited by direct contact with our users, fast feedback, and quick iteration.",
+    "location": "Mumbai",
+    "rating": 5,
+    "title": "Frontend Engineer"
+  },
+  {
+    "companyUrl": "https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.png",
+    "employmentType": "Freelance",
+    "id": "96e1ddb6-930c-4ca4-a80e-998ce410c6cf",
+    "jobDescription": "The Experimentation Platform team builds internal tools with a big impact across the company. We are looking to add a UI engineer to our team to continue to improve our experiment analysis workflow and tools. Ideal candidates will be excited by direct contact with our users, fast feedback, and quick iteration.",
+    "location": "Bangalore",
+    "rating": 4,
+    "title": "Frontend Engineer"
+  }
+]

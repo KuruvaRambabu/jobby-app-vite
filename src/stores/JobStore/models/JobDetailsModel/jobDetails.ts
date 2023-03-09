@@ -1,6 +1,6 @@
-import { JobDetailsDataResponseObj, SkillObj } from '../../types'
+import { JobDetailsDataResponseObj, SkillObj } from '../../../types'
 
-import SkillsDataModel from './skillsDataModel'
+import SkillsDataModel from '../SkillsDataModel/skillsDataModel'
 
 class JobDetailsModel {
   companyLogoUrl:string
@@ -14,7 +14,7 @@ class JobDetailsModel {
   }
   location:string
   packagePerAnnum:string
-  rating:string
+  rating:number
   skills:Array<SkillsDataModel>
   title:string
 

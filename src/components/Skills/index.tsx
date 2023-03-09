@@ -1,4 +1,4 @@
-import SkillsDataModel from '../../stores/JobStore/models/skillsDataModel'
+import SkillsDataModel from '../../stores/JobStore/models/SkillsDataModel/skillsDataModel'
 
 import './index.css'
 import { SkillsContainer, SkillImg, SkillName } from './styledComponents'

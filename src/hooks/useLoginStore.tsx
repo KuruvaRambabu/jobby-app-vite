@@ -6,7 +6,6 @@ const LoginStoreContext = createContext<LoginStore | null>(null)
 export const LoginStoreProvider = (props: { children: ReactElement }) => {
     const { children } = props
     const loginStore = useRef(new LoginStore())
-    console.log("provider", loginStore)
     return (<LoginStoreContext.Provider value={loginStore.current}>{children}</LoginStoreContext.Provider>
     )
 }
@@ -15,7 +14,6 @@ export const LoginStoreProvider = (props: { children: ReactElement }) => {
 const useLoginStore = () => {
     const loginStore = useContext(LoginStoreContext)
 
-    console.log("hook", loginStore)
     if (!loginStore) {
         throw new Error('Provide store in Provider')
     }

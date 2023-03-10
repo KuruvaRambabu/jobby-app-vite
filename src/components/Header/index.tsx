@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 import { Link, useNavigate } from "react-router-dom";
 
 import {
@@ -34,6 +36,8 @@ const Header = () => {
     navigate(JOBBY_APP_LOGIN_PATH, { replace: true });
   };
 
+  const { t } = useTranslation()
+
   return (
     <HeaderMainContainer>
       <Nav>
@@ -53,7 +57,7 @@ const Header = () => {
                 className="m-5 text-white bg-transparent border-0 
               cursor-pointer text-[20px] font-medium no-underline hidden md:inline-flex"
               >
-                Home
+                {t("headerStrings:homeBtnText")}
               </Link>
               <Link
                 to={JOBBY_APP_HOME_PATH}
@@ -69,7 +73,7 @@ const Header = () => {
                 className="m-5 text-white bg-transparent border-0 
               cursor-pointer text-[20px] font-medium no-underline hidden md:inline-flex"
               >
-                Jobs
+                {t("headerStrings:jobsBtnText")}
               </Link>
               <Link
                 to={JOBBY_APP_JOBS_PAGE_PATH}
@@ -82,7 +86,7 @@ const Header = () => {
           </ButtonContainer>
           <HeaderLiEl>
             <LogoutBtn onClick={onClickLogoutBtn} type="button">
-              Logout
+              {t("headerStrings:logoutBtnText")}
             </LogoutBtn>
             <LogoutBtnMobile onClick={onClickLogoutBtn} type="button">
               <LogoutIcon />

@@ -192,7 +192,6 @@ describe("Login component Test", () => {
 
         const submitBtn = getByRole("button", { name: "Login" });
         fireEvent.submit(submitBtn);
-        console.log(submitBtn);
         expect(submitFormFn).toBeCalledTimes(1);
     });
 

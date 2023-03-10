@@ -15,6 +15,7 @@ import SalaryRangeFilter from '../SalaryRange'
 import JobCard from '../JobCard'
 
 import { MainContainer, JobsRightSideSection, JobsContainer, JobsLeftSideSection, EmploymentFilterSection, EmploymentTypeUlEl, HorizontalLine, EmploymentTypeHeading, InputSearchSection, JobsSearchInputField, SearchButton, SearchContainer, JobsListSection, JobsListUlElement, NoJobsDescription, NoJobsFoundContainer, NoJobsHeading, NoJobsImg } from './styledComponents'
+import { useTranslation } from 'react-i18next'
 
 interface JobsPropTypes {
   searchInput: string
@@ -37,6 +38,8 @@ const Jobs = observer((props: JobsPropTypes) => {
     jobsApiStatus,
     onClickRetry
   } = props
+
+  const { t } = useTranslation()
 
   const renderNoJobsView = () => (
     <NoJobsFoundContainer>
@@ -104,20 +107,22 @@ const Jobs = observer((props: JobsPropTypes) => {
       <ProfileController />
       <HorizontalLine />
       <EmploymentFilterSection>
-        <EmploymentTypeHeading >Type of Employment</EmploymentTypeHeading>
+        <EmploymentTypeHeading >{t("jobsScreenStrings:typeOfEmployment")}</EmploymentTypeHeading>
         <EmploymentTypeUlEl>
-          {employmentTypesList.map(type => (
-            <DisplayEmploymentTypeFilters
-              onSelectEmploymentType={onSelectEmploymentType}
-              key={type.employmentTypeId}
-              type={type}
-            />
-          ))}
+          {
+            employmentTypesList.map(type => (
+              <DisplayEmploymentTypeFilters
+                onSelectEmploymentType={onSelectEmploymentType}
+                key={type.employmentTypeId}
+                type={type}
+              />
+            ))
+          }
         </EmploymentTypeUlEl>
       </EmploymentFilterSection>
       <HorizontalLine />
       <EmploymentFilterSection >
-        <EmploymentTypeHeading>Salary Range</EmploymentTypeHeading>
+        <EmploymentTypeHeading>{t("jobsScreenStrings:salaryRangeFilter")}</EmploymentTypeHeading>
         <EmploymentTypeUlEl>
           {salaryRangesList.map(salaryRange => (
             <SalaryRangeFilter

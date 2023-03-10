@@ -24,7 +24,6 @@ const Profile = observer((props: profilePropTypes) => {
 
   const { profileImageUrl, shortBio, name } = profileData
 
-  console.log(profileData)
 
   const renderSuccessView = () => {
     return (

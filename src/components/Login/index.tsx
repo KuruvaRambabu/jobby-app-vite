@@ -1,4 +1,5 @@
 import { observer } from "mobx-react";
+import { useTranslation } from "react-i18next";
 import { Oval } from "react-loader-spinner";
 
 import {
@@ -25,6 +26,8 @@ interface LoginPropTypes {
 }
 
 const Login = observer((props: LoginPropTypes) => {
+  const { t, i18n } = useTranslation();
+
   const {
     onSubmitForm,
     isLoading,
@@ -38,12 +41,12 @@ const Login = observer((props: LoginPropTypes) => {
 
   const renderUsernameInput = () => (
     <>
-      <InputLabel htmlFor="username">USERNAME</InputLabel>
+      <InputLabel htmlFor="username">{t('loginModule:userNameLabel')}</InputLabel>
       <Input
-        type="text"
+        type={t('loginModule:usernameInputPlaceholderText')}
         id="username"
         value={username}
-        placeholder="Username"
+        placeholder={t('loginModule:usernameInputPlaceholderText')}
         onChange={setUsername}
       />
     </>
@@ -52,14 +55,13 @@ const Login = observer((props: LoginPropTypes) => {
   const renderPasswordInput = () => (
     <>
       <InputLabel className="input-lable" htmlFor="password">
-        PASSWORD
+        {t('loginModule:passwordLabel')}
       </InputLabel>
       <Input
-        type="password"
-        className="password-input input"
+        type={t('loginModule:')}
         id="password"
         value={password}
-        placeholder="Password"
+        placeholder={t('loginModule:passwordInputPlaceholderText')}
         onChange={setPassword}
       />
     </>
@@ -94,7 +96,7 @@ const Login = observer((props: LoginPropTypes) => {
               />
             </LoginBtn>
           ) : (
-            <LoginBtn type="submit">Login</LoginBtn>
+            <LoginBtn type={t('loginModule:passwordInputPlaceholderText')}>{t('loginModule:loginButtonName')}</LoginBtn>
           )}
         </Form>
       </LoginFormContainer>

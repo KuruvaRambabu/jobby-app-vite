@@ -8,7 +8,6 @@ const JobStoreContext = createContext<JobsStore | null>(null)
 export const JobStoreProvider = (props: { children: ReactElement }) => {
     const { children } = props
     const jobStore = useRef(new JobsStore())
-    console.log(jobStore.current)
 
     return (<JobStoreContext.Provider value={jobStore.current}>{children}</JobStoreContext.Provider>
     )

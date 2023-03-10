@@ -14,14 +14,13 @@ class JobsServiceAPI implements JobsServiceInterface {
   ) => {
     const employmentFilters = employementFilters.join(",");
     const jwtToken = Cookies.get("jwt_token");
-    const url = `${this.api}/jobs?employment_type=${employmentFilters}&minimum_package=${salaryRangeFilter}&search=${searchInput}`;
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
       },
       method: "GET",
     };
-    const response = await fetch(url, options);
+    const response = await fetch("jobs", options);
     const data = await response.json();
 
     if (!response.ok) {
@@ -33,7 +32,7 @@ class JobsServiceAPI implements JobsServiceInterface {
   getProfileApi = async () => {
     const jwtToken = Cookies.get("jwt_token");
 
-    const url = `${this.api}/profile`;
+    const url = `/profile`;
     const options = {
       headers: {
         Authorization: `Bearer ${jwtToken}`,
@@ -50,7 +49,7 @@ class JobsServiceAPI implements JobsServiceInterface {
   };
 
   getJobDetailsApi = async (id: string | undefined) => {
-    const url = `${this.api}/jobs/${id}`;
+    const url = `/jobs/${id}`;
     const jwtToken = Cookies.get("jwt_token");
 
     const options = {

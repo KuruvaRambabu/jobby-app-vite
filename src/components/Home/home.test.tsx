@@ -3,17 +3,13 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, MemoryRouter, Route, Routes } from "react-router-dom";
 import Home from ".";
 import { JOBBY_APP_HOME_PATH } from "../../constants/navigationConstants";
-import LoginController from "../../controllers/LoginContoller";
 import { JobStoreProvider } from "../../hooks/useJobStore";
 import { LoginStoreProvider } from "../../hooks/useLoginStore";
-import HomeRoute from "../../routes/HomeRoute";
-import Jobs from "../Jobs";
 import Layout from "../Layout";
-import ProtectedRoute from "../ProtectedRoute";
 
 const queryClient = new QueryClient()
 
-const routerWrapper = ({ children }) => <BrowserRouter>{children}</BrowserRouter>
+const routerWrapper = ({ children }: any) => <BrowserRouter>{children}</BrowserRouter>
 
 describe("Home component", () => {
     it("should have Heading", () => {

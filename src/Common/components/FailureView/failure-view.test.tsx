@@ -1,9 +1,6 @@
 import {
     fireEvent,
-    getByPlaceholderText,
-    getByText,
     render,
-    screen,
 } from "@testing-library/react";
 
 import { BrowserRouter } from "react-router-dom";
@@ -11,7 +8,7 @@ import FailureView from ".";
 
 import { vi } from "vitest";
 
-const routerWrapper = ({ children }) => (
+const routerWrapper = ({ children }: any) => (
     <BrowserRouter>{children}</BrowserRouter>
 );
 

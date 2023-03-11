@@ -1,34 +1,51 @@
-import { observer } from 'mobx-react'
+import { useTranslation } from "react-i18next";
+import { observer } from "mobx-react";
 
-import apiConstants from '../../constants/apiConstants'
-import employmentTypesList from '../../constants/employmentTypeConstants'
-import salaryRangesList from '../../constants/salaryRangeConstants'
-import JobsSearchIcon from '../../Icons/SearchIcon'
-import JobDataModel from '../../stores/JobStore/models/JobsDataModel/jobsDataModel'
+import apiConstants from "../../constants/apiConstants";
+import employmentTypesList from "../../constants/employmentTypeConstants";
+import salaryRangesList from "../../constants/salaryRangeConstants";
+import JobsSearchIcon from "../../Icons/SearchIcon";
+import JobDataModel from "../../stores/JobStore/models/JobsDataModel/jobsDataModel";
+import LoadingWrapper from "../../Common/components/loadingWrapper";
+import FailureView from "../../Common/components/FailureView";
+import ProfileController from "../../controllers/ProfileController";
 
-import LoadingWrapper from '../../Common/components/loadingWrapper'
-import FailureView from '../../Common/components/FailureView'
+import DisplayEmploymentTypeFilters from "../DisplayFilters";
+import SalaryRangeFilter from "../SalaryRange";
+import JobCard from "../JobCard";
 
-import ProfileController from '../../controllers/ProfileController'
-import DisplayEmploymentTypeFilters from '../DisplayFilters'
-import SalaryRangeFilter from '../SalaryRange'
-import JobCard from '../JobCard'
-
-import { MainContainer, JobsRightSideSection, JobsContainer, JobsLeftSideSection, EmploymentFilterSection, EmploymentTypeUlEl, HorizontalLine, EmploymentTypeHeading, InputSearchSection, JobsSearchInputField, SearchButton, SearchContainer, JobsListSection, JobsListUlElement, NoJobsDescription, NoJobsFoundContainer, NoJobsHeading, NoJobsImg } from './styledComponents'
-import { useTranslation } from 'react-i18next'
+import {
+  MainContainer,
+  JobsRightSideSection,
+  JobsContainer,
+  JobsLeftSideSection,
+  EmploymentFilterSection,
+  EmploymentTypeUlEl,
+  HorizontalLine,
+  EmploymentTypeHeading,
+  InputSearchSection,
+  JobsSearchInputField,
+  SearchButton,
+  SearchContainer,
+  JobsListSection,
+  JobsListUlElement,
+  NoJobsDescription,
+  NoJobsFoundContainer,
+  NoJobsHeading,
+  NoJobsImg,
+} from "./styledComponents";
 
 interface JobsPropTypes {
-  searchInput: string
-  onSelectEmploymentType: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onChangeSalaryRange: (event: React.ChangeEvent<HTMLInputElement>) => void
-  onChangeSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void
-  jobList: any
-  jobsApiStatus: string
-  onClickRetry: () => void
+  searchInput: string;
+  onSelectEmploymentType: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeSalaryRange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeSearchInput: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  jobList: any;
+  jobsApiStatus: string;
+  onClickRetry: () => void;
 }
 
 const Jobs = observer((props: JobsPropTypes) => {
-
   const {
     searchInput,
     onSelectEmploymentType,
@@ -36,10 +53,10 @@ const Jobs = observer((props: JobsPropTypes) => {
     onChangeSearchInput,
     jobList,
     jobsApiStatus,
-    onClickRetry
-  } = props
+    onClickRetry,
+  } = props;
 
-  const { t } = useTranslation()
+  const { t } = useTranslation();
 
   const renderNoJobsView = () => (
     <NoJobsFoundContainer>
@@ -47,13 +64,14 @@ const Jobs = observer((props: JobsPropTypes) => {
         src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png "
         alt="no jobs"
       />
-      <NoJobsHeading>No Jobs Found</NoJobsHeading>
-      <NoJobsDescription>We could not find any jobs try other filter.</NoJobsDescription>
+      <NoJobsHeading>{t("noJobsFoundScreen:noJobsFoundHeading")}</NoJobsHeading>
+      <NoJobsDescription>
+        {t("noJobsFoundScreen:noJobsFoundDescription")}
+      </NoJobsDescription>
     </NoJobsFoundContainer>
-  )
+  );
 
   const renderJobsSuccessView = () => {
-
     if (jobList.length > 0) {
       return (
         <JobsListSection>
@@ -63,68 +81,65 @@ const Jobs = observer((props: JobsPropTypes) => {
             ))}
           </JobsListUlElement>
         </JobsListSection>
-      )
+      );
     }
-    return renderNoJobsView()
-  }
+    return renderNoJobsView();
+  };
 
   const renderJobsRightSideSection = () => {
-
     switch (jobsApiStatus) {
       case apiConstants.fetching:
-        return <LoadingWrapper />
+        return <LoadingWrapper />;
       case apiConstants.success:
-        return renderJobsSuccessView()
+        return renderJobsSuccessView();
       case apiConstants.failure:
-        return <FailureView onClickRetry={onClickRetry} />
+        return <FailureView onClickRetry={onClickRetry} />;
       default:
-        return ''
+        return "";
     }
-  }
+  };
 
   const renderJobsSearchInputField = () => (
-    <InputSearchSection >
+    <InputSearchSection>
       <SearchContainer>
         <JobsSearchInputField
-          type="search"
-          placeholder="Search"
+          type={t("jobsScreenStrings:searcInputType")}
+          placeholder={t("jobsScreenStrings:searchInputPlaceholderText")}
           value={searchInput}
           onChange={onChangeSearchInput}
         />
-        <SearchButton
-          type="button"
-          data-testid="searchButton"
-        >
+        <SearchButton type="button" data-testid="searchButton">
           <JobsSearchIcon />
         </SearchButton>
       </SearchContainer>
-
     </InputSearchSection>
-  )
+  );
 
   const renderLeftSideSection = () => (
     <JobsLeftSideSection>
       <ProfileController />
       <HorizontalLine />
       <EmploymentFilterSection>
-        <EmploymentTypeHeading >{t("jobsScreenStrings:typeOfEmployment")}</EmploymentTypeHeading>
+        <EmploymentTypeHeading>
+          {t("jobsScreenStrings:typeOfEmployment")}
+        </EmploymentTypeHeading>
         <EmploymentTypeUlEl>
-          {
-            employmentTypesList.map(type => (
-              <DisplayEmploymentTypeFilters
-                onSelectEmploymentType={onSelectEmploymentType}
-                key={type.employmentTypeId}
-                type={type}
-              />
-            ))
-          }
+          {employmentTypesList.map((type) => (
+            <DisplayEmploymentTypeFilters
+              onSelectEmploymentType={onSelectEmploymentType}
+              key={type.employmentTypeId}
+              type={type}
+            />
+          ))}
         </EmploymentTypeUlEl>
       </EmploymentFilterSection>
       <HorizontalLine />
-      <EmploymentFilterSection >
-        <EmploymentTypeHeading>{t("jobsScreenStrings:salaryRangeFilter")}</EmploymentTypeHeading>
+      <EmploymentFilterSection>
+        <EmploymentTypeHeading>
+          {t("jobsScreenStrings:salaryRangeFilter")}
+        </EmploymentTypeHeading>
         <EmploymentTypeUlEl>
-          {salaryRangesList.map(salaryRange => (
+          {salaryRangesList.map((salaryRange) => (
             <SalaryRangeFilter
               onChangeSalaryRange={onChangeSalaryRange}
               key={salaryRange.salaryRangeId}
@@ -134,7 +149,7 @@ const Jobs = observer((props: JobsPropTypes) => {
         </EmploymentTypeUlEl>
       </EmploymentFilterSection>
     </JobsLeftSideSection>
-  )
+  );
 
   return (
     <MainContainer>
@@ -146,7 +161,7 @@ const Jobs = observer((props: JobsPropTypes) => {
         </JobsRightSideSection>
       </JobsContainer>
     </MainContainer>
-  )
-})
+  );
+});
 
-export default Jobs
+export default Jobs;

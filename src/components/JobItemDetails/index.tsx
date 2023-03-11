@@ -1,40 +1,70 @@
-import { observer } from 'mobx-react'
+import { observer } from "mobx-react";
 
-import StartIcon from '../../Icons/StartIcon'
-import LocationIcon from '../../Icons/LocationIcon'
-import JobsIcon from '../../Icons/JobsIcon'
-import LogoutIcon from '../../Icons/LogoutIcon'
-import apiConstants from '../../constants/apiConstants'
-import JobDataModel from '../../stores/JobStore/models/JobsDataModel/jobsDataModel'
-import SkillsDataModel from '../../stores/JobStore/models/SkillsDataModel/skillsDataModel'
+import StartIcon from "../../Icons/StartIcon";
+import LocationIcon from "../../Icons/LocationIcon";
+import JobsIcon from "../../Icons/JobsIcon";
+import LogoutIcon from "../../Icons/LogoutIcon";
+import apiConstants from "../../constants/apiConstants";
+import JobDataModel from "../../stores/JobStore/models/JobsDataModel/jobsDataModel";
+import SkillsDataModel from "../../stores/JobStore/models/SkillsDataModel/skillsDataModel";
 
-import Skills from '../Skills'
-import SimilarJobs from '../SimilarJobs'
+import LoadingWrapper from "../../Common/components/loadingWrapper";
+import FailureView from "../../Common/components/FailureView";
 
+import Skills from "../Skills";
+import SimilarJobs from "../SimilarJobs";
 
-import LoadingWrapper from '../../Common/components/loadingWrapper'
-import FailureView from '../../Common/components/FailureView'
-import { CompnanyWebsiteUrl, JobDetailsBottomSection, JobDetailsContainer, JobDetailsDescriptionContainer, JobDetailsMainContainer, JobDetailsSection, LifeAtCompanyContainer, LifeAtCompanyDescription, LifeAtCompanyHeading, LifeAtCompanyImg, LifeAtCompnayContentContainer, SimilarJobsList, SimilarJobsSection, SimilarJobsSectionHeading, SkillHeading, SkillsList } from './styledComponents'
-import { CompanyLogo, DescriptionContent, DescriptionHeading, EmploymentType, EmploymentTypeContainer, JobCardHr, JobCardLogoContainer, JobDescriptionContainer, JobLocation, JobRoleContainer, LocationAndEmploymentTypeContainer, LocationAndSalaryContainer, LocationContainer, PackagePerAnnum, RoleHeading, RoleRating, RoleRatingContainer } from '../JobCard/styledComponents'
+import {
+  CompanyLogo,
+  DescriptionContent,
+  DescriptionHeading,
+  EmploymentType,
+  EmploymentTypeContainer,
+  JobCardHr,
+  JobCardLogoContainer,
+  JobDescriptionContainer,
+  JobLocation,
+  JobRoleContainer,
+  LocationAndEmploymentTypeContainer,
+  LocationAndSalaryContainer,
+  LocationContainer,
+  PackagePerAnnum,
+  RoleHeading,
+  RoleRating,
+  RoleRatingContainer,
+} from "../JobCard/styledComponents";
 
+import {
+  CompnanyWebsiteUrl,
+  JobDetailsBottomSection,
+  JobDetailsContainer,
+  JobDetailsDescriptionContainer,
+  JobDetailsMainContainer,
+  JobDetailsSection,
+  LifeAtCompanyContainer,
+  LifeAtCompanyDescription,
+  LifeAtCompanyHeading,
+  LifeAtCompanyImg,
+  LifeAtCompnayContentContainer,
+  SimilarJobsList,
+  SimilarJobsSection,
+  SimilarJobsSectionHeading,
+  SkillHeading,
+  SkillsList,
+} from "./styledComponents";
 interface JobDetailsPropTypes {
-  jobDetailsData: any
-  similarJobsData: Array<JobDataModel>
-  jobDetailsApiStatus: string
-  onClickRetry: any
+  jobDetailsData: any;
+  similarJobsData: Array<JobDataModel>;
+  jobDetailsApiStatus: string;
+  onClickRetry: any;
 }
 
 const JobDetails = observer((props: JobDetailsPropTypes) => {
-
-  const {
-    jobDetailsData,
-    similarJobsData,
-    jobDetailsApiStatus,
-    onClickRetry
-  } = props
+  const { jobDetailsData, similarJobsData, jobDetailsApiStatus, onClickRetry } =
+    props;
 
   const renderSimilarJobs = () => (
-    <SimilarJobsSection >
+    <SimilarJobsSection>
       <SimilarJobsSectionHeading>Similar jobs</SimilarJobsSectionHeading>
       <SimilarJobsList>
         {similarJobsData.map((job: JobDataModel) => (
@@ -42,10 +72,13 @@ const JobDetails = observer((props: JobDetailsPropTypes) => {
         ))}
       </SimilarJobsList>
     </SimilarJobsSection>
-  )
+  );
 
-  const renderLifeAtCompany = (lifeAtCompany: { description: string; imageUrl: string }) => {
-    const { description, imageUrl } = lifeAtCompany
+  const renderLifeAtCompany = (lifeAtCompany: {
+    description: string;
+    imageUrl: string;
+  }) => {
+    const { description, imageUrl } = lifeAtCompany;
 
     return (
       <LifeAtCompanyContainer>
@@ -55,8 +88,8 @@ const JobDetails = observer((props: JobDetailsPropTypes) => {
           <LifeAtCompanyImg src={imageUrl} alt="life at company" />
         </LifeAtCompnayContentContainer>
       </LifeAtCompanyContainer>
-    )
-  }
+    );
+  };
 
   const renderSkillsView = (skills: Array<SkillsDataModel>) => (
     <>
@@ -67,7 +100,7 @@ const JobDetails = observer((props: JobDetailsPropTypes) => {
         ))}
       </SkillsList>
     </>
-  )
+  );
 
   const renderJobInformationInDetailedView = () => {
     const {
@@ -81,14 +114,11 @@ const JobDetails = observer((props: JobDetailsPropTypes) => {
       rating,
       skills,
       title,
-    } = jobDetailsData
+    } = jobDetailsData;
     return (
-      <JobDetailsContainer >
+      <JobDetailsContainer>
         <JobCardLogoContainer>
-          <CompanyLogo
-            src={companyLogoUrl}
-            alt="job details company logo"
-          />
+          <CompanyLogo src={companyLogoUrl} alt="job details company logo" />
           <JobRoleContainer>
             <RoleHeading>{title}</RoleHeading>
             <RoleRatingContainer>
@@ -97,13 +127,13 @@ const JobDetails = observer((props: JobDetailsPropTypes) => {
             </RoleRatingContainer>
           </JobRoleContainer>
         </JobCardLogoContainer>
-        <LocationAndSalaryContainer >
-          <LocationAndEmploymentTypeContainer >
+        <LocationAndSalaryContainer>
+          <LocationAndEmploymentTypeContainer>
             <LocationContainer>
               <LocationIcon />
-              <JobLocation >{location}</JobLocation>
+              <JobLocation>{location}</JobLocation>
             </LocationContainer>
-            <EmploymentTypeContainer >
+            <EmploymentTypeContainer>
               <JobsIcon />
               <EmploymentType>{employmentType}</EmploymentType>
             </EmploymentTypeContainer>
@@ -113,12 +143,11 @@ const JobDetails = observer((props: JobDetailsPropTypes) => {
         <JobCardHr />
         <JobDetailsBottomSection>
           <JobDetailsDescriptionContainer>
-            <DescriptionHeading >Description</DescriptionHeading>
+            <DescriptionHeading>Description</DescriptionHeading>
             <CompnanyWebsiteUrl
               href={companyWebsiteUrl}
               rel="noreferrer"
-              target="_blank"
-            >
+              target="_blank">
               Visit <LogoutIcon />
             </CompnanyWebsiteUrl>
           </JobDetailsDescriptionContainer>
@@ -127,32 +156,32 @@ const JobDetails = observer((props: JobDetailsPropTypes) => {
           {renderLifeAtCompany(lifeAtCompany)}
         </JobDetailsBottomSection>
       </JobDetailsContainer>
-    )
-  }
+    );
+  };
 
   const renderJobSuccessView = () => (
     <JobDetailsSection>
       {renderJobInformationInDetailedView()}
       {renderSimilarJobs()}
     </JobDetailsSection>
-  )
+  );
 
   const renderJobDetails = () => {
     switch (jobDetailsApiStatus) {
       case apiConstants.fetching:
-        return <LoadingWrapper />
+        return <LoadingWrapper />;
       case apiConstants.success:
-        return renderJobSuccessView()
+        return renderJobSuccessView();
       case apiConstants.failure:
-        return <FailureView onClickRetry={onClickRetry} />
+        return <FailureView onClickRetry={onClickRetry} />;
       default:
-        return ''
+        return "";
     }
-  }
+  };
 
   return (
-    <JobDetailsMainContainer >{renderJobDetails()}</JobDetailsMainContainer>
-  )
-})
+    <JobDetailsMainContainer>{renderJobDetails()}</JobDetailsMainContainer>
+  );
+});
 
-export default JobDetails
+export default JobDetails;

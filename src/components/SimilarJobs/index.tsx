@@ -6,7 +6,6 @@ import JobsIcon from "../../Icons/JobsIcon";
 import JobDataModel from "../../stores/JobStore/models/JobsDataModel/jobsDataModel";
 import { JOBBY_APP_JOBS_PAGE_PATH } from "../../constants/navigationConstants";
 
-import { JobDetailsArticle, SimilarJobLiElement } from "./styledComponents";
 import {
   CompanyLogo,
   DescriptionContent,
@@ -18,12 +17,14 @@ import {
   JobLocation,
   JobRoleContainer,
   LocationAndEmploymentTypeContainer,
-  LocationAndSalaryContainer,
   LocationContainer,
   RoleHeading,
   RoleRating,
   RoleRatingContainer,
 } from "../JobCard/styledComponents";
+
+import { JobDetailsArticle, SimilarJobLiElement } from "./styledComponents";
+
 
 interface JobPropTypes {
   job: JobDataModel;

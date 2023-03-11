@@ -1,9 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
-// the translations
-// (tip move them in a JSON file and import them,
-// or even better, manage them separated from your code: https://react.i18next.com/guides/multiple-translation-files)
+
 const resources = {
     en: {
         loginModule: {
@@ -30,11 +28,17 @@ const resources = {
         },
         jobsScreenStrings: {
             "typeOfEmployment": "Type of Employment",
-            "salaryRangeFilter": "Salary Range"
+            "salaryRangeFilter": "Salary Range",
+            "searchInputPlaceholderText": "Search",
+            "searcInputType": "search"
         },
         noJobsFoundScreen: {
-            "noJobsFoundHeading": "",
-            "noJobsFoundDescription": ""
+            "noJobsFoundHeading": "No Jobs Found",
+            "noJobsFoundDescription": "We could not find any jobs try other filter."
+        },
+        notFoundScreenStrings: {
+            "notFoundHeading": "No Jobs Found",
+            "notFoundDescription": "We are sorry, the page you requested could not be found."
         }
 
     },

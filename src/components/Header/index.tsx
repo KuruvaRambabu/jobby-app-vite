@@ -7,7 +7,6 @@ import {
   JOBBY_APP_JOBS_PAGE_PATH,
   JOBBY_APP_LOGIN_PATH,
 } from "../../constants/navigationConstants";
-
 import { useLoginStore } from "../../hooks/useLoginStore";
 import HomeIcon from "../../Icons/HomeIcon";
 import JobsIcon from "../../Icons/JobsIcon";

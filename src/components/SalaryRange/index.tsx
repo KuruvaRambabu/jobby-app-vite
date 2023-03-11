@@ -1,18 +1,22 @@
-import { SalaryRangeFilterLiContainer, RadioInputField, RadioInputLabel } from './styledComponent'
+import {
+  SalaryRangeFilterLiContainer,
+  RadioInputField,
+  RadioInputLabel,
+} from "./styledComponent";
 
 interface SalaryTypes {
-  salaryRangeId: string
-  label: string
+  salaryRangeId: string;
+  label: string;
 }
 
 interface SalaryRangePropsTypes {
-  salary: SalaryTypes
-  onChangeSalaryRange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  salary: SalaryTypes;
+  onChangeSalaryRange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 const SalaryRangeFilter = (props: SalaryRangePropsTypes) => {
-  const { salary, onChangeSalaryRange } = props
-  const { salaryRangeId, label } = salary
+  const { salary, onChangeSalaryRange } = props;
+  const { salaryRangeId, label } = salary;
 
   return (
     <SalaryRangeFilterLiContainer>
@@ -22,11 +26,9 @@ const SalaryRangeFilter = (props: SalaryRangePropsTypes) => {
         name="Salary"
         id={salaryRangeId}
       />
-      <RadioInputLabel htmlFor={salaryRangeId}>
-        {label}
-      </RadioInputLabel>
+      <RadioInputLabel htmlFor={salaryRangeId}>{label}</RadioInputLabel>
     </SalaryRangeFilterLiContainer>
-  )
-}
+  );
+};
 
-export default SalaryRangeFilter
+export default SalaryRangeFilter;

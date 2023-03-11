@@ -1,17 +1,28 @@
-import { NotFoundContainer, NotFoundImg, NotFoundHeading, NotFoundDescription } from './styledComponents'
+import { useTranslation } from "react-i18next";
+import {
+  NotFoundContainer,
+  NotFoundImg,
+  NotFoundHeading,
+  NotFoundDescription,
+} from "./styledComponents";
 
-const NotFound = () => (
-  <NotFoundContainer>
-    <NotFoundImg
-      src="https://assets.ccbp.in/frontend/react-js/jobby-app-not-found-img.png"
-      alt="not found"
-      data-testid="not-found"
-    />
-    <NotFoundHeading >Page Not Found</NotFoundHeading>
-    <NotFoundDescription>
-      We are sorry, the page you requested could not be found.
-    </NotFoundDescription>
-  </NotFoundContainer>
-)
+const NotFound = () => {
+  const { t } = useTranslation();
+  return (
+    <NotFoundContainer>
+      <NotFoundImg
+        src="https://assets.ccbp.in/frontend/react-js/jobby-app-not-found-img.png"
+        alt="not found"
+        data-testid="not-found"
+      />
+      <NotFoundHeading>
+        {t("notFoundScreenStrings:notFoundHeading")}
+      </NotFoundHeading>
+      <NotFoundDescription>
+        {t("notFoundScreenStrings:notFoundDescription")}
+      </NotFoundDescription>
+    </NotFoundContainer>
+  );
+};
 
-export default NotFound
+export default NotFound;

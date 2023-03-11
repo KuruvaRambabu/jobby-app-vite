@@ -3,7 +3,6 @@
     background-color: #121212;
     list-style: none;
     margin-left: 0;
-    padding: 20px;
     list-style-type: none;
     border-radius: 20px;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
@@ -94,6 +93,9 @@
   .job-card-link-styles {
     text-decoration: none;
     color: #ffffff;
+    padding: 20px;
+    
+
   }
   
   @media screen and (max-width: 567px) {

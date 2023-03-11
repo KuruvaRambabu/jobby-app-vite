@@ -1,6 +1,7 @@
 import {useEffect, useContext} from 'react'
 import {ThreeDots} from 'react-loader-spinner'
 import {observer} from 'mobx-react'
+import { useQuery } from 'react-query';
 
 import apiConstants from '../../constants/apiConstants'
 import StoresContext from '../../context/StoreContext'
@@ -13,9 +14,8 @@ const Profile = observer(() => {
   const {jobStore} = store
   const {profileApiStatus, profileData, getProfileData} = jobStore
 
-  useEffect(() => {
-    getProfileData()
-  }, [])
+  useQuery('userProfile', getProfileData)
+
 
   const renderLoadingView = () => (
     <div className="loader-container" data-testid="loader">

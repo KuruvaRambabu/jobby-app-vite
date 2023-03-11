@@ -1,8 +1,9 @@
-import {useContext} from 'react'
-import {useNavigate, Navigate} from 'react-router-dom'
-import { Oval } from  'react-loader-spinner'
+import { useContext } from 'react'
+import { useNavigate, Navigate, Params } from 'react-router-dom'
+import { Oval } from 'react-loader-spinner'
 import Cookies from 'js-cookie'
-import {observer, useLocalObservable} from 'mobx-react'
+import { observer, useLocalObservable } from 'mobx-react'
+import { useMutation } from 'react-query'
 
 import StoresContext from '../../context/StoreContext'
 import apiConstants from '../../constants/apiConstants'
@@ -11,30 +12,30 @@ import './index.css'
 
 
 interface localStateTypes {
-  username:string
-  password:string
-  setUsername:(event:React.ChangeEvent<HTMLInputElement>)=>void
-  setPassword :(event:React.ChangeEvent<HTMLInputElement>)=>void
+  username: string
+  password: string
+  setUsername: (event: React.ChangeEvent<HTMLInputElement>) => void
+  setPassword: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 const Login = observer(() => {
   const localState = useLocalObservable<localStateTypes>(() => ({
     username: '',
     password: '',
-    
-    setUsername(event:React.ChangeEvent<HTMLInputElement>) {
+
+    setUsername(event: React.ChangeEvent<HTMLInputElement>) {
       this.username = event.target.value
     },
-    setPassword(event:React.ChangeEvent<HTMLInputElement>) {
+    setPassword(event: React.ChangeEvent<HTMLInputElement>) {
       this.password = event.target.value
     }
   }))
 
 
   const store = useContext(StoresContext)
-  const {loginStore} = store
-  const {onClickLogin, apiStatus,errorMessage} = loginStore
-
+  const { loginStore } = store
+  const { onClickLogin, apiStatus, errorMessage } = loginStore
+  // const loginMutateFn = useMutation(onClickLogin): any
   const navigate = useNavigate()
 
   const renderUsernameInput = () => (
@@ -70,14 +71,16 @@ const Login = observer(() => {
   )
 
   const onSubmitSuccess = () => {
-    navigate('/', {replace: true})
+    navigate('/', { replace: true })
   }
 
 
   const onSubmitForm = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    const {username, password} = localState
-    const userDetails = {username, password}
+    const { username, password } = localState
+    const userDetails: any = { username, password }
+
+    // loginMutateFn.mutate(userDetails, onSubmitSuccess): MutateOptions<unknown, unknown, void, unknown>
     onClickLogin(userDetails, onSubmitSuccess)
   }
 
@@ -102,14 +105,14 @@ const Login = observer(() => {
           {apiStatus === apiConstants.fetching ? (
             <div className="loader-container login-button" data-testid="loader">
               <Oval
-                  height={30}
-                  width={30}
-                  color="#ffffff"
-                  visible={true}
-                  ariaLabel='oval-loading'
-                  strokeWidth={2}
-                  strokeWidthSecondary={2}
-                />
+                height={30}
+                width={30}
+                color="#ffffff"
+                visible={true}
+                ariaLabel='oval-loading'
+                strokeWidth={2}
+                strokeWidthSecondary={2}
+              />
             </div>
           ) : (
             <button className="login-button" type="submit">

@@ -2,9 +2,7 @@ import { profileDetailsTypes } from "../../types"
 
 class ProfileDetailsModel {
     name:string
-  
     profileImageUrl:string
-  
     shortBio:string
   
     constructor(profileDetails:profileDetailsTypes) {
